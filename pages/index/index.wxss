@@ -1,19 +1,145 @@
 /**index.wxss**/
-.userinfo {
+.container {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+  border-radius: 50%;
+}
+.name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 自定义圆弧背景 */
+.area {
+  display: relative;
+  flex-direction: column;
+  align-items: center;
+  height: 300rpx;
+}
+.area::after{
+  content: '';
+  width: 140%;
+  height: 300rpx;
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  top: 0;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(160deg,#84c4ef, #84c4ef);
+}
+/* 次数记录部分 */
+/* wxss文件 */
+.containercount {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.left, .right {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
+  justify-content: center;
+  border-radius: 50rpx;
+  padding: 10rpx;
+  background-color: #ffc400;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+.left, .right, .right + .right {
+  flex: 1;
+}
+
+.count {
+  font-size: 28rpx;
+  color: #ffffff;
+}
+
+.description {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 按钮及以下部分 */
+.containerbottom {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30%;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+/* 水平布局 */
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.scroll-view {
+  width: 100%;
+  height: 100%;
+}
+/* 条目 */
+.item-container {
+  /* 设置条目容器的样式，例如设置为水平排列的容器 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10rpx;
+  background-color:pink;
+  /* 设置为两列的容器 */
+  gap: 10rpx;
+  align-items: center;
+  padding: 10rpx;
+  background-color: pink;
+  /* 添加圆角效果 */
+  border-radius: 100rpx;
+  /* 设置每个条目之间的间隔距离 */
+  margin-bottom: 10rpx;
+  margin-right: 10rpx;
+}
+
+.item-img {
+  /* 设置条目图片的样式 */
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 50%;
+  margin-right: 10rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.item-content {
+  /* 设置条目内容的样式 */
+  flex: 1;
+}
+
+.item-title {
+  /* 设置条目标题的样式 */
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.item-description {
+  /* 设置条目描述的样式 */
+  font-size: 24rpx;
+  color: #666;
 }
