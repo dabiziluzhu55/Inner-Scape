@@ -30,7 +30,7 @@ public class GetOpenID {
         System.out.println("code" + code);
         String url = "https://api.weixin.qq.com/sns/jscode2session";
         url += "?appid=wx12124f4315e89b07";//自己的appid
-        url += "&secret=06751ff2b0db4c3b08b958cef4ed81c2";//自己的appSecret
+        url += "&secret=*************";//自己的appSecret
         url += "&js_code=" + code;
         url += "&grant_type=authorization_code";
         url += "&connect_redirect=1";
