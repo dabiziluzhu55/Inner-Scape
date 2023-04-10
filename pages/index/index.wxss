@@ -1,20 +1,24 @@
 /**index.wxss**/
+/**index.wxss**/
 .container {
   display: flex;
   align-items: center;
 }
+
 .avatar {
   width: 60rpx;
   height: 60rpx;
   margin-right: 10rpx;
   border-radius: 50%;
 }
+
 .name {
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 /* 自定义圆弧背景 */
 .area {
   display: relative;
@@ -22,10 +26,11 @@
   align-items: center;
   height: 300rpx;
 }
-.area::after{
+
+.area::after {
   content: '';
   width: 140%;
-  height: 300rpx;
+  height: 370rpx;
   position: absolute;
   z-index: -1;
   left: -20%;
@@ -33,12 +38,14 @@
   border-radius: 0 0 50% 50%;
   background: linear-gradient(160deg,#84c4ef, #84c4ef);
 }
+
 /* 次数记录部分 */
 /* wxss文件 */
 .containercount {
   display: flex;
   flex-direction: column;
   align-items: left;
+  margin-top: -22%;
 }
 
 .row {
@@ -56,7 +63,8 @@
   justify-content: center;
   border-radius: 50rpx;
   padding: 10rpx;
-  background-color: #ffc400;
+  margin-left: 2px;
+  background-color: #181816;
 }
 
 .left, .right, .right + .right {
@@ -81,13 +89,64 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 30%;
+  margin-top: 12%;
 }
 
-.btn {
+/* btn部分 */
+.my-button {
+  display: block;
   width: 100px;
   height: 40px;
+  line-height: 61rpx;
   margin-bottom: 20px;
+  background-color: #007bff; /* 设置背景颜色为蓝色 */
+  font-family: "宋体"; /* 设置字体为宋体 */
+  color: #fff; /* 设置文字颜色为白色 */
+  text-align: center;
+  font-size: 40rpx; /* 设置文字大小 */
+  font-weight: bold; /* 设置文字粗细 */
+  border-radius: 5rpx; /* 设置圆角边框 */
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2); /* 设置按钮阴影效果 */
+  outline: none; /* 去掉按钮的默认外边框 */
+  cursor: pointer; /* 设置鼠标悬停时的样式为手型 */
+  transition: background-color 0.3s ease; /* 添加背景颜色变化的过渡效果 */
+}
+
+.my-button:hover {
+  background-color: #00b3a4; /* 设置鼠标悬停时的背景颜色 */
+}
+
+.my-button:active {
+  background-color: #008f84; /* 设置按钮按下时的背景颜色 /
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2); / 取消按钮按下时的阴影效果 /
+  transform: translateY(2rpx); / 添加按钮按下时的微小向下偏移效果 */
+  }
+
+/* btn文字闪烁效果 */
+#btntitle {
+  font-size: 40rpx;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #64b5f6, #e57373);
+  background-clip: text;
+  color: #fff; /* 设置文本颜色为白色 */
+  font-family: "宋体"; /* 设置字体为宋体 */
+  animation: blink 3s linear infinite;
+  /* -webkit-animation: blink 2s linear infinite;
+  -moz-animation: blink 2s linear infinite;
+  -ms-animation: blink 2s linear infinite;
+  -o-animation: blink 2s linear infinite; */
+  text-align: center;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 /* 水平布局 */
 .btn-container {
@@ -95,6 +154,7 @@
   display: flex;
   justify-content: center;
 }
+/* scroll窗口 */
 .scroll-view {
   width: 100%;
   height: 100%;
@@ -107,13 +167,12 @@
   align-items: center;
   padding: 10rpx;
   background-color:pink;
-  /* 设置为两列的容器 */
   gap: 10rpx;
   align-items: center;
-  padding: 10rpx;
+  padding: 40rpx;
   background-color: pink;
   /* 添加圆角效果 */
-  border-radius: 100rpx;
+  border-radius: 10rpx;
   /* 设置每个条目之间的间隔距离 */
   margin-bottom: 10rpx;
   margin-right: 10rpx;
