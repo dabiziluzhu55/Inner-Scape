@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("user")
+@TableName(value = "InnerUser")
 public class User {
-    private String id;
-    private String name;
-    private int age;
+    private String openId;
+    private String nickName;
+    private int photoNum;
 }
