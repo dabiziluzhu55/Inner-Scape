@@ -10,7 +10,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +29,7 @@ public class GetOpenID {
         System.out.println("code" + code);
         String url = "https://api.weixin.qq.com/sns/jscode2session";
         url += "?appid=wx12124f4315e89b07";//自己的appid
-        url += "&secret=*************";//自己的appSecret
+        url += "&secret=06751ff2b0db4c3b08b958cef4ed81c2";//自己的appSecret
         url += "&js_code=" + code;
         url += "&grant_type=authorization_code";
         url += "&connect_redirect=1";
