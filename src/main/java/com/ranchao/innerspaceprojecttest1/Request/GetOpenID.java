@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+
 
 @RestController
 @CrossOrigin
@@ -64,5 +69,13 @@ public class GetOpenID {
         String openid = jo.getString("openid");
         System.out.println("openid" + openid);
         return openid;
+    }
+
+    @RequestMapping("/getDate")
+    public void testDate(String date) throws ParseException {
+        System.out.println(date);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        java.util.Date currentTime_2 = formatter.parse(date);
+        System.out.println(currentTime_2.toString());
     }
 }

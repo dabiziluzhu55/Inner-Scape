@@ -3,8 +3,9 @@ package com.ranchao.innerspaceprojecttest1.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @TableName(value = "InnerMeditation")

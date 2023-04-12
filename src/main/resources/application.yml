@@ -9,3 +9,6 @@ spring:
     username: crz
     password: crz
     driver-class-name: com.mysql.cj.jdbc.Driver
+  web:
+    resources:
+      static-locations: file:D:\appData\codeProject\photoResource
