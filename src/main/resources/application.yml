@@ -11,4 +11,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   web:
     resources:
-      static-locations: file:D:\appData\codeProject\photoResource
+      static-locations: D:\appData\codeProject\photoResource\resource
+      # /home/ubuntu/ranzhaoTest/resource
+      # D:\appData\codeProject\photoResource\resource
+      # /home/ubuntu/resource
