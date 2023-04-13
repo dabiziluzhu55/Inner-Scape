@@ -2,12 +2,33 @@
 <view>
   <view class="area">
 <!-- 图像区域 -->
-    <view class="container">
-      <image class="avatar" src="/images/cat.jpg"></image> 
-      <view class="name">{{name}}</view>
+      <image class="avatar" mode ="scaleToFill" binderror ="imageOnloadError" src="{{avatarUrl}}" bindtap="avatarEvent"></image>
+      <text class="name">{{name}}</text>
     </view>
+    <!-- 头像选择框 -->
+    <view class="modal" wx:if="{{modalHidden}}">
+<view class="modal-content">
+  <view class="modal-header">
+  <view class="modal-title">请选择您的头像</view>
+  <button id="cancelBtn" bindtap="cancelBtnEvent" >
+    <image class="cancelicon" src="/pages/index/images/cancel.jpg" alt="图标" />
+    </button>
+  </view>
+  <scroll-view class="options" scroll-y="{{true}}" style="max-height: 300rpx;">
+    <view class="option" wx:for="{{avatarUrlItems}}" wx:key="{{index}}" bindtap="onOptionClick" data-index="{{index}}">
+      <image class = "optionitem-img" src = "{{item.avatarUrl}}"></image>
+      <text class="option-selected" wx:if="{{item.checked}}"></text>
+    </view>
+  </scroll-view>
+      <view class="modal-footer">
+        <button id="confirmBtn" bindtap="onConfirmBtnClick">确认</button>
+      </view>
+    </view>
+  </view>
+    <!-- 我的冥想按钮和关联点击 -->
+    <text class="mingtext" bindtap="handlemingBtnTap">我的冥想</text>
+    
     <!-- 次数 -->
-    <view class="containercount">
       <view class="row">
     <view class="left">
       <text class="count">{{totalMeditationCount}}</text>
@@ -21,18 +42,18 @@
       <text class="count">{{daysOfStreak}}</text>
       <text class="description">坚持天数</text>
     </view>
-    </view>
-  </view>
+    <!-- </view> -->
  </view>
     <!-- 两个按钮 -->
     <view class="containerbottom">
       <view class="btn-container">
         <button class="my-button" bindtap="handleBtn1Tap">写下的信</button>
-        <button class="my-button" id= "btntitle" bindtap="handleBtn2Tap">为Ta解忧</button>
+        <!-- <button class="my-button" id = "btntitle" bindtap="handleBtn2Tap">为Ta解忧</button> -->
+        <button class="my-button" bindtap="handleBtn2Tap">为Ta解忧</button>
       </view>
       <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="handleScrollToLower">
     <!-- 根据按钮点击事件动态渲染不同的条目 -->
-    <view class="item-container" wx:for="{{items}}" wx:key="{{item.title}}" data-index="{{index}}"bindtap="handleItemClick">
+    <view class="item-container" wx:for="{{items}}" wx:key="{{index}}" data-index="{{index}}"bindtap="handleItemClick">
       <image class="item-img" src="{{item.image}}"></image>
       <view class="item-content">
         <text class="item-title">{{item.title}}</text>
@@ -40,5 +61,5 @@
       </view>
     </view>
   </scroll-view>
-</view>
   </view>
+</view>

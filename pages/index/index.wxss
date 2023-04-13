@@ -1,59 +1,155 @@
 /**index.wxss**/
-/**index.wxss**/
-.container {
-  display: flex;
-  align-items: center;
+
+/* 自定义圆弧背景 */
+.area {
+  position: relative;
+  overflow: hidden;
+  width: 140%;
+  left: -20%;
+  height: 400rpx; /* 设置区域的高度为半圆的高度 */
+  border-radius: 0 0 50% 50%; /* 设置只有下面两个角为半圆形 */
+  /* 必须是base64编码或者网页链接 */
+  /* background-image: url();
+  background-size: cover;
+  background-position: center center;  */
 }
 
+/* 头像 */
 .avatar {
-  width: 60rpx;
-  height: 60rpx;
-  margin-right: 10rpx;
+  position: absolute;
+  top: 35%; /* 头像垂直居中 */
+  left: 22%; /* 头像水平居中 */
+  transform: translate(-50%, -50%); /* 头像居中显示 */
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 50%;
 }
 
 .name {
-  flex: 1;
+  position: absolute;
+  bottom: 110px;
+  left: 0; /* 昵称与区域左对齐 */
+  right: 0; /* 昵称与区域右对齐 */
+  margin-right: 30px;
+  text-align: center; /* 文字居中对齐 */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* 自定义圆弧背景 */
-.area {
-  display: relative;
-  flex-direction: column;
-  align-items: center;
-  height: 300rpx;
+/* 头像选择框 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
-.area::after {
-  content: '';
-  width: 140%;
-  height: 370rpx;
-  position: absolute;
-  z-index: -1;
-  left: -20%;
-  top: 0;
-  border-radius: 0 0 50% 50%;
-  background: linear-gradient(160deg,#84c4ef, #84c4ef);
+.modal-content {
+  width: 600rpx;
+  background-color: #fff;
+  margin: auto;
+  margin-top: 300rpx; /* 设置选择框与顶部的距离 */
+  padding: 20rpx;
+  border-radius: 5rpx;
+}
+
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 10rpx; 
+}
+
+.modal-body {
+  max-height: 300rpx;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.options {
+  list-style-type: none;
+  padding: 0;
+}
+
+.option {
+  cursor: pointer;
+  padding: 5rpx 0;
+  position: relative; /* 添加相对定位 */
+}
+
+.optionitem-img {
+  /* 设置头像图片的样式 */
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+
+.option-selected::after {
+  content: "\2713";
+  position: absolute; /* 绝对定位 */
+  top: 50%;
+  right: 10rpx;
+  transform: translateY(-50%);
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.row {
+  margin-top: 10px;
+  margin-bottom: 10px; /* 设置行与行之间的间距 */
+}
+
+#confirmBtn {
+  padding: 5px 10px;
+  text-align: center;
+  border: none;
+  width: 80px;
+  height: 40px;
+  background-color:transparent;
+  text-decoration-color: #f0f0f0;
+}
+
+#cancelBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0;
+  margin-right: -190rpx;
+}
+
+.cancelicon{
+  width: 20px; /* 图标的宽度 */
+  height: 20px; /* 图标的高度 */
 }
 
 /* 次数记录部分 */
-/* wxss文件 */
-.containercount {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  margin-top: -22%;
+.container {
+  position: absolute;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 10rpx;
+  position: absolute;
+  top: 22%; 
+  left: 0;
+  right: 0;
 }
 
 .left, .right {
@@ -61,14 +157,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 50rpx;
-  padding: 10rpx;
+  flex-grow: 1;
   margin-left: 2px;
+  border-radius: 50rpx;
+  height: 30px;
   background-color: #181816;
-}
-
-.left, .right, .right + .right {
-  flex: 1;
 }
 
 .count {
@@ -89,7 +182,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 12%;
+  margin-top: 6%;
 }
 
 /* btn部分 */
@@ -131,10 +224,6 @@
   color: #fff; /* 设置文本颜色为白色 */
   font-family: "宋体"; /* 设置字体为宋体 */
   animation: blink 3s linear infinite;
-  /* -webkit-animation: blink 2s linear infinite;
-  -moz-animation: blink 2s linear infinite;
-  -ms-animation: blink 2s linear infinite;
-  -o-animation: blink 2s linear infinite; */
   text-align: center;
 }
 @keyframes blink {
@@ -201,4 +290,24 @@
   /* 设置条目描述的样式 */
   font-size: 24rpx;
   color: #666;
+}
+
+/* 我的冥想text */
+.mingtext{
+  position: absolute;
+  top: 1%; 
+  left: 80%;
+  width: 20%;
+  /* min-width: 10px; */
+  height: 30px;
+  font-size: 30rpx;
+  font-weight: bold;
+  /* background: linear-gradient(to bottom, #64b5f6, #e57373); */
+  /* background : transparent; */
+  /* background-position: center,center;
+  background-size: cover;
+  background-image: url(); */
+  background-clip: text;
+  color:  #050505; /* 设置文本颜色为白色 */
+  font-family: "楷体"; /* 设置字体为宋体 */
 }
