@@ -7,6 +7,7 @@ Page({
     avatarUrl: '', // 图像的本地文件路径
     name:'',
     items: [], // 滑动栏中的条目数据
+    imageUrls:['http://175.178.90.196:7778/headshot/images/baiyi.png','http://175.178.90.196:7778/headshot/images/caitou.jpg','http://175.178.90.196:7778/headshot/images/deluke.jpg','http://175.178.90.196:7778/headshot/images/haer.jpg','http://175.178.90.196:7778/headshot/images/mile.jpg','http://175.178.90.196:7778/headshot/images/pusa.jpg','http://175.178.90.196:7778/headshot/images/siwei.jpg','http://175.178.90.196:7778/headshot/images/sufei.jpg','http://175.178.90.196:7778/headshot/images/wuming.jpg'],
     avatarUrlItems:[],
     selectedIndex : -1,// 当前选择的图像
     currentBtn: 1, // 当前选中的按钮，默认为按钮1
@@ -18,44 +19,66 @@ Page({
   onLoad: function() {
     // 生成随机的 ID
     let userId = this.generateUserId();
-    console.log(userId)
-    // 更新数据
-    this.setData({
-      avatarUrl : '/pages/index/images/cat.jpg',
-      name: userId,
-      // 示例的条目数据
-      items: [
-        {
-          image: "",
-          title: "条目1",
-          description: "这是条目1的描述信息",
-        },
-        {
-          image: "",
-          title: "条目2",
-          description: "这是条目2的描述信息",
-        },
-        {
-          image: "",
-          title: "条目3",
-          description: "这是条目3的描述信息",
-        }
-      ], // 根据需求设置不同的条目数据
-      avatarUrlItems : [
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cancel.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-        {avatarUrl : "/pages/index/images/cat.jpg",checked : false},
-      ],
+    var imageUrls = this.data.imageUrls;
+    var avatarUrlItems = [];
+    var promises = [];
+  
+    // 获取图片并创建 Promise
+    for(let i = 0; i < 9; i++){
+      let promise = new Promise((resolve, reject) => {
+        wx.request({
+          url: imageUrls[i],
+          responseType: 'arraybuffer',
+          success: function(res) {
+            // 将 res.data（二进制数组）转换为 base64 编码
+            let base64 = wx.arrayBufferToBase64(res.data);
+            // 将 base64 编码添加到数组中
+            base64 = 'data:image/jpeg;base64,' + base64;
+            avatarUrlItems.push({avatarUrl : base64, checked : false});
+            resolve();
+          },
+          fail: function(res) {
+            console.error('请求图片失败', res);
+            reject();
+          }
+        });
+      });
+      promises.push(promise);
+    }
+  
+    // 等待所有请求完成
+    Promise.all(promises).then(() => {
+      // 更新数据
+      this.setData({
+        name: userId,
+        avatarUrl : '/pages/index/images/cat.jpg',
+        // 示例的条目数据
+        items: [
+          {
+            image: "",
+            title: "条目1",
+            description: "这是条目1的描述信息",
+          },
+          {
+            image: "",
+            title: "条目2",
+            description: "这是条目2的描述信息",
+          },
+          {
+            image: "",
+            title: "条目3",
+            description: "这是条目3的描述信息",
+          }
+        ], // 根据需求设置不同的条目数据
+      });
+      this.setData({
+        avatarUrlItems : avatarUrlItems,
+      });
+    }).catch(() => {
+      // 处理请求失败的情况
     });
   },
 
-  
   // 生成随机的用户 ID 与加载默认图像
   generateUserId: function() {
     // 这里使用简单的时间戳 + 随机数作为示例，实际情况中应该使用更复杂的方式生成随机 ID
