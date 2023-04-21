@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/home/home",        
+    "pages/temp/temp",      
+    "pages/sound/sound",
+    "pages/meditation/meditation",
+    "pages/logs/logs",
+    "pages/piaoliuping/piaoliuping",
+    "pages/star/star",
+    "pages/starlog/starlog",
+    "pages/starreply/starreply",
+    "pages/flystar/flystar",
+
+    "pages/first/first",
+    "pages/second/second",
+    "pages/third/third",
+    "pages/fourth/fourth",
+    "pages/fifth/fifth",
+    "pages/sixth/sixth",
+    "pages/seventh/seventh",
+    "pages/eighth/eighth",
+    "pages/ninth/ninth",
+    "pages/tenth/tenth"
+  ],
+  "usingComponents": {},
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#4997E5",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "探索",
+        "iconPath": "image/search.png",
+        "selectedIconPath": "image/search2.png"
+      },
+      {
+        "pagePath": "pages/piaoliuping/piaoliuping",
+        "text": "摘星",
+        "iconPath": "image/star.png",
+        "selectedIconPath": "image/stra2.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/my2.png"
+      }
+    ]
+  },
+  "style": "v2"
+}
