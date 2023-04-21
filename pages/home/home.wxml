@@ -73,8 +73,65 @@
     </block>
 
     <!-- 第三个tab -->
-    <block wx:if="{{tabIndex == 2}}">
-      <view>呼吸</view>
+    <block wx:if="{{tabIndex == 2}}"> 
+      <scroll-view class="container">
+        <text class = "titletext" style="border-left: 2px solid rgb(0, 247, 255);"> 轻松入眠</text>
+          <view class="button-row">
+            <button class="button" style="width: 45%;" bindtap="pingjEvent">
+            <image class="img" src="{{imgUrls[0]}}"></image>
+          <view class="contenttext">平静</view>
+            </button>
+            <button class="button" style="width: 45%;" bindtap="fangkEvent">
+            <image class="img" src="{{imgUrls[11]}}"></image>
+          <view class="contenttext">放空</view>
+            </button>
+          </view>
+          <text class = "titletext" style="border-left: 2px solid yellow;"> 晨间唤醒</text>
+          <view class="button-row">
+            <button class="button" style="width: 45%;" bindtap="huolEvent">
+            <image class="img" src="{{imgUrls[10]}}"></image>
+            <view class="contenttext">活力</view>
+            </button>
+            <button class="button" style="width: 45%;" bindtap="xingnEvent">
+              <image class="img" src="{{imgUrls[3]}}"></image>
+            <view class="contenttext">醒脑</view>
+            </button>
+          </view>
+          <text class = "titletext" style="border-left: 2px solid rgb(0, 255, 55);"> 学习间隙</text>
+          <view class="button-row">
+            <button class="button" style="width: 45%;" bindtap="fangsEvent">
+            <image class="img" src="{{imgUrls[4]}}"></image>
+            <view class="contenttext">放松</view>
+            </button>
+            <button class="button" style="width: 45%;" bindtap="chongnEvent">
+              <image class="img" src="{{imgUrls[5]}}"></image>
+            <view class="contenttext">充能</view>
+            </button>
+          </view>
+          <text class = "titletext" style="border-left: 2px solid rgb(183, 0, 255);"> 重要时刻</text>
+          <view class="button-row">
+            <button class="button" style="width: 45%;" bindtap="zhuanzEvent">
+            <image class="img" src="{{imgUrls[2]}}"></image>
+            <view class="contenttext">专注</view>
+            </button>
+            <button class="button" style="width: 45%;" bindtap="chongqEvent">
+              <image class="img" src="{{imgUrls[7]}}"></image>
+            <view class="contenttext">重启</view>
+            </button>
+          </view>
+          <text class = "titletext" style="border-left: 2px solid rgb(0, 162, 255);"> 情绪舒缓</text>
+          <view class="button-row">
+            <button class="button" style="width: 45%;" bindtap="shuhEvent">
+            <image class="img" src="{{imgUrls[8]}}"></image>
+            <view class="contenttext">舒缓</view>
+            </button>
+            <button class="button" style="width: 45%;" bindtap="jihEvent">
+              <image class="img" src="{{imgUrls[9]}}"></image>
+            <view class="contenttext">激活</view>
+            </button>
+        </view>
+      </scroll-view>
+  
     </block>
   </view>
 </view>

@@ -9,8 +9,19 @@
     "pages/star/star",
     "pages/starlog/starlog",
     "pages/starreply/starreply",
-    "pages/flystar/flystar"
+    "pages/flystar/flystar",
 
+    "pages/catalog/catalog",
+    "pages/index/index",
+    "pages/secondpage/secondpage",
+    "pages/third/third",
+    "pages/fourth/fourth",
+    "pages/fifth/fifth",
+    "pages/sixth/sixth",
+    "pages/seventh/seventh",
+    "pages/eighth/eighth",
+    "pages/ninth/ninth",
+    "pages/tenth/tenth"
   ],
   "usingComponents": {},
   "window": {

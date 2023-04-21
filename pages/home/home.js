@@ -15,7 +15,8 @@ Page({
     "item": [],
     // 一个列表中包含4个列表
     "item1":[],
-    isPlay:false
+    isPlay:false,
+    imgUrls:["http://175.178.90.196:7778/sceneryjpg/one.jpg","http://175.178.90.196:7778/sceneryjpg/two.jpg","http://175.178.90.196:7778/sceneryjpg/three.jpg","http://175.178.90.196:7778/sceneryjpg/four.jpg","http://175.178.90.196:7778/sceneryjpg/five.jpg","http://175.178.90.196:7778/sceneryjpg/six.jpg","http://175.178.90.196:7778/sceneryjpg/seven.jpg","http://175.178.90.196:7778/sceneryjpg/eight.jpg","http://175.178.90.196:7778/sceneryjpg/nine.jpg","http://175.178.90.196:7778/sceneryjpg/ten.jpg","http://175.178.90.196:7778/sceneryjpg/el.jpg","http://175.178.90.196:7778/sceneryjpg/tw.jpg",]
   },
   onLoad(){
     this.get_meditate('冥想','睡眠');
@@ -85,6 +86,75 @@ Page({
     wx.navigateTo({
       url: '/pages/sound/sound?music='+e.currentTarget.dataset.url+'&name='+e.currentTarget.dataset.name,
     })
-  }
+  },
+  // 平静页面跳转
+pingjEvent : function () {
+  wx.navigateTo({
+  url: '/pages/index/index' 
+});
+},
+
+// 放空页面跳转
+fangkEvent : function () {
+  wx.navigateTo({
+    url: '/pages/secondpage/secondpage'
+  });
+},
+
+// 活力页面跳转
+huolEvent : function () {
+  wx.navigateTo({
+    url: '/pages/third/third'
+  });
+},
+
+// 醒脑页面跳转
+xingnEvent : function () {
+  wx.navigateTo({
+    url: '/pages/fourth/fourth'
+  });
+},
+
+// 放松页面跳转
+fangsEvent : function () {
+  wx.navigateTo({
+    url: '/pages/fifth/fifth'
+  });
+},
+
+// 充能页面跳转
+chongnEvent : function () {
+  wx.navigateTo({
+    url: '/pages/sixth/sixth'
+  });
+},
+
+// 专注页面跳转
+zhuanzEvent : function () {
+  wx.navigateTo({
+    url: '/pages/seventh/seventh'
+  });
+},
+
+// 重启页面跳转
+chongqEvent : function () {
+  wx.navigateTo({
+    url: '/pages/eighth/eighth'
+  });
+},
+
+// 舒缓页面跳转
+shuhEvent : function () {
+  wx.navigateTo({
+    url: '/pages/ninth/ninth'
+  });
+},
+
+// 激活页面跳转
+jihEvent : function () {
+  wx.navigateTo({
+    url: '/pages/tenth/tenth'
+  });
+},
 })
 
