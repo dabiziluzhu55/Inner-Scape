@@ -1,0 +1,14 @@
+<view class="container">
+  <form bindsubmit="submitForm">
+  <view class="message-box">
+    <view class="message-hello">亲爱的陌生人</view>
+    <view class="form-item">
+      <textarea name="replyContent" placeholder="请输入给Ta的鼓励吧!" value="" bindinput="length"></textarea>
+      <text class='input-right'>{{length}}/180</text>
+    </view>
+  </view>
+  <view class="form-item">
+      <button class="btn" form-type="submit">提交</button>
+  </view>
+</form>
+</view>

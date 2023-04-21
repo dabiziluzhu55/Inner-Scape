@@ -1,0 +1,102 @@
+.bg-image{ 
+  width : 100%;
+  height : 100%;  
+  position: fixed;  
+  z-index: -1;  
+}
+.star-bt1{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:-35rpx;
+  top:40rpx;
+}
+.star-bt2{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:200rpx;
+  top:35rpx;
+}
+.star-bt3{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:400rpx;
+  top:40rpx;
+}
+.star-bt4{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:-16px;
+  top:250rpx;
+}
+.star-bt5{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:400rpx;
+  top:250rpx;
+}
+.star-bt6{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:200rpx;
+  top:230rpx;
+}
+
+button image{
+  width: 100px;
+  height: 100px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.star-bt {
+  margin: 2px;
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+}
+
+.fontStyle{
+  font-size: 15px;
+  color:#131247;
+  text-align: center;
+}
+.fontStyle2{
+  font-size: 15px;
+  color:white;
+  position: absolute;
+  top:630rpx;
+  left:280rpx;
+  text-align: center;
+  line-height:3em;
+}

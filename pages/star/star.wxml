@@ -1,0 +1,16 @@
+<!--pages/star/star.wxml-->
+<view wx:if="{{loading}}">
+<image class="bg-image" mode="scaleToFill" src="/images/starbk.jpg"></image>
+<view class="button-group">
+  <view wx:for="{{stars}}" wx:key="starID">
+    <button class="star-bt" data-starid="{{item.starID}}" bindtap="onStarTap">
+      <image src="/images/st2.png"></image>
+    </button>
+  </view>
+</view>
+<view class="fontStyle">.</view>
+<view class="fontStyle2">
+<view>站在月球上了</view>
+<view>来摘一颗星星吧</view>
+</view>
+</view>

@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/piaoliuping/piaoliuping",
+    "pages/star/star",
+    "pages/starlog/starlog",
+    "pages/starreply/starreply",
+    "pages/flystar/flystar"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "InnerScape",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#4997E5",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "探索",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search2.png"
+      },
+      {
+        "pagePath": "pages/piaoliuping/piaoliuping",
+        "text": "摘星",
+        "iconPath": "images/star.png",
+        "selectedIconPath": "images/stra2.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my2.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
