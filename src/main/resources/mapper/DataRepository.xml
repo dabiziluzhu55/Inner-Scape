@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.innerscape_test4.repository.DataRepository">
+    <select id="FindUser" resultType="com.example.innerscape_test4.entity.User">
+        select * from user where ID=#{userID}
+    </select>
+
+    <insert id="AddUser">
+        insert into user(ID,name,headshot,thinks) values(#{userID},#{userName},#{headshot},0)
+    </insert>
+
+    <select id="FindRefreshHistoryToday0" resultType="String">
+        select refreshID from starRefresh0 where userID=#{userID} and time=#{time}
+    </select>
+
+    <select id="FindRefreshHistoryInHalfHour1" resultType="java.lang.Integer">
+        select 30-timestampdiff(minute,time,#{time}) from starRefresh1 where userID=#{userID} and timestampdiff(minute,time,#{time})&lt;30
+    </select>
+
+    <insert id="AddHistory0">
+        insert into starRefresh0(refreshID,userID,time,star1ID,open1,star2ID,open2,star3ID,open3,star4ID,open4,star5ID,open5,star6ID,open6) values (#{refreshID},#{userID},#{time},#{star1ID},0,#{star2ID},0,#{star3ID},0,#{star4ID},0,#{star5ID},0,#{star6ID},0);
+    </insert>
+
+    <update id="ChangeHistory0">
+        update starRefresh0 set star1ID=#{star1ID},open1=0,
+                                star2ID=#{star2ID},open2=0,
+                                star3ID=#{star3ID},open3=0,
+                                star4ID=#{star4ID},open4=0,
+                                star5ID=#{star5ID},open5=0,
+                                star6ID=#{star6ID},open6=0 where refreshID=#{refreshID}
+    </update>
+
+    <insert id="AddHistory1">
+        insert into starRefresh1(userID,time) values(#{userID},#{time})
+    </insert>
+
+    <select id="GetRefresh" resultType="com.example.innerscape_test4.entity.Refresh">
+        select * from starRefresh0 where refreshID=#{refreshID}
+    </select>
+
+    <select id="CatchStar" resultType="com.example.innerscape_test4.entity.StarLittle">
+        select starID,starContent,starHostName from star where starID=#{starID}
+    </select>
+
+    <select id="Select6Stars" resultType="String">
+        select starID from star where starHostID!=#{userID} and replyNum&lt;6 ORDER BY RAND() LIMIT 6
+    </select>
+
+    <select id="FlyNum" resultType="java.lang.Integer">
+        select count(*) from star where starHostID=#{userID} and timestampdiff(minute,flyTime,#{time})&lt;60
+    </select>
+
+    <insert id="AddStar">
+        insert into star(starID,starContent,starHostID,starHostName,flyTime,replyNum) values(#{starID},#{starContent},#{userID},#{userName},#{time},0)
+    </insert>
+
+    <select id="GetStarContent" resultType="com.example.innerscape_test4.entity.StarLittleReply">
+        select starContent,starHostName,replyNum from star where starID=#{starID}
+    </select>
+
+    <update id="Reply">
+        update starRefresh0 set open#{open}=1 where refreshID=#{refreshID}
+    </update>
+
+    <update id="AddHostReply">
+        update star set replyNum=#{replyNum},reply#{replyNum}ID=#{replyID},reply#{replyNum}Say=#{replySay},reply#{replyNum}GuestName=#{replyGuestName} where starID=#{starID};
+    </update>
+
+    <insert id="AddGuestReply">
+        insert into starReply(replyID,starID,starContent,starHostName,replySay,replyGuestID) values (#{replyID},#{starID},#{starContent},#{starHostName},#{replySay},#{replyGuestID})
+    </insert>
+
+    <select id="FindStar" resultType="com.example.innerscape_test4.entity.Star">
+        select * from star where starHostID=#{userID} and deleted!=1
+    </select>
+
+    <select id="FindReply" resultType="com.example.innerscape_test4.entity.StarReply">
+        select * from starReply where replyGuestID=#{userID} and replyID!='thisContentIsDeleted'
+    </select>
+
+    <update id="DeleteReply">
+        update starReply set replyID='thisContentIsDeleted' where replyID=#{replyID};
+    </update>
+
+    <update id="DeleteStarReply">
+        update star set reply1ID=case when reply1ID=#{replyID} then 'thisContentIsDeleted' else reply1ID end,
+                        reply2ID=case when reply2ID=#{replyID} then 'thisContentIsDeleted' else reply2ID end,
+                        reply3ID=case when reply3ID=#{replyID} then 'thisContentIsDeleted' else reply3ID end,
+                        reply4ID=case when reply4ID=#{replyID} then 'thisContentIsDeleted' else reply4ID end,
+                        reply5ID=case when reply5ID=#{replyID} then 'thisContentIsDeleted' else reply5ID end,
+                        reply6ID=case when reply6ID=#{replyID} then 'thisContentIsDeleted' else reply6ID end where starID=#{starID};
+    </update>
+
+    <select id="GetStarHost" resultType="String">
+        select starHostID from star where starID=#{starID}
+    </select>
+
+    <update id="DeleteStar">
+       update star set deleted=1 where starID=#{starID}
+    </update>
+
+</mapper>
