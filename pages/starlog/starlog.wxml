@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="message-box">
+    <view class="message-hello">亲爱的陌生人</view>
+    <view class="line"></view>
+    <view class="message-text">{{starContent}}</view>
+    <image class="hug-image" wx:if="{{showHug}}" src="/image/st2.png"></image>
+    <view class="message-thanks">感谢您的倾听</view>
+    <view class="message-time">{{message.flyTime}}2023年4月14日</view>
+    <view class="message-user">{{starHost}}</view>
+  </view>
+  <view class="btn-box">
+  <button class="btn1" bindtap="showImage">给Ta拥抱</button>
+  <view class="btn-space"></view>
+  <button class="btn2" bindtap="giveReply">给Ta鼓励</button>
+  </view>
+</view>
+
+<!--{{message.flyTime}}  {{message.userName}}-->

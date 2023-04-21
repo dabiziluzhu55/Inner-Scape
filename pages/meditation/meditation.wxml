@@ -1,0 +1,36 @@
+<view class="container" >
+  <!-- 背景图片 -->
+  <image class='background-image' src='{{src}}' mode="aspectFill"></image>
+    <!-- 当前播放歌曲名 -->
+  <view class="title">{{name}}</view>
+    <!-- 功能按钮 -->
+    <view class="music-player">
+        <button class="control-button" bindtap="pre15">
+          <image src="/image/pre15.png" mode="aspectFit"></image>
+          <!-- <icon class="iconfont pre15"/> -->
+        </button>
+        <button class="control-button" plain="true" bindtap="isPlay">
+          <image src="{{isPlay?'/image/pause.png':'/image/play.png'}}" mode="aspectFit"></image>
+        </button>
+        <button class="control-button" bindtap="next15">
+          <image src="/image/next15.png" mode="aspectFit"></image>
+          <!-- <icon class="iconfont icon-ahead15"/> -->
+        </button>
+    </view>
+
+    <!-- 音乐进度条 -->
+    <view class="range">
+        <text>{{currentTime}}</text>
+        <slider
+          class="mySlider"
+          step="0.01"
+          value="{{value}}"
+          max="{{maxValue}}"
+          bindchange="toTime"
+          block-size="12"
+        />
+        <text>{{duration}}</text>
+    </view>
+</view>
+
+

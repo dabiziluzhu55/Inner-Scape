@@ -1,0 +1,44 @@
+<!--pages/sound/sound.wxml-->
+
+<!-- 背景 -->
+<image class='background-image'mode="aspectFill" src="{{background}}"></image>
+<!-- 关闭按钮 -->
+<view class="icon-jiantou2 iconfont hideIcon" bindtap="return"></view>
+<!-- 声音标题及描述 -->
+<text class="title">{{title}}</text>
+<text class="content">{{content}}</text>
+<!-- 设置时间 -->
+<image class="setTime" src="{{setTime}}" bindtap="showPopup"></image>
+<!-- 重新选择白噪音 -->
+<image class="cur" src="{{setTime}}"></image>
+
+
+<!-- 弹出设置时间选择框 -->
+<van-popup
+  show="{{ show }}"
+  closeable
+  round
+  close-icon-position="top-right"
+  position="bottom"
+  custom-style="height: 45%"
+  bind:close="onClose">
+  <van-datetime-picker
+    type="time"
+    title="设置时间"
+    value="{{ userSetTime }}"
+    min-date="{{ minHour }}"
+    max-date="{{ maxHour }}"
+    filter="{{ filter }}"
+    bind:input="onInput"/>
+</van-popup>
+<text class="curTime">{{currentTime}}</text>
+<text class="duration">{{duration}}</text>
+<block>
+  <view class="icon-play1 iconfont isPlay" bindtap="isPlay" wx:if="{{!isPlay}}"></view>
+  <view class="icon-pause1 iconfont isPlay" bindtap="isPlay" wx:if="{{isPlay}}"></view>
+</block>
+
+
+
+
+

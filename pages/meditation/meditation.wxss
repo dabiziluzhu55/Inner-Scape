@@ -1,0 +1,86 @@
+/* pages/musicdetail/musicdetail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: space-around;
+  padding: 0 20rpx;
+}
+.background-image{
+  position: absolute;
+  height:100%;
+  width:100%;
+  z-index: -1;
+  /* overflow: hidden; */
+  filter: blur(15rpx);
+}
+.title {
+  margin: 70rpx 0;
+  color: white;
+  font-size: 30px;
+}
+.range {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.range slider {
+  display: inline-block;
+  flex: 1;
+}
+
+.music-player {
+  display: flex;
+}
+.control-button {
+  background-color: transparent;
+  border: none;
+  margin: 0 10px;
+}
+
+/* 图标按钮样式 */
+.control-button image {
+  width: 50px;
+  height: 50px;
+}
+.select {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+.select .mid {
+  height: 110rpx !important;
+  width: 110rpx !important;
+} 
+.select button {
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90rpx !important;
+  height: 90rpx !important;
+  border-radius: 50%;
+}
+
+
+.mask {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+.hide {
+  display: none;
+}
+
+
+.sub {
+  font-size: small;
+  color: rgb(245, 245, 245, 0.8);
+}
+.active {
+  color: red;
+}
