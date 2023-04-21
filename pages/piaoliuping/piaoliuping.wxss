@@ -1,0 +1,33 @@
+.bg-image
+{ 
+  width : 100%;
+  height : 100%;  
+  position: fixed;  
+  z-index: -1;  
+}
+.star-bt1{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:190rpx;
+  top:750rpx;
+}
+
+.star-bt2{
+  padding: 0;
+  background-color: transparent;
+  border:none;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:190rpx;
+  top:880rpx;
+}
+
+button image{
+  width: 130px;
+  height: 60px;
+}

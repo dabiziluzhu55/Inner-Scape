@@ -1,0 +1,69 @@
+/* pages/sound/sound.wxss */
+
+
+.title{
+  display: inline-block;
+  margin-top:80rpx;
+  margin-left: 40rpx;
+  font-size: 80rpx;
+  font-weight: 800;
+  color: aliceblue;
+}
+.content{
+  display: block;
+  margin-top:20rpx;
+  margin-left: 40rpx;
+  font-size: 40rpx;
+  font-weight: 800;
+  color: aliceblue;
+}
+.hideIcon{
+  margin-left: 50rpx;
+  padding-top: 30rpx;
+}
+.setTime{
+  position: fixed;
+  top:150rpx;
+  right:20rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.cur{
+  position: fixed;
+  top:260rpx;
+  right:20rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.background-image{
+  position: absolute;
+  height:100%;
+  width:100%;
+  z-index: -1;
+  /* overflow: hidden; */
+  /* filter: blur(15rpx); */
+}
+.curTime{
+  font-size: 130rpx; 
+  color:white;
+  position: fixed;
+  bottom: 200rpx;
+  left:50rpx;
+}
+.duration{
+  color: white;
+  font-size: 50rpx;
+  position: fixed;
+  bottom: 230rpx;
+  left:430rpx;
+}
+.isPlay{
+  color: white;
+  font-size: 90rpx;
+  position: fixed;
+  left:340rpx;
+  bottom: 100rpx;
+
+
+}
+

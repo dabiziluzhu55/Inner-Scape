@@ -1,0 +1,129 @@
+/* 导航条 */
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  height: 100rpx;
+  position: relative;
+  background: #fff;
+}
+/* 导航条item */
+.navItem {
+  line-height: 60rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: center;
+  border-bottom: 4rpx solid transparent;
+}
+/* 大导航条选中 */
+.active {
+  color:#252525;
+  font-size:23px;
+  font-weight:550;
+  border-bottom: 10rpx solid #bfd3fa;
+}
+/* 小导航条选中 */
+.secActive {
+  color:#fff;
+  font-weight:400; 
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  background-color: #6370d9;
+  border-radius: 10px;
+  position: relative;
+}
+
+.content_wrapper{
+  flex: 1;
+}
+
+/* 冥想页面图标显示列表 */
+.Infolist{
+  margin-top: 20rpx;
+}
+  /*冥想图标和文字*/
+.Info-list-info{
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+.photo-item{
+  border-radius: 4px;
+  width: 350rpx;
+  height: 330rpx;
+}
+.Info-desc{
+  display: block;
+  color: #000;
+  font-size: medium;
+  bottom: 3%;
+  left: 0;
+  width: 94%;
+  text-align: left;
+  padding: 10rpx;
+  opacity: 0.7;
+}
+
+/* 以下是第二个页面的css代码 */
+.sound {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 以下是声音页面的代码 */
+.image-item {
+  width: 100rpx; /* 设置图片的宽度 */
+  height: 100rpx; /* 设置图片的高度 */
+  border-radius: 50%; /* 设置边框半径为50%，即圆形 */
+  overflow: hidden; /* 隐藏图片超出边界的部分，以实现圆形效果 */
+
+
+}
+
+.image-text{
+  width: 150rpx; 
+  height: 180rpx; 
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.Info-list-info2{
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  /* position: relative; */
+}
+
+.image-container {
+  margin-top: 15rpx;
+  margin-left: 10rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  /* 设置滚动方向为横向 */
+  /* 可根据需要设置其他样式属性，例如宽度、高度、边距等 */
+}
+
+.soundTitle{
+  font-size: 45rpx;
+  margin-top: 100rpx;
+  margin-left: 30rpx;
+}
+
+/* 最小化栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150rpx;
+}
+.bottom-bar-bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* 设置黑色矩形的透明度为0.5 */
+  border-radius: 20rpx 20rpx 0 0; /* 设置上面两个角为圆角 */
+}
+
+

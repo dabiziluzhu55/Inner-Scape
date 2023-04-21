@@ -1,0 +1,7 @@
+<!--背景图片-->
+<view wx:if="{{loading}}">
+<image class="bg-image" mode="scaleToFill" src="/image/bk.jpg"></image>
+<button class="star-bt1" bindtap="goto"><image src="/image/bt1.png"></image></button>
+<button class="star-bt2" bindtap="gotofly"><image src="/image/bt2.png"></image></button>
+</view>
+

@@ -1,0 +1,83 @@
+<view class="page">
+  <!-- 导航条.tab太多的时候需要使用scrollview -->
+  <view class="navBar">
+    <block wx:for="{{tabs}}" wx:key="item">
+      <view id="{{index}}" class="navItem {{tabIndex == index ? 'active' : '' }}" bindtap="onTabClick">
+        <view class="navItemTitle">{{item}}</view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content_wrapper">
+    <!-- 冥想 -->
+    <block wx:if="{{tabIndex == 0}}">
+      <!-- 冥想各类标签选择 -->
+      <view class="navBar">
+        <view wx:for="{{secTabs1}}" wx:key="item" wx:for-index="idx">
+          <view id="{{idx}}" class="navItem {{secIndex1 == idx ? 'secActive' : '' }}" bindtap="onSecTabClick1">
+            <view class="navItemTitle">{{item}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 导航条以下的内容 -->
+      <!-- 这里是只显示了睡眠条下的内容 -->
+      <block wx:if="{{secIndex1==0}}">
+        <!-- <view class="Infolist"> -->
+          <block wx:for="{{item}}" wx:key="item">
+            <view >
+              <navigator url="/pages/photo/photo?id={{item.id}}">
+                <view class="Info-list-info" index="{{index}}">
+                  <image class="photo-item" mode="aspectFill"  
+                      src="{{item.imageUrl}}"data-url="{{item.musicUrl}}"  data-name="{{item.content}}"  data-src="{{item.imageUrl}}"  bindtap="change2music"/>
+                  <text class="Info-desc">{{item.content}}</text>
+                </view>
+              </navigator>
+            </view>
+          </block>
+        <!-- </view> -->
+      </block>  
+    </block>
+
+    <!-- 声音 -->
+    <block wx:if="{{tabIndex == 1}}">
+      <view class="navBar">
+        <block wx:for="{{secTabs2}}" wx:key="item" wx:for-index="idx">
+          <view id="{{idx}}" class="navItem {{secIndex2 == idx ? 'secActive' : '' }}" bindtap="onSecTabClick2">
+            <view class="navItemTitle">{{item}}</view>
+          </view>
+        </block>
+      </view>
+      <!--导航条以下内容-->
+      <view style="margin-top: 40rpx;">
+        <block wx:for="{{secTabs2}}" wx:key="index">
+            <!-- 先显示标题 -->
+            <text class="soundTitle">{{item}}</text>
+            <!-- 再显示每个标题对应的所有图标,怎么让它们横着排列呢-->
+            <view class="image-container" style="margin-top: 20rpx;">
+              <view  wx:for="{{item1[index]}}" wx:key="index2">
+                <view class="image-text">
+                    <image src="{{item.imageUrl}}" 
+                      class="image-item" 
+                      mode="aspectFill"  
+                      data-url="{{item.musicUrl}}"  
+                      data-name="{{item.content}}"
+                      bindtap="change2sound"></image>
+                    <text style="margin-top: 15rpx;text-align: center;">{{item.content}}</text>
+                </view>              
+              </view>            
+            </view>
+        </block>
+      </view>
+
+    </block>
+
+    <!-- 第三个tab -->
+    <block wx:if="{{tabIndex == 2}}">
+      <view>呼吸</view>
+    </block>
+  </view>
+</view>
+<view class="bottom-bar">
+  <view class="bottom-bar-bg"></view>
+</view>
