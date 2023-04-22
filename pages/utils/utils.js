@@ -1,4 +1,4 @@
-// pages/tenth/tenth.js
+// pages/utils/utils.js
 Page({
 
   /**

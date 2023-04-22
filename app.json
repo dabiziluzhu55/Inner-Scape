@@ -10,17 +10,8 @@
     "pages/starlog/starlog",
     "pages/starreply/starreply",
     "pages/flystar/flystar",
-
-    "pages/first/first",
-    "pages/second/second",
-    "pages/third/third",
-    "pages/fourth/fourth",
-    "pages/fifth/fifth",
-    "pages/sixth/sixth",
-    "pages/seventh/seventh",
-    "pages/eighth/eighth",
-    "pages/ninth/ninth",
-    "pages/tenth/tenth"
+    "pages/index/index",
+    "pages/utils/utils"
   ],
   "usingComponents": {},
   "window": {

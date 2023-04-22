@@ -30,7 +30,6 @@ Page({
         level1: level1
       },
       success:(res)=>{ 
-        console.log(res.data)
         this.setData({
           item:res.data
         })
@@ -44,7 +43,6 @@ Page({
         level0: level0
       },
       success:(res)=>{ 
-        console.log(res.data)
         this.setData({
           item1:res.data
         })
@@ -72,89 +70,96 @@ Page({
     this.setData({
       secIndex2: id,
     })
-    // this.get_meditate(this.data.tabs[this.data.tabIndex],this.data.secTabs1[this.data.secIndex1])
   },
 
   change2music(e){
-    console.log(e)
     wx.navigateTo({
       url: '/pages/meditation/meditation?musicUrl='+e.currentTarget.dataset.url+'&name='+e.currentTarget.dataset.name+'&src='+e.currentTarget.dataset.src,
     })
   },
   change2sound(e){
-    console.log(e)
     wx.navigateTo({
       url: '/pages/sound/sound?music='+e.currentTarget.dataset.url+'&name='+e.currentTarget.dataset.name,
     })
   },
-  // 平静页面跳转
+// 平静页面跳转
 pingjEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气4秒，胸部不动，腹部隆起。"},{text : "2、鼻子呼气4秒，胸部不动，腹部回落。"},{text : "3、重复以上两步。"}];
+
   wx.navigateTo({
-  url: '/pages/first/first' 
+  url: '/pages/index/index?timeDisplay='+4+'&animationStart='+1+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
 });
 },
 
 // 放空页面跳转
 fangkEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气4秒，胸部不动，腹部隆起。"},{text : "2、屏息7秒。"},{text : "3、鼻子呼气8秒，胸部不动，腹部回落。"},{text:"4、重复以上三步。"}];
+
   wx.navigateTo({
-    url: '/pages/second/second'
-  });
+    url: '/pages/index/index?timeDisplay='+4+'&animationStart='+2+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 活力页面跳转
 huolEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气3秒，胸部不动，腹部凹进。"},{text : "2、屏息3秒。"},{text : "3、鼻子呼气3秒，胸部不动，腹部隆起。"},{text:"4、重复以上三步。"}];
+
   wx.navigateTo({
-    url: '/pages/third/third'
-  });
+    url: '/pages/index/index?timeDisplay='+3+'&animationStart='+3+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 醒脑页面跳转
 xingnEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气4秒，胸部不动，腹部凹进。"},{text : "2、鼻子呼气4秒，胸部不动，腹部隆起。"},{text : "3、重复以上两步。"}];
+
   wx.navigateTo({
-    url: '/pages/fourth/fourth'
-  });
+    url: '/pages/index/index?timeDisplay='+3+'&animationStart='+4+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 放松页面跳转
 fangsEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气3秒，胸部不动，腹部隆起。"},{text : "2、鼻子呼气6秒，胸部不动，腹部回落。"},{text : "3、重复以上两步。"}];
+
   wx.navigateTo({
-    url: '/pages/fifth/fifth'
-  });
+    url: '/pages/index/index?timeDisplay='+3+'&animationStart='+5+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 充能页面跳转
 chongnEvent : function () {
+  var teachContents = [{text : "1、鼻子轻轻吸气2s，胸部不动，腹部凹进。"},{text : "2、屏息2秒。"},{text : "3、鼻子继续吸气2s，胸部不动，腹部凹进。"},{text : "4、屏息2秒。"},{text : "5、鼻子呼气4s，胸部不动，腹部隆起。"},{text : "6、重复以上五步。"}];
+
   wx.navigateTo({
-    url: '/pages/sixth/sixth'
-  });
+    url: '/pages/index/index?timeDisplay='+2+'&animationStart='+6+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 专注页面跳转
 zhuanzEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气4秒，胸部不动，腹部隆起。"},{text : "2、屏息4秒。"},{text : "3、鼻子呼气4秒，胸部不动，腹部回落。"},{text : "4、重复以上三步。"}];
+
   wx.navigateTo({
-    url: '/pages/seventh/seventh'
-  });
+    url: '/pages/index/index?timeDisplay='+4+'&animationStart='+7+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 重启页面跳转
 chongqEvent : function () {
+  var teachContents = [{text : "1、鼻子吸气2s，胸部隆起肋骨随之向外、向上扩张；同时腹部向内收。"},{text : "2、屏息8秒。"},{text : "3、嘴巴呼气4秒，胸部回落，肋骨随之向内、向下回落；腹部放松。"},{text : "4、屏息2秒。"},{text : "5、重复以上四步。"}];
+
   wx.navigateTo({
-    url: '/pages/eighth/eighth'
-  });
+    url: '/pages/index/index?timeDisplay='+2+'&animationStart='+8+'&teachContents='+JSON.stringify(teachContents)+'&teachImg='+'/image/huxione.jpg', 
+   });
 },
 
 // 舒缓页面跳转
 shuhEvent : function () {
-  wx.navigateTo({
-    url: '/pages/ninth/ninth'
-  });
 },
 
 // 激活页面跳转
 jihEvent : function () {
-  wx.navigateTo({
-    url: '/pages/tenth/tenth'
-  });
 },
 })
 

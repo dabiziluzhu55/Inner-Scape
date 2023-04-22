@@ -1,9 +1,4 @@
 /**index.wxss**/
-
-/* 整体背景 */
-.area-background{
-   background-image : radial-gradient(#00ff4c, #FFFFFF);
-}
 /* 波浪圈容器样式 */
 .wave-container {
   position: relative;
@@ -31,7 +26,8 @@
   transform-origin: center;
 }
 
-.waverunning {
+
+.waverunning1 {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -44,12 +40,12 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  animation: waveCircleAnimation 8s linear infinite;
   animation-play-state: paused;
   transform-origin: center;
+  animation: waveCircleAnimation1 8s linear infinite;
 }
 
-@keyframes waveCircleAnimation { 
+@keyframes waveCircleAnimation1 { 
   0% {
     transform: scale(1);
   }
@@ -60,6 +56,218 @@
     transform: scale(1);
   }
 }
+
+.waverunning2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation2 12s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+}
+
+@keyframes waveCircleAnimation2 { 
+  0%{
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.waverunning3 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation3 6s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+}
+
+@keyframes waveCircleAnimation3 { 
+  0%{
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.waverunning4 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation4 8s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+ }
+ 
+ @keyframes waveCircleAnimation4 { 
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+ }
+
+ .waverunning5 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation5 9s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+ }
+ 
+ @keyframes waveCircleAnimation5 { 
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+ }
+
+ .waverunning6 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation6 8s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+}
+
+@keyframes waveCircleAnimation6 { 
+  0%{
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.waverunning7 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation7 8s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+}
+
+@keyframes waveCircleAnimation7 { 
+  0%{
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.waverunning8 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#64b5f6, #e57373);
+  background-color: transparent;
+  border: 2px solid #58a47e;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: waveCircleAnimation8 6s linear infinite;
+  animation-play-state: paused;
+  transform-origin: center;
+}
+
+@keyframes waveCircleAnimation8 { 
+  0%{
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
   /* 0% ,100%{
     border-radius: 50%;
     border-color: rgba(68, 204, 136, 0.5);

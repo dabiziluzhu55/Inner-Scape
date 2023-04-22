@@ -1,15 +1,22 @@
-
+// index.js
+// 获取应用实例
+const app = getApp()
+const utils = require('../utils/startTimer.js')
 Page({
   data: {
     timerId:'',
     timeLeft:179,
     waveDirection:1,
     timer: "3:00",
-    timeDisplay: 4,
+    timeDisplay: 0,
+    timeRecord : 0,
+    animationStart : 0,// 确定当前动画
+    teachContents:[],// 教程内容
+    teachImg:'',
     xiDisplay: "",
     startBtnText:"开始",
     voiceText:"关闭声音",
-    voiceIconSrc: "/pages/images/close.jpg", // 
+    voiceIconSrc: "/pages//close.jpg", // 
     waveAnimation: {},
     waveAnimationPlayState: "paused",
     teachModalHidden : false,// 初始状态下 modal 是隐藏的
@@ -29,14 +36,25 @@ Page({
     state : true,// 动画状态
     playing : false,// 动画是否播放
   },
-  
+
+onLoad : function (options) {
+    var teachContent = JSON.parse(options.teachContents);
+    this.setData({
+      timeDisplay : options.timeDisplay,
+      timeRecord : options.timeDisplay,
+      animationStart : options.animationStart,
+      teachContents : teachContent,
+      teachImg : options.teachImg,
+    });
+},
+
 // 退出
 exitBtnEvent : function () {
-  // console.log("exit from the page");
+  console.log("exit from the page");
   // 在当前页面的事件处理函数中调用
   wx.navigateBack({
-    url: '/pages/catalog/catalog' 
-  });
+  url: '/pages/catalog/catalog' 
+});
 },
 
 // 教程
@@ -64,7 +82,45 @@ startBtnEvent:function(){
         playing : false,
       });
     } else {
-      btn.startTimer();
+      // btn.startTimer();
+      // utils.startTimer_one(btn);
+      var chosen = this.data.animationStart;
+      console.log(chosen);
+      
+      switch(chosen){
+        case '1' : 
+          console.log("case 1");
+          utils.startTimer_one(btn);
+          break;
+        case '2' :
+          console.log("case 2");
+          utils.startTimer_two(btn);
+          break;
+        case '3' :
+          console.log("case 3");
+          utils.startTimer_three(btn);
+          break;
+        case '4' :
+          console.log("case 4");
+          utils.startTimer_four(btn);
+          break;
+        case '5' :
+          console.log("case 5");
+          utils.startTimer_five(btn);
+          break;
+        case '6' :
+          console.log("case 6");
+          utils.startTimer_six(btn);
+          break;
+        case '7' :
+          console.log("case 7");
+          utils.startTimer_seven(btn);
+          break;
+        case '8' :
+          console.log("case 8");
+          utils.startTimer_eight(btn);
+          break;
+      }
       btn.setData({
         startBtnText: "暂停",
         state : true,
@@ -76,80 +132,6 @@ startBtnEvent:function(){
 padZero : function(num) {
   return num < 10 ? "0" + num : num;
 },
-// 启动计时器
-startTimer: function() {
-  var btn = this;
-  var timeDisplay = this.data.timeDisplay;
-  var xiDisplay = "吸气";
-  var playing = true;
-  btn.data.timerId = setInterval(function() {
-    var timeLeft = btn.data.timeLeft;
-    // 更新总时间显示
-    var minutes = Math.floor(timeLeft / 60);
-    var seconds = timeLeft % 60;
-    var timer = btn.padZero(minutes) + ":" + btn.padZero(seconds);
-
-    // 更新页面中的计时器显示
-    btn.setData({
-      timer: timer
-    });
-
-    // 更新波浪圈内部数字和吸气/呼气显示
-    if (btn.data.waveDirection === 1) {
-      // 波浪圈变大，数字逐渐减小
-      timeDisplay = timeDisplay - 1;
-      if (timeDisplay <= 0) {
-        btn.data.waveDirection = 0;
-        xiDisplay = "屏息";
-        timeDisplay = 4;// 设置屏息时间
-        playing = false;
-      }
-    } else if(btn.data.waveDirection === -1){
-      // 波浪圈变小，数字逐渐增大
-      timeDisplay = timeDisplay + 1;
-      if (timeDisplay >= 4) {
-        btn.data.waveDirection = 1;
-        xiDisplay = "吸气";
-        timeDisplay = 4;
-      }
-    } else{
-      // 屏息状态
-      timeDisplay = timeDisplay - 1;
-      if (timeDisplay <= 0) {
-        btn.data.waveDirection = -1;
-        xiDisplay = "呼气";
-        playing = true;
-      }
-    }
-    // 更新页面中的波浪圈内部数字和吸气/呼气显示
-    btn.setData({
-      timeDisplay: timeDisplay,
-      xiDisplay: xiDisplay,
-      playing : playing,
-    });
-
-    // 更新总时间剩余秒数
-    btn.setData({
-      timeLeft: btn.data.timeLeft - 1,
-    });
-
-    if (btn.data.timeLeft < 0) {
-      // 总时间用完，停止定时器
-      clearInterval(btn.data.timerId);
-      // 重置时间
-      btn.setData({
-        timer: "3:00",
-        timeLeft: 180,
-        startBtnText: "开始",
-        xiDisplay: " ",
-        timeDisplay: 4,
-        waveDirection: 1,
-        state: false, // 切换动画状态
-      });
-    }
-  }, 1000);
-},
-
 
   // 声音按钮
   voiceBtnEvent:function () {
@@ -157,11 +139,11 @@ startTimer: function() {
     var voiceIconSrc = this.data.voiceIconSrc;
     var voiceText = this.data.voiceText;
     // 切换声音图标和文字
-    if (voiceIconSrc.includes('/pages/images/close.jpg')) {
-      voiceIconSrc = '/pages/images/start.jpg';
+    if (voiceIconSrc.includes('/image/close.jpg')) {
+      voiceIconSrc = '/image/start.jpg';
       voiceText = '打开声音';
     } else {
-      voiceIconSrc = '/pages/images/close.jpg';
+      voiceIconSrc = '/image/close.jpg';
       voiceText = '关闭声音';
     }
     // 更新数据
@@ -249,7 +231,7 @@ startTimer: function() {
           timer : timer,
           modalHidden: false, 
           xiDisplay: " ",
-          timeDisplay: 4,
+          timeDisplay: this.data.timeRecord,
           waveDirection: 1,
           state : false,// 切换动画状态
         })
