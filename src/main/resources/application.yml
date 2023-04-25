@@ -5,9 +5,9 @@ server:
   # 数据库相关配置
 spring:
   datasource:
-    url: jdbc:mysql://124.220.28.218:3306/ThreeLayers
-    username: crz
-    password: crz
+    url: jdbc:mysql://175.178.90.196:3306/ISdata
+    username: InnerScape
+    password: Dbzlz2023@LYL0408_21:21
     driver-class-name: com.mysql.cj.jdbc.Driver
 #  web:
 #    resources:

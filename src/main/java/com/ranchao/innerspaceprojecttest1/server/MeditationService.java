@@ -42,15 +42,12 @@ public class MeditationService {
         Map<String, Object> map = new HashMap<>();
         map.put("level0", level0);
         List<MedResource> resources = medResourceMapper.selectByMap(map);
-        ArrayList<String> temps = new ArrayList<>();
-        temps.add("自然");
-        temps.add("音乐");
-        temps.add("生活");
-        temps.add("ASMR");
+        System.out.println(resources);
+        ArrayList<String> temps = choice(level0);
         for (String temp : temps) {
             ArrayList<MeditationRequest> whiteNoiseRequest = new ArrayList<>();
-            for(MedResource medResource:resources){
-                if(Objects.equals(medResource.getLevel1(), temp)){
+            for (MedResource medResource : resources) {
+                if (Objects.equals(medResource.getLevel1(), temp)) {
                     MeditationRequest meditationRequest = new MeditationRequest();
                     meditationRequest.setContent(medResource.getContent());
                     meditationRequest.setId(medResource.getId());
@@ -63,7 +60,31 @@ public class MeditationService {
         }
         return whiteNoiseRequests;
     }
+
+
+    public ArrayList<String> choice(String level0) {
+        ArrayList<String> temps = new ArrayList<>();
+        if (level0.equals("声音")) {
+            temps.add("自然");
+            temps.add("音乐");
+            temps.add("生活");
+            temps.add("ASMR");
+        } else {
+            temps.add("睡眠");
+            temps.add("放松");
+        }
+        return temps;
+    }
+
     public int writeMeditation(Meditation meditation) {
         return meditationMapper.insert(meditation);
+    }
+
+    public int meditationInfo(String openId) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("open_id", openId);
+        List<MedResource> resources = medResourceMapper.selectByMap(map);
+        resources.forEach(System.out::println);
+        return 0;
     }
 }
