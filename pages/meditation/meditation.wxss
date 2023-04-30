@@ -12,75 +12,75 @@
   height:100%;
   width:100%;
   z-index: -1;
-  /* overflow: hidden; */
   filter: blur(15rpx);
 }
+.rounded-rectangle {
+  position:fixed;
+  left:30rpx;
+  top:40rpx;
+  width: 95rpx; /* 设置矩形框的宽度 */
+  height: 70rpx; /* 设置矩形框的高度 */
+  background-color: transparent; /* 设置填充颜色为透明 */
+  border: 7rpx solid rgba(255, 255, 255, .6); /* 设置边框颜色为白色 */
+  border-radius: 100rpx; /* 设置圆角半径为10rpx，可根据需求调整 */
+}
 .title {
-  margin: 70rpx 0;
+  position: fixed;
+  top:300rpx;
   color: white;
-  font-size: 30px;
+  font-size: 40px;
+  font-weight:400;
 }
 .range {
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 0px; /* 设置与页面底部的距离 */
 }
 .range slider {
   display: inline-block;
   flex: 1;
 }
-
-.music-player {
-  display: flex;
+.pre15,.isPlay,.next15 {
+  position:fixed;
+  color: white;
 }
-.control-button {
-  background-color: transparent;
-  border: none;
-  margin: 0 10px;
+.pre15 {
+  bottom: 300rpx;
+  left:100rpx;
+  font-size: 100rpx;
 }
-
-/* 图标按钮样式 */
-.control-button image {
-  width: 50px;
-  height: 50px;
+.isPlay{
+  bottom: 270rpx;
+  left:300rpx;
+  font-size: 150rpx;
+  font-weight: 500;
 }
-.select {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 40rpx;
+.next15 {
+  bottom: 300rpx;
+  right:100rpx;
+  font-size: 100rpx;
 }
-.select .mid {
-  height: 110rpx !important;
-  width: 110rpx !important;
-} 
-.select button {
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90rpx !important;
-  height: 90rpx !important;
-  border-radius: 50%;
+.dianyuan{
+  margin-left: 18rpx;
+  color: white;
+  font-size: 60rpx;
+  display: inline;
 }
-
-
-.mask {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  bottom: 0;
-  background-color: rgb(0, 0, 0, 0.3);
+.curtime,.durtime{
+  color: white;
+  position: fixed;
+  bottom: 130rpx;
 }
-.hide {
-  display: none;
+.curtime{
+  left:80rpx;
 }
-
-
-.sub {
-  font-size: small;
-  color: rgb(245, 245, 245, 0.8);
+.durtime{
+  right:80rpx;
 }
-.active {
-  color: red;
+.slider{
+  position: fixed;
+  bottom: 180rpx;
+  width: 90%;
 }

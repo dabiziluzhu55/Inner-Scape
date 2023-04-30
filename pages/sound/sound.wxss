@@ -3,7 +3,7 @@
 
 .title{
   display: inline-block;
-  margin-top:80rpx;
+  margin-top:120rpx;
   margin-left: 40rpx;
   font-size: 80rpx;
   font-weight: 800;
@@ -63,7 +63,20 @@
   position: fixed;
   left:340rpx;
   bottom: 100rpx;
-
-
 }
-
+.rounded-rectangle {
+  position:fixed;
+  left:30rpx;
+  top:40rpx;
+  width: 180rpx; /* 设置矩形框的宽度 */
+  height: 70rpx; /* 设置矩形框的高度 */
+  background-color: transparent; /* 设置填充颜色为透明 */
+  border: 7rpx solid rgba(255, 255, 255, .6); /* 设置边框颜色为白色 */
+  border-radius: 100rpx; /* 设置圆角半径为10rpx，可根据需求调整 */
+}
+.dianyuan{
+  margin-left: 18rpx;
+  color: white;
+  font-size: 60rpx;
+  display: inline;
+}

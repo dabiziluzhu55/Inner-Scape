@@ -1,36 +1,34 @@
 <view class="container" >
+<!-- 左上角放一个只有边框的button -->
+  <view class="rounded-rectangle">
+    <view class="icon-dianyuan iconfont dianyuan" bindtap="close"></view>
+    <!-- <view class="icon-xiajiantou iconfont dianyuan" bindtap="minimize"></view> -->
+  </view>
   <!-- 背景图片 -->
   <image class='background-image' src='{{src}}' mode="aspectFill"></image>
     <!-- 当前播放歌曲名 -->
   <view class="title">{{name}}</view>
     <!-- 功能按钮 -->
-    <view class="music-player">
-        <button class="control-button" bindtap="pre15">
-          <image src="/image/pre15.png" mode="aspectFit"></image>
-          <!-- <icon class="iconfont pre15"/> -->
-        </button>
-        <button class="control-button" plain="true" bindtap="isPlay">
-          <image src="{{isPlay?'/image/pause.png':'/image/play.png'}}" mode="aspectFit"></image>
-        </button>
-        <button class="control-button" bindtap="next15">
-          <image src="/image/next15.png" mode="aspectFit"></image>
-          <!-- <icon class="iconfont icon-ahead15"/> -->
-        </button>
-    </view>
+    <block>
+      <view class="icon-pre15 iconfont pre15" bindtap="pre15"></view>
+      <view class="icon-play iconfont isPlay" bindtap="isPlay" wx:if="{{!isPlay}}"></view>
+      <view class="icon-pause iconfont isPlay" bindtap="isPlay" wx:if="{{isPlay}}"></view>
+      <view class="icon-next15 iconfont next15" bindtap="next15"></view>
+    </block>
 
     <!-- 音乐进度条 -->
-    <view class="range">
-        <text>{{currentTime}}</text>
+    <block>
+        <text class="curtime">{{currentTime}}</text>
         <slider
-          class="mySlider"
+          class="slider"
           step="0.01"
           value="{{value}}"
           max="{{maxValue}}"
           bindchange="toTime"
           block-size="12"
         />
-        <text>{{duration}}</text>
-    </view>
+        <text class="durtime">{{duration}}</text>
+    </block>
 </view>
 
 

@@ -1,0 +1,32 @@
+<view class="textstyle">你的心情是?</view>
+<view class="container">
+  <icon class="iconfont icon {{nowIcon}}" style="margin-left: 10%;margin-top: -75%;position: absolute;font-size: 56px;"></icon>
+  <view class="menu-box {{show_menu && 'active'}}">
+    <block wx:for="{{menu}}" wx:key="menu">
+      <view style="--n:{{index}};--deg:{{360/ menu.length}}deg" class="menu-box-item {{currIndex===index && 'active'}}" catchtap="clickActive" data-index="{{index}}">
+        <icon class="iconfont icon {{item.icon}}" style="--deg:{{-360/ menu.length}}deg"></icon>
+      </view>
+    </block>
+    <view class="menu-box-active" style="--n:{{currIndex}};--deg:{{360/ menu.length}}deg"></view>
+  </view>
+  <view class="menu-add-box {{show_menu && 'active'}}" catchtap="showMenu">
+    <icon class="iconfont icon {{menu_add}}"></icon>
+  </view>
+  <!-- 心情描述按钮 -->
+  <button class="emotion_desbtn" style="width: 170px;">是 {{nowName}} 啊</button>
+  <!-- 数据分析 -->
+  <view class="btn_container">
+  <button class="data_btn">
+    <icon class="iconfont icon icon_practice" style="margin-top: -25%;"></icon>
+  <text class="data_text">心情练习</text>
+  </button>
+  <button class="data_btn" bindtap="NavigateToDairy">
+    <icon class="iconfont icon icon_dairy" style="margin-top: -25%;"></icon>
+  <text class="data_text">我的日记</text>
+  </button>
+  <button class="data_btn">
+    <icon class="iconfont icon icon_report" style="margin-top: -25%;"></icon>
+  <text class="data_text">心情报告</text>
+  </button>
+  </view>
+</view>

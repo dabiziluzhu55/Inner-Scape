@@ -1,24 +1,19 @@
 // pages/musicdetail/musicdetail.js
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     src: '', // 背景图片
-    isPlay: false, 
+    isPlay: true, 
     videoSrc: 'http://music.163.com/song/media/outer/url?id=1951069525.mp3', // 初始音乐链接
     name: '', // 初始音乐名
     currentTime: '0:00', // 当前歌曲播放进度
     duration: '0:00', // 当前歌曲总时长
     value:0.0,//歌曲播放进度数值表示
     maxValue:0.0,
-
-    videos: [
-    {name:'精卫', singer: '30年前，50年后', videoSrc:'http://music.163.com/song/media/outer/url?id=1951069525.mp3'},
-    {name:'可能', singer: '程响', videoSrc: 'http://music.163.com/song/media/outer/url?id=1950343972.mp3'}
-    ]
 },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,7 +24,8 @@ Page({
       name:options.name,
       src:options.src
     })
-    this.audioCtx = wx.createInnerAudioContext()
+    // this.audioCtx = wx.createInnerAudioContext()
+    this.audioCtx = app.globalData.musicPlayer;
     this.initialAudio()
   },
   // 初始化音频
@@ -58,6 +54,7 @@ Page({
             duration: this.timeFormat(audioCtx.duration)
         })
     })
+    audioCtx.play();
   },
   timeFormat(e) {
     let time = Math.floor(e)
@@ -99,4 +96,11 @@ Page({
     let time = e.detail.value
     this.audioCtx.seek(time)
   },
+  close(){
+    wx.navigateBack();
+    //将当前的播放进度置为0
+    this.audioCtx.seek(0);
+    this.audioCtx.pause();//调用pause的话，再回来仍然保持播放进度呢
+  },
+
 })

@@ -3,7 +3,17 @@
   display: flex;
   justify-content: space-around;
   height: 100rpx;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+}
+.secBar {
+  display: flex;
+  justify-content: space-around;
+  height: 100rpx;
+  position: fixed;
+  width: 100%;
+  top:100rpx;
   background: #fff;
 }
 /* 导航条item */
@@ -34,6 +44,8 @@
 }
 
 .content_wrapper{
+  /* margin-top: 100rpx; */
+  padding-top: 200rpx;
   flex: 1;
 }
 
@@ -73,8 +85,8 @@
 
 /* 以下是声音页面的代码 */
 .image-item {
-  width: 100rpx; /* 设置图片的宽度 */
-  height: 100rpx; /* 设置图片的高度 */
+  width: 120rpx; /* 设置图片的宽度 */
+  height: 120rpx; /* 设置图片的高度 */
   border-radius: 50%; /* 设置边框半径为50%，即圆形 */
   overflow: hidden; /* 隐藏图片超出边界的部分，以实现圆形效果 */
 
@@ -82,8 +94,8 @@
 }
 
 .image-text{
-  width: 150rpx; 
-  height: 180rpx; 
+  width: 180rpx; 
+  height: 210rpx; 
   display: flex;
   flex-direction:column;
   align-items: center;
@@ -99,10 +111,7 @@
   margin-top: 15rpx;
   margin-left: 10rpx;
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  /* 设置滚动方向为横向 */
-  /* 可根据需要设置其他样式属性，例如宽度、高度、边距等 */
+  flex-wrap: wrap;
 }
 
 .soundTitle{
@@ -117,15 +126,46 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150rpx;
-}
-.bottom-bar-bg {
-  width: 100%;
-  height: 100%;
+  height: 140rpx;
   background-color: rgba(0, 0, 0, 0.4); /* 设置黑色矩形的透明度为0.5 */
   border-radius: 20rpx 20rpx 0 0; /* 设置上面两个角为圆角 */
 }
+.cha {
+  color: white;
+  font-size: 50rpx;
+  position:fixed;
+  left:20rpx;
+  bottom: 50rpx;
+}
+.isPlay{
+  color:white;
+  position: fixed;
+  right: 50rpx;
+  bottom: 35rpx;
+  font-size: 80rpx;
+}
 
+.bImg {
+  width: 100rpx; /* 设置图片的宽度 */
+  height: 100rpx; /* 设置图片的高度 */
+  border-radius: 20%; /* 设置边框半径为50%，即圆形 */
+  overflow: hidden; /* 隐藏图片超出边界的部分，以实现圆形效果 */
+  position: fixed;
+  left:105rpx;
+  bottom: 20rpx;
+}
+.bcontent {
+  color: white;
+  position: fixed;
+  left:230rpx;
+  bottom: 80rpx;
+}
+.btime {
+  color: white;
+  position: fixed;
+  left:230rpx;
+  bottom: 30rpx;
+}
 
 /* 呼吸 */
 .container {

@@ -7,13 +7,14 @@
       </view>
     </block>
   </view>
+  
 
   <!-- 内容区域 -->
   <view class="content_wrapper">
     <!-- 冥想 -->
     <block wx:if="{{tabIndex == 0}}">
       <!-- 冥想各类标签选择 -->
-      <view class="navBar">
+      <view class="secBar">
         <view wx:for="{{secTabs1}}" wx:key="item" wx:for-index="idx">
           <view id="{{idx}}" class="navItem {{secIndex1 == idx ? 'secActive' : '' }}" bindtap="onSecTabClick1">
             <view class="navItemTitle">{{item}}</view>
@@ -21,27 +22,22 @@
         </view>
       </view>
       <!-- 导航条以下的内容 -->
-      <!-- 这里是只显示了睡眠条下的内容 -->
-      <block wx:if="{{secIndex1==0}}">
-        <!-- <view class="Infolist"> -->
-          <block wx:for="{{item}}" wx:key="item">
-            <view >
-              <navigator url="/pages/photo/photo?id={{item.id}}">
-                <view class="Info-list-info" index="{{index}}">
-                  <image class="photo-item" mode="aspectFill"  
-                      src="{{item.imageUrl}}"data-url="{{item.musicUrl}}"  data-name="{{item.content}}"  data-src="{{item.imageUrl}}"  bindtap="change2music"/>
-                  <text class="Info-desc">{{item.content}}</text>
-                </view>
-              </navigator>
+      <block wx:for="{{item[secIndex1]}}" wx:key="item">
+        <view>
+          <navigator url="/pages/photo/photo?id={{item.id}}">
+            <view class="Info-list-info" index="{{index}}">
+              <image class="photo-item" mode="aspectFill"  
+                  src="{{item.imageUrl}}" data-url="{{item.musicUrl}}" data-name="{{item.content}}" data-src="{{item.imageUrl}}" bindtap="change2music" />
+              <text class="Info-desc">{{item.content}}</text>
             </view>
-          </block>
-        <!-- </view> -->
-      </block>  
+          </navigator>
+        </view>
+      </block>
     </block>
 
     <!-- 声音 -->
     <block wx:if="{{tabIndex == 1}}">
-      <view class="navBar">
+      <view class="secBar">
         <block wx:for="{{secTabs2}}" wx:key="item" wx:for-index="idx">
           <view id="{{idx}}" class="navItem {{secIndex2 == idx ? 'secActive' : '' }}" bindtap="onSecTabClick2">
             <view class="navItemTitle">{{item}}</view>
@@ -59,8 +55,9 @@
                 <view class="image-text">
                     <image src="{{item.imageUrl}}" 
                       class="image-item" 
-                      mode="aspectFill"  
-                      data-url="{{item.musicUrl}}"  
+                      mode="aspectFill"
+                      data-image="{{item.imageUrl}}"
+                      data-music="{{item.musicUrl}}"  
                       data-name="{{item.content}}"
                       bindtap="change2sound"></image>
                     <text style="margin-top: 15rpx;text-align: center;">{{item.content}}</text>
@@ -131,10 +128,18 @@
             </button>
         </view>
       </scroll-view>
-  
     </block>
   </view>
+
 </view>
-<view class="bottom-bar">
-  <view class="bottom-bar-bg"></view>
+<view class="bottom-bar" wx:if="{{isShow}}">
+    <view class="icon-cha iconfont cha" bindtap="closeMusic"></view>
+    <view class="icon-play3 iconfont isPlay" bindtap="isPlay" wx:if="{{!isPlay}}"></view>
+    <view class="icon-pause3 iconfont isPlay" bindtap="isPlay" wx:if="{{isPlay}}"></view>
+    <!-- 最左侧一个× -->
+    <image src="{{cur.imageUrl}}" class="bImg" mode="aspectFill" data-url="{{cur.musicUrl}}"  
+                      data-name="{{cur.content}}"
+                      bindtap="change2sound"></image>
+    <text class="bcontent">{{cur.content}}</text>
+    <text class="btime">{{playProgress}}</text>
 </view>

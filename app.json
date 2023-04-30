@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/home/home",        
-    "pages/temp/temp",      
+    
+    "pages/home/home",
+    "pages/temp/temp",
     "pages/sound/sound",
     "pages/meditation/meditation",
     "pages/logs/logs",
@@ -11,7 +12,9 @@
     "pages/starreply/starreply",
     "pages/flystar/flystar",
     "pages/index/index",
-    "pages/utils/utils"
+    "pages/utils/utils",
+    "utils/utils",
+    "pages/emotion/emotion"
   ],
   "usingComponents": {},
   "window": {

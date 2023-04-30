@@ -2,6 +2,10 @@
 
 <!-- 背景 -->
 <image class='background-image'mode="aspectFill" src="{{background}}"></image>
+<view class="rounded-rectangle">
+  <view class="icon-dianyuan iconfont dianyuan" bindtap="close"></view>
+  <view class="icon-xiajiantou iconfont dianyuan" bindtap="minimize"></view>
+</view>
 <!-- 关闭按钮 -->
 <view class="icon-jiantou2 iconfont hideIcon" bindtap="return"></view>
 <!-- 声音标题及描述 -->
@@ -10,7 +14,7 @@
 <!-- 设置时间 -->
 <image class="setTime" src="{{setTime}}" bindtap="showPopup"></image>
 <!-- 重新选择白噪音 -->
-<image class="cur" src="{{setTime}}"></image>
+<!-- <image class="cur" src="{{setTime}}"></image> -->
 
 
 <!-- 弹出设置时间选择框 -->

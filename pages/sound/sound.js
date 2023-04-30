@@ -1,4 +1,5 @@
 // pages/sound/sound.js
+const app = getApp();
 Page({
 
   /**
@@ -9,7 +10,7 @@ Page({
     content:"清雷骤雨",
     setTime:"/image/setTime.png",
     background:"/image/background.jpg",
-
+    imageSrc:'',
     isPlay:true,
     videoSrc: '',
     currentTime: '0:00',
@@ -28,12 +29,35 @@ Page({
       return options;
     },
   },
-  
+  // 显示或隐藏调整时间条
   showPopup() {
     this.setData({ show: true });
   },
   onClose() {
     this.setData({ show: false });
+  },
+  // 最小化或隐藏该界面
+  close(){
+    wx.navigateBack();
+    //将当前的播放进度置为0
+    this.audioCtx.seek(0);
+    this.audioCtx.pause();//调用pause的话，再回来仍然保持播放进度呢
+  },
+  minimize(){
+    let pages = getCurrentPages()
+    let prevPage = pages[pages.length - 2]
+    //显示最小化栏并传递音乐数据
+    var temp={
+      imageUrl:this.data.imageSrc,
+      content:this.data.title,
+      musicUrl:this.data.videoSrc,
+    }
+    prevPage.setData({
+      isShow: true,
+      cur:temp,
+      duration:this.data.duration
+    })
+    wx.navigateBack()
   },
   return(){
     wx.navigateBack();
@@ -44,6 +68,7 @@ Page({
     this.setData({
       duration: time,
     });
+
   }, 
 
   hour2minite(hm){
@@ -64,8 +89,9 @@ Page({
     this.setData({
       videoSrc:options.music,
       title:options.name,
+      imageSrc:options.image
     })
-    this.audioCtx = wx.createInnerAudioContext()
+    this.audioCtx = app.globalData.musicPlayer;
     this.initialAudio()
   },
   // 初始化音频
@@ -106,7 +132,7 @@ Page({
           audioCtx.pause();
         }
     })
-    this.audioCtx.play();
+    audioCtx.play();
   },
   timeFormat(e) {
     let time = Math.floor(e)
@@ -150,14 +176,13 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    // getApp().globalData.musicInfo = this.data.musicInfo;
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
   },
 
   /**
