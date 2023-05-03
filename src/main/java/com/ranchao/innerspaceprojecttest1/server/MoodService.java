@@ -1,46 +1,36 @@
-package com.ranchao.innerspaceprojecttest1;
+package com.ranchao.innerspaceprojecttest1.server;
 
-import com.alibaba.fastjson.JSON;
 import com.ranchao.innerspaceprojecttest1.details.Mood;
 import com.ranchao.innerspaceprojecttest1.entity.DailyMood;
 import com.ranchao.innerspaceprojecttest1.entitySend.MoodRequest;
-import com.sun.tools.javac.Main;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
-@SpringBootTest
-public class FirstDemoTest {
-
+public class MoodService {
     ArrayList<Mood> moodArrayList;
 
     ArrayList<DailyMood> dailyMoods;
 
     Calendar cal = Calendar.getInstance();
 
-    void init() throws ParseException {
+    MoodService() throws ParseException {
         moodArrayList = new ArrayList<>();
-        try {
-            readFileMood();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        readFileMood();
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime currentTime_1 = LocalDateTime.parse("2023-04-26 11:50:53", formatter);
-        LocalDateTime currentTime_2 = LocalDateTime.parse("2023-04-22 04:50:53", formatter);
-        LocalDateTime currentTime_3 = LocalDateTime.parse("2023-04-21 01:50:53", formatter);
-        LocalDateTime currentTime_4 = LocalDateTime.parse("2023-04-11 11:20:53", formatter);
+        LocalDateTime currentTime_2 = LocalDateTime.parse("2023-04-22 11:50:53", formatter);
+        LocalDateTime currentTime_3 = LocalDateTime.parse("2023-04-21 11:50:53", formatter);
+        LocalDateTime currentTime_4 = LocalDateTime.parse("2023-04-11 11:50:53", formatter);
 //        LocalDateTime currentTime_1 = formatter.parse();
 //        LocalDateTime currentTime_2 = formatter.parse();
 //        LocalDateTime currentTime_3 = formatter.parse();
@@ -53,23 +43,19 @@ public class FirstDemoTest {
         dailyMoods.add(new DailyMood("1234", 7, "diary4", currentTime_4));
     }
 
-    public void readFileMood() throws URISyntaxException {
-        String fileName = "config.txt";
 
-
-        String file = "/config.txt";
+    public void readFileMood() {
+        String file = "config.txt";
         String line = "";
         String splitBy = " ";
+
         try {
-            String currentPath = System.getProperty("user.dir");
-            String currentPath1 = Objects.requireNonNull(getClass().getResource("")).getPath();
-            String filePath = Main.class.getClassLoader().getResource(fileName).getPath();
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedReader br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null)   //读取一行内容
             {
                 String[] result = line.split(splitBy);  //使用空格将该行内容分割为多个字符串
-                System.out.println("编号: " + result[1]
-                        + " 名称: " + result[0]
+                System.out.println("编号: " + result[0]
+                        + " 名称: " + result[1]
                         + " 分数: " + result[2]);
                 Mood mood = new Mood();
                 mood.setNumber(Integer.parseInt(result[1]));
@@ -82,14 +68,7 @@ public class FirstDemoTest {
         }
     }
 
-    @Test
     public void getLastSevenDaysInfo() {
-        try {
-            init();
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
         // 获取当前日期
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.parse("2023-04-26 11:50:53", formatter);
@@ -114,7 +93,7 @@ public class FirstDemoTest {
         // 我想的是需要3个数据
         // 第一个是过去7天的 日期中的 “几号”
         for (int i = 0; i < 7; i++) {
-            moodRequest.getDates().add(now.minusDays(6 - i).getDayOfMonth());
+            moodRequest.getDates().add(now.minusDays(i + 1).getDayOfMonth());
         }
         // 过去7天，每天的心情记录次数  直方图
         for (int i = 0; i < 7; i++) {
@@ -129,8 +108,8 @@ public class FirstDemoTest {
             }
             moodRequest.getPoints().add(curr);
         }
-        System.out.println("end");
     }
+
 
     public boolean isWithinLast7Days(LocalDateTime now, LocalDateTime dateTime) {
         LocalDateTime lastWeek = now.minusDays(7);
@@ -142,4 +121,6 @@ public class FirstDemoTest {
         LocalDateTime laterDay = now.minusDays(later);
         return dateTime.isAfter(beforeDay) && dateTime.isBefore(laterDay);
     }
+
+
 }
