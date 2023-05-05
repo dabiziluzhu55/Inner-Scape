@@ -8,12 +8,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MoodService {
     ArrayList<Mood> moodArrayList;
@@ -31,10 +29,6 @@ public class MoodService {
         LocalDateTime currentTime_2 = LocalDateTime.parse("2023-04-22 11:50:53", formatter);
         LocalDateTime currentTime_3 = LocalDateTime.parse("2023-04-21 11:50:53", formatter);
         LocalDateTime currentTime_4 = LocalDateTime.parse("2023-04-11 11:50:53", formatter);
-//        LocalDateTime currentTime_1 = formatter.parse();
-//        LocalDateTime currentTime_2 = formatter.parse();
-//        LocalDateTime currentTime_3 = formatter.parse();
-//        LocalDateTime currentTime_4 = formatter.parse();
 
         dailyMoods = new ArrayList<>();
         dailyMoods.add(new DailyMood("1234", 3, "diary1", currentTime_1));

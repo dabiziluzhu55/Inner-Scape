@@ -2,12 +2,17 @@ package com.ranchao.innerspaceprojecttest1.server;
 
 import com.ranchao.innerspaceprojecttest1.entity.MedResource;
 import com.ranchao.innerspaceprojecttest1.entity.Meditation;
+import com.ranchao.innerspaceprojecttest1.entity.MeditationForReceive;
+import com.ranchao.innerspaceprojecttest1.entitySend.MedCountReturn;
 import com.ranchao.innerspaceprojecttest1.entitySend.MeditationRequest;
 import com.ranchao.innerspaceprojecttest1.mapper.MedResourceMapper;
 import com.ranchao.innerspaceprojecttest1.mapper.MeditationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -76,15 +81,31 @@ public class MeditationService {
         return temps;
     }
 
-    public int writeMeditation(Meditation meditation) {
-        return meditationMapper.insert(meditation);
+    public int writeMeditation(MeditationForReceive meditation) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        Meditation meditation1 = new Meditation();
+        meditation1.setType(meditation.getType());
+        meditation1.setOpenId(meditation.getOpenId());
+        meditation1.setStartTime(LocalDateTime.parse(meditation.getStartTime(), formatter));
+        meditation1.setEndTime(LocalDateTime.parse(meditation.getEndTime(), formatter));
+        return meditationMapper.insert(meditation1);
     }
 
-    public int meditationInfo(String openId) {
+    public MedCountReturn meditationByOpenID(String openId) {
+        // getData
         Map<String, Object> map = new HashMap<>();
         map.put("open_id", openId);
-        List<MedResource> resources = medResourceMapper.selectByMap(map);
-        resources.forEach(System.out::println);
-        return 0;
+        List<Meditation> resources = meditationMapper.selectByMap(map);
+        //handle data
+        Duration todayTime = Duration.ZERO;
+        Duration totalTime = Duration.ZERO;
+        LocalDateTime now = LocalDateTime.now();
+        for (Meditation meditation : resources) {
+            totalTime=totalTime.plus(Duration.between(meditation.getStartTime(), meditation.getEndTime()));
+            if (meditation.getStartTime().toLocalDate().isEqual(now.toLocalDate())) {
+                todayTime=todayTime.plus(Duration.between(meditation.getStartTime(), meditation.getEndTime()));
+            }
+        }
+        return new MedCountReturn(resources.size(),(int)todayTime.toMinutes(),(int)totalTime.toMinutes());
     }
 }

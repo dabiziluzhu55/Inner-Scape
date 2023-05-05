@@ -1,9 +1,11 @@
 package com.ranchao.innerspaceprojecttest1;
 
-import com.alibaba.fastjson.JSON;
 import com.ranchao.innerspaceprojecttest1.details.Mood;
 import com.ranchao.innerspaceprojecttest1.entity.DailyMood;
+import com.ranchao.innerspaceprojecttest1.entitySend.MedCountReturn;
+import com.ranchao.innerspaceprojecttest1.entitySend.MeditationRequest;
 import com.ranchao.innerspaceprojecttest1.entitySend.MoodRequest;
+import com.ranchao.innerspaceprojecttest1.server.MeditationService;
 import com.sun.tools.javac.Main;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +15,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Objects;
 
 @SpringBootTest
 public class FirstDemoTest {
@@ -41,10 +43,6 @@ public class FirstDemoTest {
         LocalDateTime currentTime_2 = LocalDateTime.parse("2023-04-22 04:50:53", formatter);
         LocalDateTime currentTime_3 = LocalDateTime.parse("2023-04-21 01:50:53", formatter);
         LocalDateTime currentTime_4 = LocalDateTime.parse("2023-04-11 11:20:53", formatter);
-//        LocalDateTime currentTime_1 = formatter.parse();
-//        LocalDateTime currentTime_2 = formatter.parse();
-//        LocalDateTime currentTime_3 = formatter.parse();
-//        LocalDateTime currentTime_4 = formatter.parse();
 
         dailyMoods = new ArrayList<>();
         dailyMoods.add(new DailyMood("1234", 3, "diary1", currentTime_1));
@@ -141,5 +139,29 @@ public class FirstDemoTest {
         LocalDateTime beforeDay = now.minusDays(before);
         LocalDateTime laterDay = now.minusDays(later);
         return dateTime.isAfter(beforeDay) && dateTime.isBefore(laterDay);
+    }
+
+
+    @Autowired
+    MeditationService meditationService;
+
+    @Test
+    public void testMedResource() {
+        ArrayList<ArrayList<MeditationRequest>> resource = new ArrayList<>();
+        resource = meditationService.findMedResource1("冥想");
+        System.out.println("success");
+    }
+
+    @Test
+    public void testSoundResource() {
+        ArrayList<ArrayList<MeditationRequest>> resource = new ArrayList<>();
+        resource = meditationService.findMedResource1("声音");
+        System.out.println("success");
+    }
+
+    @Test
+    public void testMedInfo() {
+        MedCountReturn medCountReturn = meditationService.meditationByOpenID("test");
+        System.out.println("success");
     }
 }
