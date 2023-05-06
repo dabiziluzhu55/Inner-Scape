@@ -3,6 +3,7 @@ package com.example.innerscape_test4.controller;
 import com.example.innerscape_test4.entity.Star;
 import com.example.innerscape_test4.entity.StarLittle;
 import com.example.innerscape_test4.entity.StarReply;
+import com.example.innerscape_test4.entity.User;
 import com.example.innerscape_test4.service.impl.DataServiceImpl;
 import com.example.innerscape_test4.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,58 @@ public class testController {
         Code0VO code0=new Code0VO();
         code0.setCode(add);
         return code0;
+    }
+
+    @RequestMapping("/Login")
+    public UserVO Login(String userID){
+        List<User> users=dataService.Login(userID);
+        UserVO userVO=new UserVO();
+        if(users.isEmpty())
+            userVO.setCode(1);
+        else{
+            userVO.setCode(0);
+            userVO.setUserName(users.get(0).getName());
+            userVO.setHeadshot(users.get(0).getHeadshot());
+        }
+        return userVO;
+    }
+
+    @RequestMapping("/ChangeHeadshot")
+    public UserVO ChangeHeadshot(String userID,int newHeadshot){
+        int change=dataService.ChangeHeadshot(userID, newHeadshot);
+        UserVO userVO=new UserVO();
+        if(change==1)
+            userVO.setCode(1);
+        else {
+            List<User> users = dataService.Login(userID);
+            if (users.isEmpty())
+                userVO.setCode(1);
+            else {
+                userVO.setCode(0);
+                userVO.setUserName(users.get(0).getName());
+                userVO.setHeadshot(users.get(0).getHeadshot());
+            }
+        }
+        return userVO;
+    }
+
+    @RequestMapping("/ChangeName")
+    public UserVO ChangeName(String userID,String userName){
+        int change=dataService.ChangeName(userID, userName);
+        UserVO userVO=new UserVO();
+        if(change==1)
+            userVO.setCode(1);
+        else {
+            List<User> users = dataService.Login(userID);
+            if (users.isEmpty())
+                userVO.setCode(1);
+            else {
+                userVO.setCode(0);
+                userVO.setUserName(users.get(0).getName());
+                userVO.setHeadshot(users.get(0).getHeadshot());
+            }
+        }
+        return userVO;
     }
 
     @RequestMapping("/Refresh0")
@@ -108,32 +161,11 @@ public class testController {
             StarReplyVO starReplyVO=new StarReplyVO();
             starReplyVO.setStarID(star.getStarID());
             starReplyVO.setStarContent(star.getStarContent());
-            if(star.getReplyNum()>0&& !Objects.equals(star.getReply1ID(), "thisContentIsDeleted")){
+            if(star.getReplyNum()>5&& !Objects.equals(star.getReply6ID(), "thisContentIsDeleted")){
                 ReplyVO replyVO=new ReplyVO();
-                replyVO.setReplyID(star.getReply1ID());
-                replyVO.setReplySay(star.getReply1Say());
-                replyVO.setReplyGuestName(star.getReply1GuestName());
-                starReplyVO.addReplys(replyVO);
-            }
-            if(star.getReplyNum()>1&& !Objects.equals(star.getReply2ID(), "thisContentIsDeleted")){
-                ReplyVO replyVO=new ReplyVO();
-                replyVO.setReplyID(star.getReply2ID());
-                replyVO.setReplySay(star.getReply2Say());
-                replyVO.setReplyGuestName(star.getReply2GuestName());
-                starReplyVO.addReplys(replyVO);
-            }
-            if(star.getReplyNum()>2&& !Objects.equals(star.getReply3ID(), "thisContentIsDeleted")){
-                ReplyVO replyVO=new ReplyVO();
-                replyVO.setReplyID(star.getReply3ID());
-                replyVO.setReplySay(star.getReply3Say());
-                replyVO.setReplyGuestName(star.getReply3GuestName());
-                starReplyVO.addReplys(replyVO);
-            }
-            if(star.getReplyNum()>3&& !Objects.equals(star.getReply4ID(), "thisContentIsDeleted")){
-                ReplyVO replyVO=new ReplyVO();
-                replyVO.setReplyID(star.getReply4ID());
-                replyVO.setReplySay(star.getReply4Say());
-                replyVO.setReplyGuestName(star.getReply4GuestName());
+                replyVO.setReplyID(star.getReply6ID());
+                replyVO.setReplySay(star.getReply6Say());
+                replyVO.setReplyGuestName(star.getReply6GuestName());
                 starReplyVO.addReplys(replyVO);
             }
             if(star.getReplyNum()>4&& !Objects.equals(star.getReply5ID(), "thisContentIsDeleted")){
@@ -143,11 +175,32 @@ public class testController {
                 replyVO.setReplyGuestName(star.getReply5GuestName());
                 starReplyVO.addReplys(replyVO);
             }
-            if(star.getReplyNum()>5&& !Objects.equals(star.getReply6ID(), "thisContentIsDeleted")){
+            if(star.getReplyNum()>3&& !Objects.equals(star.getReply4ID(), "thisContentIsDeleted")){
                 ReplyVO replyVO=new ReplyVO();
-                replyVO.setReplyID(star.getReply6ID());
-                replyVO.setReplySay(star.getReply6Say());
-                replyVO.setReplyGuestName(star.getReply6GuestName());
+                replyVO.setReplyID(star.getReply4ID());
+                replyVO.setReplySay(star.getReply4Say());
+                replyVO.setReplyGuestName(star.getReply4GuestName());
+                starReplyVO.addReplys(replyVO);
+            }
+            if(star.getReplyNum()>2&& !Objects.equals(star.getReply3ID(), "thisContentIsDeleted")){
+                ReplyVO replyVO=new ReplyVO();
+                replyVO.setReplyID(star.getReply3ID());
+                replyVO.setReplySay(star.getReply3Say());
+                replyVO.setReplyGuestName(star.getReply3GuestName());
+                starReplyVO.addReplys(replyVO);
+            }
+            if(star.getReplyNum()>1&& !Objects.equals(star.getReply2ID(), "thisContentIsDeleted")){
+                ReplyVO replyVO=new ReplyVO();
+                replyVO.setReplyID(star.getReply2ID());
+                replyVO.setReplySay(star.getReply2Say());
+                replyVO.setReplyGuestName(star.getReply2GuestName());
+                starReplyVO.addReplys(replyVO);
+            }
+            if(star.getReplyNum()>0&& !Objects.equals(star.getReply1ID(), "thisContentIsDeleted")){
+                ReplyVO replyVO=new ReplyVO();
+                replyVO.setReplyID(star.getReply1ID());
+                replyVO.setReplySay(star.getReply1Say());
+                replyVO.setReplyGuestName(star.getReply1GuestName());
                 starReplyVO.addReplys(replyVO);
             }
             star0VO.addStars(starReplyVO);
@@ -193,5 +246,13 @@ public class testController {
         Code0VO code0=new Code0VO();
         code0.setCode(delete);
         return code0;
+    }
+
+    @RequestMapping("/SearchNewInfoNum")
+    public NewInfoVO SearchNewInfoNum(String userID) {
+        int newInfoNum=dataService.GetNewInfo(userID);
+        NewInfoVO newInfoVO=new NewInfoVO();
+        newInfoVO.setNewInfo(newInfoNum);
+        return newInfoVO;
     }
 }
