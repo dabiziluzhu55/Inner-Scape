@@ -2,25 +2,25 @@ package com.ranchao.innerspaceprojecttest1;
 
 import com.ranchao.innerspaceprojecttest1.details.Mood;
 import com.ranchao.innerspaceprojecttest1.entity.DailyMood;
-import com.ranchao.innerspaceprojecttest1.entitySend.MedCountReturn;
-import com.ranchao.innerspaceprojecttest1.entitySend.MeditationRequest;
-import com.ranchao.innerspaceprojecttest1.entitySend.MoodRequest;
+import com.ranchao.innerspaceprojecttest1.entityIO.MedCountReceive;
+import com.ranchao.innerspaceprojecttest1.entityIO.MeditationSend;
+import com.ranchao.innerspaceprojecttest1.entityIO.MoodChartSend;
 import com.ranchao.innerspaceprojecttest1.server.MeditationService;
-import com.sun.tools.javac.Main;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Objects;
 
 @SpringBootTest
 public class FirstDemoTest {
@@ -45,24 +45,19 @@ public class FirstDemoTest {
         LocalDateTime currentTime_4 = LocalDateTime.parse("2023-04-11 11:20:53", formatter);
 
         dailyMoods = new ArrayList<>();
-        dailyMoods.add(new DailyMood("1234", 3, "diary1", currentTime_1));
-        dailyMoods.add(new DailyMood("1234", 8, "diary2", currentTime_2));
-        dailyMoods.add(new DailyMood("1234", 11, "diary3", currentTime_3));
-        dailyMoods.add(new DailyMood("1234", 7, "diary4", currentTime_4));
+//        dailyMoods.add(new DailyMood("1234", 3, "diary1", currentTime_1));
+//        dailyMoods.add(new DailyMood("1234", 8, "diary2", currentTime_2));
+//        dailyMoods.add(new DailyMood("1234", 11, "diary3", currentTime_3));
+//        dailyMoods.add(new DailyMood("1234", 7, "diary4", currentTime_4));
     }
 
     public void readFileMood() throws URISyntaxException {
         String fileName = "config.txt";
-
-
-        String file = "/config.txt";
         String line = "";
         String splitBy = " ";
         try {
-            String currentPath = System.getProperty("user.dir");
-            String currentPath1 = Objects.requireNonNull(getClass().getResource("")).getPath();
-            String filePath = Main.class.getClassLoader().getResource(fileName).getPath();
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            Resource resource = new ClassPathResource(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()));
             while ((line = br.readLine()) != null)   //读取一行内容
             {
                 String[] result = line.split(splitBy);  //使用空格将该行内容分割为多个字符串
@@ -108,15 +103,15 @@ public class FirstDemoTest {
                 }
             }
         }
-        MoodRequest moodRequest = new MoodRequest();
+        MoodChartSend moodChartSend = new MoodChartSend();
         // 我想的是需要3个数据
         // 第一个是过去7天的 日期中的 “几号”
         for (int i = 0; i < 7; i++) {
-            moodRequest.getDates().add(now.minusDays(6 - i).getDayOfMonth());
+            moodChartSend.getDates().add(now.minusDays(6 - i).getDayOfMonth());
         }
         // 过去7天，每天的心情记录次数  直方图
         for (int i = 0; i < 7; i++) {
-            moodRequest.getTimes().add(lastWeek.get(i).size());
+            moodChartSend.getTimes().add(lastWeek.get(i).size());
         }
         // 过去7天，每天的分数和   曲线图
         for (int i = 0; i < 7; i++) {
@@ -125,7 +120,7 @@ public class FirstDemoTest {
             for (DailyMood dailyMood : temp) {
                 curr += moodArrayList.get(dailyMood.getMoodNumber()).getPoint();
             }
-            moodRequest.getPoints().add(curr);
+            moodChartSend.getPoints().add(curr);
         }
         System.out.println("end");
     }
@@ -147,21 +142,21 @@ public class FirstDemoTest {
 
     @Test
     public void testMedResource() {
-        ArrayList<ArrayList<MeditationRequest>> resource = new ArrayList<>();
+        ArrayList<ArrayList<MeditationSend>> resource = new ArrayList<>();
         resource = meditationService.findMedResource1("冥想");
         System.out.println("success");
     }
 
     @Test
     public void testSoundResource() {
-        ArrayList<ArrayList<MeditationRequest>> resource = new ArrayList<>();
+        ArrayList<ArrayList<MeditationSend>> resource = new ArrayList<>();
         resource = meditationService.findMedResource1("声音");
         System.out.println("success");
     }
 
     @Test
     public void testMedInfo() {
-        MedCountReturn medCountReturn = meditationService.meditationByOpenID("test");
+        MedCountReceive medCountReceive = meditationService.meditationByOpenID("test");
         System.out.println("success");
     }
 }

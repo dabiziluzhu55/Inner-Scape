@@ -2,23 +2,30 @@ package com.ranchao.innerspaceprojecttest1.server;
 
 import com.ranchao.innerspaceprojecttest1.details.Mood;
 import com.ranchao.innerspaceprojecttest1.entity.DailyMood;
-import com.ranchao.innerspaceprojecttest1.entitySend.MoodRequest;
+import com.ranchao.innerspaceprojecttest1.entityIO.MoodChartSend;
+import com.ranchao.innerspaceprojecttest1.entityIO.MoodReceive;
+import com.ranchao.innerspaceprojecttest1.mapper.MoodMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 
+@Service
 public class MoodService {
     ArrayList<Mood> moodArrayList;
 
     ArrayList<DailyMood> dailyMoods;
 
-    Calendar cal = Calendar.getInstance();
+    @Autowired
+    MoodMapper moodMapper;
 
     MoodService() throws ParseException {
         moodArrayList = new ArrayList<>();
@@ -31,20 +38,21 @@ public class MoodService {
         LocalDateTime currentTime_4 = LocalDateTime.parse("2023-04-11 11:50:53", formatter);
 
         dailyMoods = new ArrayList<>();
-        dailyMoods.add(new DailyMood("1234", 3, "diary1", currentTime_1));
-        dailyMoods.add(new DailyMood("1234", 8, "diary2", currentTime_2));
-        dailyMoods.add(new DailyMood("1234", 11, "diary3", currentTime_3));
-        dailyMoods.add(new DailyMood("1234", 7, "diary4", currentTime_4));
+//        dailyMoods.add(new DailyMood("1234", 3, "diary1", currentTime_1));
+//        dailyMoods.add(new DailyMood("1234", 8, "diary2", currentTime_2));
+//        dailyMoods.add(new DailyMood("1234", 11, "diary3", currentTime_3));
+//        dailyMoods.add(new DailyMood("1234", 7, "diary4", currentTime_4));
     }
 
 
     public void readFileMood() {
-        String file = "config.txt";
+        String fileName = "config.txt";
         String line = "";
         String splitBy = " ";
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            Resource resource = new ClassPathResource(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()));
             while ((line = br.readLine()) != null)   //读取一行内容
             {
                 String[] result = line.split(splitBy);  //使用空格将该行内容分割为多个字符串
@@ -83,15 +91,15 @@ public class MoodService {
                 }
             }
         }
-        MoodRequest moodRequest = new MoodRequest();
+        MoodChartSend moodChartSend = new MoodChartSend();
         // 我想的是需要3个数据
         // 第一个是过去7天的 日期中的 “几号”
         for (int i = 0; i < 7; i++) {
-            moodRequest.getDates().add(now.minusDays(i + 1).getDayOfMonth());
+            moodChartSend.getDates().add(now.minusDays(i + 1).getDayOfMonth());
         }
         // 过去7天，每天的心情记录次数  直方图
         for (int i = 0; i < 7; i++) {
-            moodRequest.getTimes().add(lastWeek.get(i).size());
+            moodChartSend.getTimes().add(lastWeek.get(i).size());
         }
         // 过去7天，每天的分数和   曲线图
         for (int i = 0; i < 7; i++) {
@@ -100,7 +108,7 @@ public class MoodService {
             for (DailyMood dailyMood : temp) {
                 curr += moodArrayList.get(dailyMood.getMoodNumber()).getPoint();
             }
-            moodRequest.getPoints().add(curr);
+            moodChartSend.getPoints().add(curr);
         }
     }
 
@@ -114,6 +122,12 @@ public class MoodService {
         LocalDateTime beforeDay = now.minusDays(before);
         LocalDateTime laterDay = now.minusDays(later);
         return dateTime.isAfter(beforeDay) && dateTime.isBefore(laterDay);
+    }
+
+    public int setMoodService(MoodReceive moodReceive) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.parse(moodReceive.getRecordTime(), formatter);
+        return moodMapper.insert(new DailyMood(moodReceive.getOpenId(), moodReceive.getMoodNumber(), moodReceive.getDiary(), moodReceive.getReason(),now));
     }
 
 

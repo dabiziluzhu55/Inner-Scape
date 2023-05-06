@@ -3,8 +3,8 @@ package com.ranchao.innerspaceprojecttest1.server;
 import com.ranchao.innerspaceprojecttest1.entity.MedResource;
 import com.ranchao.innerspaceprojecttest1.entity.Meditation;
 import com.ranchao.innerspaceprojecttest1.entity.MeditationForReceive;
-import com.ranchao.innerspaceprojecttest1.entitySend.MedCountReturn;
-import com.ranchao.innerspaceprojecttest1.entitySend.MeditationRequest;
+import com.ranchao.innerspaceprojecttest1.entityIO.MedCountReceive;
+import com.ranchao.innerspaceprojecttest1.entityIO.MeditationSend;
 import com.ranchao.innerspaceprojecttest1.mapper.MedResourceMapper;
 import com.ranchao.innerspaceprojecttest1.mapper.MeditationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,42 +23,42 @@ public class MeditationService {
     MedResourceMapper medResourceMapper;
 
     // 从数据库取数据，需要匹配level0，和level1，两个资源
-    public ArrayList<MeditationRequest> findMedResource(String level0, String level1) {
+    public ArrayList<MeditationSend> findMedResource(String level0, String level1) {
         Map<String, Object> map = new HashMap<>();
         map.put("level0", level0);
         map.put("level1", level1);
         List<MedResource> resources = medResourceMapper.selectByMap(map);
         resources.forEach(System.out::println);
 
-        ArrayList<MeditationRequest> meditationRequests = new ArrayList<>();
+        ArrayList<MeditationSend> meditationSends = new ArrayList<>();
         for (MedResource resource : resources) {
-            MeditationRequest meditationRequest = new MeditationRequest();
-            meditationRequest.setId(resource.getId());
-            meditationRequest.setImageUrl(resource.getImageUrl());
-            meditationRequest.setMusicUrl(resource.getMusicUrl());
-            meditationRequest.setContent(resource.getContent());
-            meditationRequests.add(meditationRequest);
+            MeditationSend meditationSend = new MeditationSend();
+            meditationSend.setId(resource.getId());
+            meditationSend.setImageUrl(resource.getImageUrl());
+            meditationSend.setMusicUrl(resource.getMusicUrl());
+            meditationSend.setContent(resource.getContent());
+            meditationSends.add(meditationSend);
         }
-        return meditationRequests;
+        return meditationSends;
     }
 
-    public ArrayList<ArrayList<MeditationRequest>> findMedResource1(String level0) {
-        ArrayList<ArrayList<MeditationRequest>> whiteNoiseRequests = new ArrayList<>();
+    public ArrayList<ArrayList<MeditationSend>> findMedResource1(String level0) {
+        ArrayList<ArrayList<MeditationSend>> whiteNoiseRequests = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
         map.put("level0", level0);
         List<MedResource> resources = medResourceMapper.selectByMap(map);
         System.out.println(resources);
         ArrayList<String> temps = choice(level0);
         for (String temp : temps) {
-            ArrayList<MeditationRequest> whiteNoiseRequest = new ArrayList<>();
+            ArrayList<MeditationSend> whiteNoiseRequest = new ArrayList<>();
             for (MedResource medResource : resources) {
                 if (Objects.equals(medResource.getLevel1(), temp)) {
-                    MeditationRequest meditationRequest = new MeditationRequest();
-                    meditationRequest.setContent(medResource.getContent());
-                    meditationRequest.setId(medResource.getId());
-                    meditationRequest.setImageUrl(medResource.getImageUrl());
-                    meditationRequest.setMusicUrl(medResource.getMusicUrl());
-                    whiteNoiseRequest.add(meditationRequest);
+                    MeditationSend meditationSend = new MeditationSend();
+                    meditationSend.setContent(medResource.getContent());
+                    meditationSend.setId(medResource.getId());
+                    meditationSend.setImageUrl(medResource.getImageUrl());
+                    meditationSend.setMusicUrl(medResource.getMusicUrl());
+                    whiteNoiseRequest.add(meditationSend);
                 }
             }
             whiteNoiseRequests.add(whiteNoiseRequest);
@@ -91,7 +91,7 @@ public class MeditationService {
         return meditationMapper.insert(meditation1);
     }
 
-    public MedCountReturn meditationByOpenID(String openId) {
+    public MedCountReceive meditationByOpenID(String openId) {
         // getData
         Map<String, Object> map = new HashMap<>();
         map.put("open_id", openId);
@@ -106,6 +106,6 @@ public class MeditationService {
                 todayTime=todayTime.plus(Duration.between(meditation.getStartTime(), meditation.getEndTime()));
             }
         }
-        return new MedCountReturn(resources.size(),(int)todayTime.toMinutes(),(int)totalTime.toMinutes());
+        return new MedCountReceive(resources.size(),(int)todayTime.toMinutes(),(int)totalTime.toMinutes());
     }
 }

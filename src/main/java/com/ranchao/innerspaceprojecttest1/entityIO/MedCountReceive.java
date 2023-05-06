@@ -1,17 +1,17 @@
-package com.ranchao.innerspaceprojecttest1.entitySend;
+package com.ranchao.innerspaceprojecttest1.entityIO;
 
 import lombok.Data;
 
 @Data
-public class MedCountReturn {
+public class MedCountReceive {
     int totalTime;
     int totalCount;
     int todayTime;
 
-    MedCountReturn() {
+    MedCountReceive() {
     }
 
-    public MedCountReturn(int totalCount, int todayTime, int totalTime) {
+    public MedCountReceive(int totalCount, int todayTime, int totalTime) {
         this.totalCount = totalCount;
         this.todayTime = todayTime;
         this.totalTime = totalTime;
