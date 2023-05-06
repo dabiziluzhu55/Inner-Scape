@@ -18,112 +18,166 @@ class InnerScapeTest4ApplicationTests {
     private DataRepository dataRepository;
 
     @Test
-    void contextLoads() {
-        List<User> u1= dataRepository.FindUser("QCD1");
-        System.out.println(u1.isEmpty());
-        List<User> u2= dataRepository.FindUser("QCD5");
-        System.out.println(u2.isEmpty());
-        dataRepository.AddUser("QCD5","测试用户5",2);
-        List<User> u3= dataRepository.FindUser("QCD5");
-        System.out.println(u3.isEmpty());
-        List<User> u4= dataRepository.FindUser("QCD2");
-        System.out.println(u4.get(0).getID());
-        System.out.println(u4.get(0).getName());
-        System.out.println(u4.get(0).getHeadshot());
-        System.out.println(u4.get(0).getThiks());
+    void contextLoads1() {
+        //测试登录注册
+        List<User>user_test1=dataRepository.FindUser("test1");
+        if(user_test1.isEmpty()) {
+            dataRepository.AddUser("test1", "testUser1", 1);
+            user_test1=dataRepository.FindUser("test1");
+        }
+        System.out.println(user_test1.get(0));
     }
 
     @Test
     void contextLoads2() {
-        Timestamp tsnow=new Timestamp(System.currentTimeMillis());
-        DateFormat dateFormat0 = new SimpleDateFormat("yyyy-MM-dd");
-        DateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String strDate0 = dateFormat0.format(tsnow);
-        String strDate1 = dateFormat1.format(tsnow);
-        System.out.println(strDate0);
-        System.out.println(strDate1);
-        List<String>us0=dataRepository.FindRefreshHistoryToday0("QCD1",strDate0);
-        if(us0.isEmpty()) {
-            //dataRepository.AddHistory0("QCD1", strDate0);
-            System.out.println("空的");
-        }
-        else {
-            System.out.println("不空");
-            for (String us : us0)
-                System.out.println(us);
-        }
-        List<Integer>us1=dataRepository.FindRefreshHistoryInHalfHour1("QCD1",strDate1);
-        if(us1.isEmpty()) {
-            dataRepository.AddHistory1("QCD1", strDate1);
-            System.out.println("空的");
-        }
-        else {
-            System.out.println("不空");
-            for (int us : us1)
-                System.out.println(us);
-        }
+        //测试修改头像和昵称
+        List<User>user_test1=dataRepository.FindUser("test1");
+        System.out.println(user_test1.get(0));
+        dataRepository.ChangeHeadshot("test1",2);
+        user_test1=dataRepository.FindUser("test1");
+        System.out.println(user_test1.get(0));
+        dataRepository.ChangeName("test1","testU1");
+        user_test1=dataRepository.FindUser("test1");
+        System.out.println(user_test1.get(0));
     }
 
     @Test
     void contextLoads3(){
-        /*List<StarLittle>sl=dataRepository.Catch6Stars("QCD3");
-        for(StarLittle s:sl){
-            System.out.println(s.getStarID()+" "+s.getStarContent()+" "+s.getStarHostName());
-        }*/
+        //测试放飞星星和星星相关查找
+        Timestamp nowTime=new Timestamp(System.currentTimeMillis());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String nowTimeStr = dateFormat.format(nowTime);
+        dataRepository.AddStar("testStar1","test1","testU1","测试1",nowTimeStr);
+        List<StarLittle>starLittle_testStar1=dataRepository.CatchStar("testStar1");
+        System.out.println(starLittle_testStar1.get(0));
+        List<StarLittleReply>starLittleReply_testStar1=dataRepository.GetStarContent("testStar1");
+        System.out.println(starLittleReply_testStar1.get(0));
+        List<Star>star_testStar1=dataRepository.FindStar("test1");
+        System.out.println(star_testStar1.get(0));
+        List<String>string_testStar1=dataRepository.GetStarHost("testStar1");
+        System.out.println(string_testStar1.get(0));
     }
 
     @Test
     void contextLoads4(){
-        Timestamp tsnow=new Timestamp(System.currentTimeMillis());
-        System.out.println(tsnow);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String strDate = dateFormat.format(tsnow);
-        System.out.println(strDate);
+        //测试他人查看星星和删除星星
+        dataRepository.AddUser("test2", "testUser2", 3);
+        List<String>string_no_test2=dataRepository.Select6Stars("test2");
+        for(String snt2:string_no_test2)
+            System.out.println(snt2);
+        dataRepository.DeleteStar("testStar1");
+        string_no_test2=dataRepository.Select6Stars("test2");
+        for(String snt2:string_no_test2)
+            System.out.println(snt2);
     }
 
     @Test
     void contextLoads5(){
-        List<User>userList=dataRepository.FindUser("QCD1");
-        if(!userList.isEmpty()) {
-            String user000=userList.get(0).getName();
-            Timestamp tsnow = new Timestamp(System.currentTimeMillis());
-            System.out.println(tsnow);
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            String strDate = dateFormat.format(tsnow);
-            dataRepository.AddStar("QCD1"+strDate,"QCD1",user000,"测试ing",strDate);
+        //测试系统刷新
+        Timestamp nowTime=new Timestamp(System.currentTimeMillis());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String nowTimeStr = dateFormat.format(nowTime);
+        List<String>string_test1sStar=dataRepository.FindRefreshHistoryToday0("test1",nowTimeStr);
+        if(string_test1sStar.isEmpty()){
+            dataRepository.AddHistory0("testRefresh1","test1",nowTimeStr,"testNullStar1","testNullStar2",
+                    "testNullStar3","testNullStar4","testNullStar5","testNullStar6");
+            string_test1sStar=dataRepository.FindRefreshHistoryToday0("test1",nowTimeStr);
         }
+        System.out.println(string_test1sStar.get(0));
+        List<Refresh>refresh_testRefresh1=dataRepository.GetRefresh("testRefresh1");
+        System.out.println(refresh_testRefresh1.get(0));
     }
 
     @Test
     void contextLoads6(){
-        List<StarLittleReply> starLittleReplies=dataRepository.GetStarContent("Q1");
-        if(!starLittleReplies.isEmpty()){
-            dataRepository.AddHostReply("Q1","R2","?!!!!","测试用户2",starLittleReplies.get(0).getReplyNum()+1);
-            dataRepository.AddGuestReply("R2","Q1",starLittleReplies.get(0).getStarContent(),starLittleReplies.get(0).getStarHostName(),"?!!!!","QCD2");
+        //测试用户刷新
+        Timestamp nowTime=new Timestamp(System.currentTimeMillis());
+        DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String nowTimeStr = datetimeFormat.format(nowTime);
+        List<Integer>integer_test1sStar=dataRepository.FindRefreshHistoryInHalfHour1("test1",nowTimeStr);
+        if(integer_test1sStar.isEmpty()){
+            dataRepository.AddHistory1("test1",nowTimeStr);
+            dataRepository.ChangeHistory0("testRefresh1","testNullStar7","testNullStar8",
+                    "testNullStar9","testNullStar10","testNullStar11","testNullStar12");
+            integer_test1sStar=dataRepository.FindRefreshHistoryInHalfHour1("test1",nowTimeStr);
         }
+        System.out.println(integer_test1sStar.get(0));
+        List<Refresh>refresh_testRefresh1=dataRepository.GetRefresh("testRefresh1");
+        System.out.println(refresh_testRefresh1.get(0));
     }
 
     @Test
     void contextLoads7(){
-        List<Star> stars=dataRepository.FindStar("QCD1");
-        if(!stars.isEmpty()) {
-            System.out.println(stars.get(0).getReplyNum());
-            System.out.println(stars.get(0).getReply1GuestName());
-            System.out.println(stars.get(0).getReply1ID());
-            System.out.println(stars.get(0).getReply1Say());
-            System.out.println(stars.get(0).getReply2GuestName());
-            System.out.println(stars.get(0).getReply2ID());
-            System.out.println(stars.get(0).getReply2Say());
-            System.out.println(stars.get(0).getReply3GuestName());
-            System.out.println(stars.get(0).getReply3ID());
-            System.out.println(stars.get(0).getReply3Say());
-        }
+        //测试获取一小时内放飞星星数量
+        DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Timestamp nowTime1=new Timestamp(System.currentTimeMillis());
+        String nowTimeStr1 = datetimeFormat.format(nowTime1);
+        dataRepository.AddStar("testStar2","test1","testU1","测试2",nowTimeStr1);
+        Timestamp nowTime2=new Timestamp(System.currentTimeMillis());
+        String nowTimeStr2 = datetimeFormat.format(nowTime2);
+        dataRepository.AddStar("testStar3","test1","testU1","测试3",nowTimeStr2);
+        Timestamp nowTime3=new Timestamp(System.currentTimeMillis());
+        String nowTimeStr3 = datetimeFormat.format(nowTime3);
+        dataRepository.AddStar("testStar4","test1","testU1","测试4",nowTimeStr3);
+        Timestamp nowTime4=new Timestamp(System.currentTimeMillis());
+        String nowTimeStr4 = datetimeFormat.format(nowTime4);
+        int flyNum=dataRepository.FlyNum("test1",nowTimeStr4);
+        System.out.println(flyNum);
     }
 
     @Test
     void contextLoads8(){
-        List<StarReply> starReplies=dataRepository.FindReply("QCD2");
-        System.out.println(starReplies.get(0).getStarContent());
+        //测试回复与查看回复
+        Timestamp nowTime=new Timestamp(System.currentTimeMillis());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String nowTimeStr = dateFormat.format(nowTime);
+        dataRepository.AddHistory0("testRefresh2","test2",nowTimeStr,"testStar1","testStar2",
+                "testStar3","testStar4","testNullStar13","testNullStar14");
+        List<Refresh>refresh_test2sStar=dataRepository.GetRefresh("testRefresh2");
+        System.out.println(refresh_test2sStar.get(0));
+        dataRepository.AddHostReply("testStar2","testRefresh2","测试回复1","testUser2",1);
+        dataRepository.AddGuestReply("testRefresh2","testStar2","测试2",
+                "testU1","测试回复1","test2");
+        dataRepository.Reply("testRefresh2",2);
+        refresh_test2sStar=dataRepository.GetRefresh("testRefresh2");
+        System.out.println(refresh_test2sStar.get(0));
+        List<Star>star_test1=dataRepository.FindStar("test1");
+        for(Star st1:star_test1)
+            System.out.println(st1);
+        List<StarReply>starReply_test2=dataRepository.FindReply("test2");
+        for(StarReply srt2:starReply_test2)
+            System.out.println(srt2);
+    }
+
+    @Test
+    void contextLoads9(){
+        //测试新消息更新
+        dataRepository.NewInfoAdd1("test1");
+        dataRepository.NewInfoAdd1("test1");
+        List<User>user_test1=dataRepository.FindUser("test1");
+        System.out.println(user_test1.get(0));
+        dataRepository.NewInfoReturn0("test1");
+        user_test1=dataRepository.FindUser("test1");
+        System.out.println(user_test1.get(0));
+    }
+
+    @Test
+    void contextLoads10(){
+        //测试删除回复
+        List<StarReply>starReply_test2=dataRepository.FindReply("test2");
+        for(StarReply srt2:starReply_test2)
+            System.out.println(srt2);
+        dataRepository.DeleteReply("testRefresh2");
+        starReply_test2=dataRepository.FindReply("test2");
+        for(StarReply srt2:starReply_test2)
+            System.out.println(srt2);
+        List<Star>star_test1=dataRepository.FindStar("test1");
+        for(Star st1:star_test1)
+            System.out.println(st1);
+        dataRepository.DeleteStarReply("testStar2","testRefresh2");
+        star_test1=dataRepository.FindStar("test1");
+        for(Star st1:star_test1)
+            System.out.println(st1);
     }
 
 }
