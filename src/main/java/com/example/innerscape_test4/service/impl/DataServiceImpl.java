@@ -71,6 +71,33 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
+    public List<User> Login(String userID){
+        return dataRepository.FindUser(userID);
+    }
+
+    @Override
+    public int ChangeHeadshot(String userID,int headshot){
+        try{
+            dataRepository.ChangeHeadshot(userID,headshot);
+            return 0;
+        }
+        catch (Exception e){
+            return 1;
+        }
+    }
+
+    @Override
+    public int ChangeName(String userID,String userName){
+        try{
+            dataRepository.ChangeName(userID,userName);
+            return 0;
+        }
+        catch (Exception e){
+            return 1;
+        }
+    }
+
+    @Override
     public String Refresh0(String userID){
         Timestamp nowTime=new Timestamp(System.currentTimeMillis());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -318,8 +345,10 @@ public class DataServiceImpl implements DataService {
                 return 1;
             String replyID="R"+userID+"To"+starID+starLittleReplies.get(0).getReplyNum();
             try{
-                if(!redeemStars.containsKey(starID))
-                    dataRepository.AddHostReply(starID,replyID,replySay,users.get(0).getName(),starLittleReplies.get(0).getReplyNum()+1);
+                if(!redeemStars.containsKey(starID)) {
+                    dataRepository.AddHostReply(starID, replyID, replySay, users.get(0).getName(), starLittleReplies.get(0).getReplyNum() + 1);
+                    dataRepository.NewInfoAdd1(dataRepository.GetStarHost(starID).get(0));
+                }
                 dataRepository.AddGuestReply(replyID,starID,starLittleReplies.get(0).getStarContent(),starLittleReplies.get(0).getStarHostName(),replySay,userID);
                 dataRepository.Reply(refreshID,open);
                 return 0;
@@ -334,6 +363,7 @@ public class DataServiceImpl implements DataService {
 
     @Override
     public List<Star>ViewMyReply(String userID){
+        dataRepository.NewInfoReturn0(userID);
         return dataRepository.FindStar(userID);
     }
 
@@ -377,5 +407,14 @@ public class DataServiceImpl implements DataService {
         }
         else
             return 1;
+    }
+
+    @Override
+    public int GetNewInfo(String userID){
+        List<User> users=dataRepository.FindUser(userID);
+        if(users.isEmpty())
+            return 0;
+        else
+            return users.get(0).getNewInfo();
     }
 }
