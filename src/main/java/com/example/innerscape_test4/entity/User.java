@@ -10,6 +10,7 @@ public class User {
     private String name;
     private int headshot;
     private int thiks;
+    private int newInfo;
 
     public String getID() {
         return ID;
@@ -25,5 +26,9 @@ public class User {
 
     public int getThiks() {
         return thiks;
+    }
+
+    public int getNewInfo() {
+        return newInfo;
     }
 }
