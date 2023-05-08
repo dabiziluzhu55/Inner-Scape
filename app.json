@@ -1,20 +1,29 @@
 {
   "pages": [
-    
-    "pages/home/home",
-    "pages/temp/temp",
-    "pages/sound/sound",
-    "pages/meditation/meditation",
-    "pages/logs/logs",
-    "pages/piaoliuping/piaoliuping",
-    "pages/star/star",
-    "pages/starlog/starlog",
-    "pages/starreply/starreply",
-    "pages/flystar/flystar",
-    "pages/index/index",
-    "pages/utils/utils",
-    "utils/utils",
-    "pages/emotion/emotion"
+    "pages/1-0home/home",
+    "pages/1-1meditation/meditation",   
+    "pages/1-2sound/sound", 
+    "pages/1-3breathe/breathe",       
+
+    "pages/2-0piaoliuping/piaoliuping",   
+    "pages/2-1star/star",
+    "pages/2-2starlog/starlog",
+    "pages/2-3starreply/starreply",
+    "pages/2-4flystar/flystar",  
+
+    "pages/3-0emotion/emotion",
+    "pages/3-1emotion-reason/emotion-reason",
+    "pages/3-3emotion-report/emotion-report",
+    "pages/3-2emotion-write/emotion-write",
+    "pages/4-2write/write",
+    "pages/4-0me/me",  
+    "pages/4-1forothers/forothers",
+
+    "pages/utils/utils"
+
+
+
+
   ],
   "usingComponents": {},
   "window": {
@@ -29,24 +38,29 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/1-0home/home",
         "text": "探索",
         "iconPath": "image/search.png",
         "selectedIconPath": "image/search2.png"
       },
       {
-        "pagePath": "pages/piaoliuping/piaoliuping",
+        "pagePath": "pages/2-0piaoliuping/piaoliuping",
         "text": "摘星",
         "iconPath": "image/star.png",
         "selectedIconPath": "image/stra2.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/3-0emotion/emotion",
+        "text": "心情",
+        "iconPath": "image/star.png",
+        "selectedIconPath": "image/stra2.png"
+      },
+      {
+        "pagePath": "pages/4-0me/me",
         "text": "我的",
         "iconPath": "image/my.png",
         "selectedIconPath": "image/my2.png"
       }
     ]
-  },
-  "style": "v2"
+  }
 }

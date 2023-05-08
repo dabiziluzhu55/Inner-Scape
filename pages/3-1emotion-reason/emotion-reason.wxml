@@ -1,0 +1,51 @@
+<!--pages/motion-reason/motion-reason.wxml-->
+<view class="title">是因为什么让你感到{{emotion}}呢</view>
+<image class='mybox' src='/image/box.png' mode="aspectFit">
+  <image class="emotion" src="{{emotionSrc}}" 
+       mode="aspectFill">
+       </image>
+</image>
+<scroll-view class="scroll" scroll-x>
+  <view class="block1">
+    <view class="reasons" wx:for="{{List1}}" wx:key="index">
+      <text class="reasons-text {{curIndex===('1-'+index) && 'active'}}" 
+            data-i1='1-'
+            data-i2="{{index}}"
+            data-name="{{item}}"
+            bindtap="clickActive">{{item}}</text>
+    </view>
+  </view>
+  <view class="block">
+    <view class="reasons" wx:for="{{List2}}" wx:key="index">
+      <text class="reasons-text {{curIndex===('2-'+index) && 'active'}}"
+            data-i1='2-'
+            data-i2="{{index}}"
+            data-name="{{item}}"
+            bindtap="clickActive">{{item}}</text>
+    </view>
+  </view>
+  <view class="block1">
+    <view class="reasons" wx:for="{{List3}}" wx:key="index">
+      <text class="reasons-text {{curIndex===('3-'+index) && 'active'}}"
+            data-i1='3-'
+            data-i2="{{index}}"
+            data-name="{{item}}"
+            bindtap="clickActive">{{item}}</text>
+    </view>
+  </view>
+  <view class="block">
+    <view class="reasons" wx:for="{{List4}}" wx:key="index">
+      <text class="reasons-text {{curIndex===('4-'+index) && 'active'}}"
+            data-i1='4-'
+            data-i2="{{index}}"
+            data-name="{{item}}"
+            bindtap="clickActive">{{item}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+
+<button class="desbtn" style="width: 170px;" bindtap="change2write">
+  是这个原因
+</button>
+

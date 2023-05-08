@@ -1,0 +1,51 @@
+
+<!-- 背景图 -->
+<image class='background-image'mode="aspectFill" src="{{background}}"></image>
+
+<image class="icon_top" src="{{emotionSrc}}" 
+       mode="aspectFill">
+       </image>
+<text class='time'>{{date}}</text>
+<text class='title'>心情打卡成功：{{emotion}}</text>
+
+<view class="container_1">
+  <view class="box">
+    <icon class="iconfont icon icon_practice" style="margin-top: -25%;"></icon>
+    <text class="content">心情练习</text>
+  </view>
+  <view class="box">
+    <icon class="iconfont icon icon_dairy" style="margin-top: -25%;"></icon>
+    <text class="content">冥想放松</text>
+  </view>
+  <view class="box">
+    <icon class="iconfont icon icon_report" style="margin-top: -25%;"></icon>
+    <text class="content">温暖解忧</text>
+  </view>
+</view>
+
+<scroll-view class="scroll-view" scroll-y="{{scrollY}}" 
+            style="height: {{scrollViewHeight}}px;">
+  <!-- 这里放置可滚动内容 -->
+  <view class="icon-zhankai iconfont fold" bindtap="toggleScrollView" wx:if="{{scrollY}}"></view>
+  <view class="icon-shouqi iconfont fold" bindtap="toggleScrollView" wx:if="{{!scrollY}}"></view>
+
+  <view class="title_1">心情详细描述</view>
+  <view class="container">
+    <form bindsubmit="submitForm">
+      <view class="message-box">
+        <view class="form-item">
+          <textarea name="replyContent" placeholder="你还可以详细记录下为什么会产生这个心情哦~" value="" bindinput="length"></textarea>
+          <text class='input-right'>{{length}}/180</text>
+        </view>
+      </view>
+      <view class="form-item">
+          <button class="btn" form-type="submit">保 存</button>
+      </view>
+    </form>
+  </view>
+</scroll-view>
+
+
+
+
+

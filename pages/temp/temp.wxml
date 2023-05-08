@@ -1,3 +1,0 @@
-<!--pages/temp/temp.wxml-->
-<text>pages/temp/temp.wxml</text>
-<button bindtap="hour2minite">hhh</button>

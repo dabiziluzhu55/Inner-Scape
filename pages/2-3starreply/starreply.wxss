@@ -1,0 +1,65 @@
+/* pages/starreply/starreply.wxss */
+page{
+  background-color: #C8E7FF
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.message-box {
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: -180rpx;
+  margin-left: 45rpx;
+  height: 800rpx;
+  width: 88%;
+}
+
+.message-hello{
+  position: absolute;
+  font-size: 14px;
+  color: grey;
+  margin-left: 30rpx;
+  top: 40rpx;
+}
+
+textarea {
+  height: 800rpx;
+  padding: 40rpx;
+  top:50rpx;
+  left:-20rpx;
+  width:600rpx;
+  font-size: 13px;
+  color: rgb(32, 32, 32);
+  line-height: 24px;
+  border: none;
+  resize: none;
+}
+
+.input-right{
+  position: absolute;
+  color:grey;
+  font-size: 13px;
+  top:750rpx;
+  left:100rpx;
+}
+
+button {
+  position: absolute;
+  top:850rpx;
+  left:195rpx;
+  background-color: #93cbf7;
+  border: none;
+  border-radius: 14px;
+  color: #333;
+  font-size: 14px;
+  padding: 10px 15px;
+  height:100rpx; /* 修改按钮高度 */
+  line-height: 80rpx; /* 文本垂直居中 */
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+<!--pages/forothers/forothers.wxml-->
+<scroll-view class="container">
+  <view class="message-box">
+    <view class="message-hello">亲爱的陌生人</view>
+    <view class="line"></view>
+    <text class="message-text">{{starContent}}</text>
+    <view class="message-thanks">感谢您的倾听</view>
+    <view class="message-user">{{starHostName}}</view>
+  </view>
+ 
+  <view class="btncontainer">
+    <view class="commentbtn" style="width: 90%;" wx:for="{{comments}}" wx:key="{{id}}" data-index="{{index}}" bindlongtap="LongPressed">
+    <view class="avatername">
+    <image class="avater" src="/images/head.png"></image>
+    <text class="name">{{item.nickname }}</text>
+    </view>
+    <view class="commentarea">
+      <text class="commenttext">{{item.description}}
+      </text>
+    </view>
+    </view>
+  </view>
+</scroll-view>
+
+

@@ -1,0 +1,113 @@
+page{
+  background-color: #C8E7FF
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.message-box {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: -170rpx;
+  height: 1000rpx;
+  width: 88%;
+}
+
+.message-hello{
+  font-size: 14px;
+  color: grey;
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+}
+
+.message-text {
+  font-size: 14px;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: 35rpx;
+  line-height:1.6em;
+}
+
+.hug-image {
+  width: 300rpx;
+  height: 300rpx;
+  position: absolute;
+  left: 40rpx;
+  top: 700rpx;
+}
+
+.message-thanks{
+  position: absolute;
+  font-size: 14px;
+  color:black;
+  top: 840rpx;
+  left: 430rpx;
+}
+
+.message-time{
+  position: absolute;
+  font-size: 14px;
+  color:black;
+  top: 890rpx;
+  left: 430rpx;
+}
+
+.message-user {
+  position: absolute;
+  font-size: 14px;
+  color: black;
+  top: 940rpx;
+  left: 430rpx;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+  width: 88%;
+  max-width: 600px;
+}
+
+.btn-space {
+  width: 40rpx;
+}
+
+.btn1 {
+  background-color: #93cbf7;
+  border: none;
+  border-radius: 15px;
+  color: #333;
+  font-size: 14px;
+  padding: 10px 15px;
+  width: 44%;
+  height: 120rpx; /* 修改按钮高度 */
+  line-height: 80rpx; /* 文本垂直居中 */
+  text-align: center;
+}
+
+.btn2 {
+  background-color: #93cbf7;
+  border: none;
+  border-radius: 15px;
+  color: #333;
+  font-size: 14px;
+  padding: 10px 15px;
+  width: 44%;
+  height: 120rpx; /* 修改按钮高度 */
+  line-height: 80rpx; /* 文本垂直居中 */
+  text-align: center;
+}
+
+
+
+
+
+
+

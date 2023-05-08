@@ -1,0 +1,73 @@
+<!--index.wxml-->
+
+<view>
+  <view class="area">
+<!-- 图像区域 -->
+      <image class="avatar" mode ="scaleToFill" binderror ="imageOnloadError" src="{{avatarUrl}}" bindtap="avatarEvent"></image>
+      <text class="name" bindtap="ChangeNickName">{{NickName}}</text>
+    </view>
+    <!-- 头像选择框 -->
+    <view class="modal" wx:if="{{modalHidden}}">
+<view class="modal-content">
+  <view class="modal-header">
+  <view class="modal-title">请选择您的头像</view>
+  <button id="cancelBtn" bindtap="cancelBtnEvent" >
+    <image class="cancelicon" src="/images/cancel.jpg" alt="图标" />
+    </button>
+  </view>
+  <scroll-view class="options" scroll-y="{{true}}" style="max-height: 500rpx;">
+    <view class="option" wx:for="{{imageUrls}}" wx:key="{{index}}" bindtap="onOptionClick" data-index="{{index}}">
+      <image class = "optionitem-img" src = "{{item.avatarUrl}}"></image>
+      <text class="option-selected" wx:if="{{item.checked}}"></text>
+    </view>
+  </scroll-view>
+      <view class="modal-footer">
+        <button id="confirmBtn" bindtap="onConfirmBtnClick">确认</button>
+      </view>
+    </view>
+  </view>
+    <!-- 我的冥想和关联点击 -->
+    <text class="mingtext" bindtap="handlemingBtnTap">我的冥想</text>
+    
+    <!-- 次数 -->
+      <view class="row">
+    <view class="left">
+      <text class="count">{{totalTime}}</text>
+      <text class="description">累计冥想时间(min)</text>
+    </view>
+    <view class="right">
+      <text class="count">{{totalCount}}</text>
+      <text class="description">累计冥想次数</text>
+    </view>
+    <view class="right">
+      <text class="count">{{todayTime}}</text>
+      <text class="description">今日冥想时间(min)</text>
+    </view>
+
+ </view>
+    <!-- 两个按钮 -->
+    <view class="containerbottom">
+      <view class="btn-container">
+      <button class="closebtn" bindtap="handleBtn1Tap">
+        <view class="red_circle" wx:if="{{newInfo > 0}}" style="background-color: red;" catchtouchmove="onRedCircleTouchMove">{{newInfo}}</view>
+     <view class ='red_circle' wx:else></view>
+        <image class="closeicon" src="/image/closeen.png" alt="图标"/>
+        <span class="closetext">写下的信</span>
+      </button>
+      <button class="openbtn" bindtap="handleBtn2Tap">
+        <image class="openicon" src="/image/openen.png" alt="图标" />
+        <span class="opentext">为Ta解忧</span>
+      </button>
+      </view>
+      <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="handleScrollToLower">
+    <!-- 根据按钮点击事件动态渲染不同的条目 -->
+    <view class="item-container" wx:for="{{items}}" wx:key="{{index}}" data-index="{{index}}"bindtap="handleItemClick" bindlongpress="LongPressed">
+      <image class="item-img" src="{{item.image}}"></image>
+      <view class="item-content">
+        <text class="item-title">{{item.title}}</text>
+        <text class="item-description">{{item.description}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  </view>
+</view>

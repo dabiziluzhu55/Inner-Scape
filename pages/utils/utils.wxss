@@ -1,1 +1,92 @@
-/* pages/utils/utils.wxss */
+
+@font-face {
+  font-family: 'iconfont'; 
+  src: 
+       url('//at.alicdn.com/t/c/font_4036609_t8ortuk899.woff2?t=1682390857548') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4036609_t8ortuk899.woff?t=1682390857548') format('woff'),
+       url('//at.alicdn.com/t/c/font_4036609_t8ortuk899.ttf?t=1682390857548') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon_happy::before {
+  content: "\e61b";
+}
+
+.icon_excited::before {
+  content: "\e63b";
+}
+
+.icon_disappointed::before {
+  content: "\e69d";
+}
+
+.icon_angry::before{
+  content: "\e69f";
+}
+
+.icon_embarrassed::before{
+  content:"\e62a";
+}
+
+.icon_sad::before{
+  content: "\e62b";
+}
+
+.icon_grievance::before{
+  content: '\e62c';
+}
+
+.icon_lonely::before{
+  content: '\e6ac';
+}
+
+.icon_dysphoria::before{
+  content: '\e6ad';
+}
+
+.icon_nervous::before{
+  content: '\e62d';
+}
+
+.icon_calm::before{
+  content: '\e6df';
+}
+
+.icon_bored::before{
+  content: '\e62e';
+}
+
+.icon_helpless::before{
+  content:'\e8ad';
+}
+
+.icon_other::before{
+  content: '\e6fe';
+}
+
+.icon_mourning::before{
+  content: '\e636';
+}
+
+.icon_emotions_menus::before{
+  content: '\e638';
+}
+
+.icon_practice::before{
+  content: '\e606';
+}
+
+.icon_dairy::before{
+  content: '\fb15';
+}
+
+.icon_report::before{
+  content: '\e607';
+}

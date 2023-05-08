@@ -1,0 +1,93 @@
+/* pages/write/write.wxss */
+page{
+  background-color: #C8E7FF
+}
+.container{
+  width: 100%;
+  margin-top: -80px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.message-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 20rpx;
+  margin-left: 20px;
+  height: auto;
+  width: 88%;
+}
+
+.message-text {
+  font-size: 14px;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: 10px;
+  line-height:1.6em;
+}
+
+/* 评论区域 */
+.btncontainer{
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 6%;
+  width: 97%;
+}
+
+/* 每一条评论 */
+.commentbtn{
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  border: 2rpx solid black;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 1%;
+  width: 100%;
+}
+
+/* 头像昵称区域 */
+.avatername{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 评论头像 */
+.avater{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+/* 昵称 */
+.name{
+  font-size: 13px;
+  font-family: "宋体";
+}
+
+/* 评论区域 */
+.commentarea{ 
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  display: flex;
+  margin-left:2%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* 评论信息 */
+.commenttext{
+  margin-top: 5px;
+  width: 100%;
+  font-size: 15px;
+  font-family: "宋体";
+  text-align: center;
+  text-align-last: left;
+}
+

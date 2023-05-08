@@ -1,0 +1,131 @@
+
+
+
+
+
+<view class="report">
+  <view class="report-title {{activeReportType === 'month' ? 'active' : ''}}"
+        bindtap="onMonthReportTap">
+    月报
+  </view>
+  <view class="report-title {{activeReportType === 'week' ? 'active' : ''}}"
+        bindtap="onWeekReportTap">
+    周报
+  </view>
+</view>
+<block wx:if="{{activeReportType=='week'}}">
+  <!-- 周报 -->
+  <view class="container">
+    <image class='background' src='/image/beijing.png' mode="aspectFit"></image>
+    <view class="block">
+      <view style="padding-top: 20rpx; padding-left: 20rpx;">
+        <text class="title">心情周报</text>
+      </view>
+      <text class="date">04.29 \ 05.00</text>
+      <!-- 一条分隔线 -->
+      <view class="divider"></view>
+      <view class="week_title"><text>心情数据总览</text></view>
+      <view class="week_content"><text>本周一共记录心情{{}}次，共产生{{}}种心情</text></view>
+      <view class="link">
+        <view class="link_child" wx:for="{{moodList}}" wx:key="index">
+          <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon>
+          <text class="emotions-text">{{item.name}}x{{item.count}}</text>
+        </view>
+      </view>
+      <view class="week_title"><text>心情原因记录</text></view>
+      <view class="week_content" style="padding-bottom: 10rpx;"><text>本周影响你心情的共有{{}}种原因</text></view>
+      <view class="reasons-link">
+        <view class="reasons-link_child" wx:for="{{reasonsList}}" wx:key="index">
+            <text class="reasons-text">{{item.text}}x{{item.count}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+
+
+
+
+<block wx:if="{{activeReportType=='month'}}">
+  <calendar defaultDate="{{nowDate}}" spot="{{spot}}" bind:dateChange="dateChange">
+  </calendar>
+  <!-- 心情分布 -->
+  <view class="emotions-layout">
+    <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">心情分布</text>
+    <view class="link">
+      <view class="link_child" wx:for="{{moodList}}" wx:key="index">
+        <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon>
+        <text class="emotions-text">{{item.name}}x{{item.count}}</text>
+      </view>
+    </view>
+    <view class="summary-container">
+      <view class="summary-text">
+        <text>共记录心情: {{MoodsRecord}}次</text>
+      </view>
+      <view class="summary-text">
+        <text>共产生心情: {{MoodsGenerated}}种</text>
+      </view>
+    </view>
+    <view class="summary-text">
+      <text style="margin-top: 5%;">产生最多的心情: {{MostMood}}</text>
+    </view>
+  </view>
+
+  <!-- 心情占比 -->
+  <view class="Mood-proportion">
+    <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">心情占比</text>
+    <view class="moodpropor">
+      <view class="circle-mood" style="background-color: rgb(243,166,138);"></view>
+      <view class="text-proccess">
+        <text style="margin-top: 3%;font-size: 12px;">正面情绪：{{Positive}}%</text>
+        <progress percent="{{Positive}}" color="rgb(243,166,138)" style="margin-top: 2%;width: 95%;"></progress>
+      </view>
+    </view>
+    <view class="moodpropor">
+      <view class="circle-mood" style="background-color: rgb(244,209,167);"></view>
+      <view class="text-proccess">
+        <text style="margin-top: 3%;font-size: 12px;">中性情绪：{{Normal}}%</text>
+        <progress percent="{{Normal}}" color="rgb(244,209,167)" style="margin-top: 2%;width: 95%;"></progress>
+      </view>
+    </view>
+    <view class="moodpropor">
+      <view class="circle-mood" style="background-color: rgb(156,208,229);"></view>
+      <view class="text-proccess">
+        <text style="margin-top: 3%;font-size: 12px;">负面情绪：{{Negative}}%</text>
+        <progress percent="{{Negative}}" color="rgb(156,208,229)" style="margin-top: 2%;width: 95%;margin-bottom: 50rpx;"></progress>
+      </view>
+    </view>
+  </view>
+
+  <!-- 心情占比 -->
+  <view class="Mood-proportion">
+    <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">心情变化</text>
+    <view class="color_dot" style="background-color: rgb(243, 167, 138); top:60rpx"></view>
+    <view class="color_dot" style="background-color: rgb(244, 210, 166); top:119rpx"></view>
+    <view class="color_dot" style="background-color: rgb(156, 209, 228); top:176rpx"></view>
+    <view class="echarts">
+      <ec-canvas id="mychart" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
+    </view>
+
+  </view>
+
+  <!-- 产生最多的心情 -->
+  <view class="most-mood-container">
+    <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">产生最多的心情</text>
+    <view class="icon-text-container">
+      <icon class="iconfont icon {{MostMoodIcon}}" style="font-size: 100rpx;margin-top: 4%;margin-left: 3%;"></icon>
+      <view class="mood-moodtext-container">
+        <text style="color: rgb(231,127,127);font-size: 15px;">开心</text>
+        <text style="font-size: 12px; margin-top: 3%;">你常常会因为这些原因而感到{{MostMood}}</text>
+      </view>
+    </view>
+    <view style="margin-top: 4%;"></view>
+    <view class="reasons-link">
+      <view class="reasons-link_child" wx:for="{{reasonsList}}" wx:key="index">
+          <text class="reasons-text">{{item.text}}x{{item.count}}</text>
+      </view>
+    </view>
+  </view>
+  
+</block>

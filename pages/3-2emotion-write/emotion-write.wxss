@@ -1,0 +1,155 @@
+/* pages/motion-write/motion-write.wxss */
+@import "/pages/utils/utils.wxss";
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.background-image{
+  position: absolute;
+  height:100%;
+  width:100%;
+  z-index: -1;
+}
+.icon_top {
+  width: 130rpx;
+  height:130rpx;
+  border-radius: 50%;
+  position:fixed;
+  top:290rpx;
+  left:310rpx;
+}
+.time {
+  position:fixed;
+  top:450rpx;
+  left: 200rpx;
+  font-size: 35rpx;
+}
+.title {
+  position:fixed;
+  top:500rpx;
+  left:100rpx;
+  font-size: 60rpx;
+}
+.icon {
+  font-size: 100rpx;
+}
+.container_1 {
+  position: absolute;
+  top:600rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 300rpx;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 80%;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  margin-top: 25rpx;
+  margin-bottom: -10px;
+  font-size: 14px;
+  color: #333333;
+}
+
+
+.scroll-view {
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: height .3s ease-in-out;
+}
+.title_1 {
+  position: absolute;
+  top:40rpx;
+  left:30rpx;
+}
+.fold {
+  position: absolute;
+  top:40rpx;
+  right:30rpx;
+  font-size: 60rpx;
+}
+.toggle-button {
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 50rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.message-box {
+  position: relative;
+  background-color: #f8f7f3;
+  border-radius: 20px;
+  top:-100rpx;
+  left:5rpx;
+
+  height: 800rpx;
+  width: 100%;
+}
+
+textarea {
+  height: 800rpx;
+  padding: 40rpx;
+  top:20rpx;
+  left:-20rpx;
+  width:600rpx;
+  font-size: 13px;
+  color: rgb(32, 32, 32);
+  line-height: 24px;
+  border: none;
+  resize: none;
+}
+
+.input-right{
+  position: absolute;
+  color:grey;
+  font-size: 13px;
+  top:750rpx;
+  right:100rpx;
+}
+
+button {
+  position: absolute;
+  top:930rpx;
+  left:120rpx;
+  width: 500rpx;
+  background-color: #f2a37c;
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 15px;
+  height:80rpx; /* 修改按钮高度 */
+  line-height: 40rpx; /* 文本垂直居中 */
+  text-align: center;
+}
+
+
+
+
+
+
