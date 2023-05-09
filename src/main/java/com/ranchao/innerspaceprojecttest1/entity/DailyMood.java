@@ -30,4 +30,12 @@ public class DailyMood {
 
     public DailyMood() {
     }
+
+    public DailyMood(DailyMood t){
+        this.openId = t.getOpenId();
+        this.moodNumber = t.getMoodNumber();
+        this.diary = t.getDiary();
+        this.reason = t.getReason();
+        this.recordTime = t.getRecordTime();
+    }
 }

@@ -1,12 +1,12 @@
-开心 0 2
-难过 1 0
-尴尬 2 1
-无聊 3 1
-生气 4 0
-烦躁 5 0
-紧张 6 1
-孤独 7 0
-害怕 8 0
-平静 9 2
-其他 10 1
-委屈 11 0
+开心 0 2 http://175.178.90.196:7778/expression/0.png
+难过 1 0 http://175.178.90.196:7778/expression/1.png
+尴尬 2 1 http://175.178.90.196:7778/expression/2.png
+无聊 3 1 http://175.178.90.196:7778/expression/3.png
+生气 4 0 http://175.178.90.196:7778/expression/4.png
+烦躁 5 0 http://175.178.90.196:7778/expression/5.png
+紧张 6 1 http://175.178.90.196:7778/expression/6.png
+孤独 7 0 http://175.178.90.196:7778/expression/7.png
+害怕 8 0 http://175.178.90.196:7778/expression/8.png
+平静 9 2 http://175.178.90.196:7778/expression/9.png
+其他 10 1 http://175.178.90.196:7778/expression/10.png
+委屈 11 0 http://175.178.90.196:7778/expression/11.png
