@@ -105,6 +105,7 @@ Page({
       success:(res)=>{ 
         this.setData({
           item:res.data
+          
         })
       }
     })

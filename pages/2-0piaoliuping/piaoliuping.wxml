@@ -1,6 +1,10 @@
 <!--背景图片-->
 <view wx:if="{{loading}}">
-<image class="bg-image" mode="scaleToFill" src="/image/bk.jpg"></image>
+<image class="bg-image" mode="scaleToFill" src="/image/background1.jpg"></image>
+<view class="font1">在浩瀚的宇宙中，每个人都有一片星空</view>
+<view class="font2">那个难忘的日子</view>
+<view class="font3">那件特别的小事</view>
+<view class="font4">放在心里，不如把Ta私藏在你的星空</view>
 <button class="star-bt1" bindtap="goto"><image src="/image/bt1.png"></image></button>
 <button class="star-bt2" bindtap="gotofly"><image src="/image/bt2.png"></image></button>
 </view>

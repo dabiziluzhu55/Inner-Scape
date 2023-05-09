@@ -1,14 +1,14 @@
 <!--pages/flystar/flystar.wxml-->
 <view class="container">
   <form bindsubmit="submitForm">
-    <view class="message-box">
-      <view class="form-item">
-        <textarea name="replyContent" placeholder="写下你想说的话，放飞一颗星星~" value="" bindinput="length"></textarea>
-        <text class='input-right'>{{length}}/180</text>
-      </view>
-    </view>
+  <view class="message-box">
     <view class="form-item">
-        <button class="btn" form-type="submit">提交</button>
+      <textarea name="starContent" placeholder="写下你想说的话，放飞一颗星" value="" bindinput="length"></textarea>
+      <text class='input-right'>{{length}}/180</text>
     </view>
-  </form>
+  </view>
+  <view class="form-item">
+      <button class="btn" form-type="submit">提交</button>
+  </view>
+</form>
 </view>

@@ -1,7 +1,6 @@
 <view class="textstyle">你的心情是?</view>
 <view class="container">
   <!-- 上面显示的现在的表情 -->
-  <!-- <icon class="iconfont icon {{nowIcon}}" style="margin-left: 10%;margin-top: -85%;position: absolute;font-size: 56px;"></icon> -->
   <image class="icon_top" src="{{nowIcon}}" 
         mode="aspectFill"
         style="margin-left: 10%;margin-top: -80%;position: absolute;font-size: 56px;"></image>
@@ -13,7 +12,7 @@
             class="menu-box-item {{curIndex===index && 'active'}}"     
             catchtap="clickActive" 
             data-index="{{index}}">
-        <image class="icon_1" src="{{item.icon}}" style="--deg:{{-360/ menu.length}}deg">></image>
+        <image class="icon_1" src="{{item.url}}" style="--deg:{{-360/ menu.length}}deg">></image>
       </view>
     </block>
     <view class="menu-box-active" style="--n:{{curIndex}};--deg:{{360/ menu.length}}deg"></view>
@@ -29,7 +28,7 @@
 
   <!-- 数据分析 -->
   <view class="btn_container">
-    <button class="data_btn">
+    <button class="data_btn" bindtap="change2exercise">
       <icon class="iconfont icon icon_practice" style="margin-top: -25%;"></icon>
       <text class="data_text">心情练习</text>
     </button>

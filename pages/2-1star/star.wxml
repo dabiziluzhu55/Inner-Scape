@@ -1,6 +1,7 @@
 <!--pages/star/star.wxml-->
 <view wx:if="{{loading}}">
 <image class="bg-image" mode="scaleToFill" src="/image/starbk.jpg"></image>
+<button style="width:30vw" class="refresh-button" bindtap="onRefreshTap">刷新星星</button>
 <view class="button-group">
   <view wx:for="{{stars}}" wx:key="starID">
     <button class="star-bt" data-starid="{{item.starID}}" bindtap="onStarTap">

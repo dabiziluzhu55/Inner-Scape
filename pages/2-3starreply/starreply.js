@@ -1,56 +1,95 @@
+//const { PostProcess } = require("XrFrame/xrFrameSystem");
 
+// pages/starreply/starreply.js
 Page({
   data: {
-    starId: 0, // 回复的星星id
-    length:0,
+    starID: 0, // 回复的星星id
+    length:0,//回复内容的长度
+    replySay:'',//回复内容
+    UserId: '', // 用来存储用户唯一的openID
+    refreshID:'',
   },
 
   onLoad(options) {
+    // 获取用户id
+    var UserId = wx.getStorageSync('UserId');
     // 获取星星id
     this.setData({
-    starId: options.id
+    starID: options.starID,
+    UserId: UserId,
+    refreshID: options.refreshID
     })
+    console.log(this.data.starID)
+    console.log(this.data.UserId)
   },
 
   length(e){
     let length=e.detail.value.length;
+    let reply=e.detail.value.replyContent;
     this.setData({
-      length:length
+      length:length,
+      replySay:reply
     })
   },
 
   submitForm: function (e) {
-    // 获取回复内容
-    //url:http://175.178.90.196:7777/ReplyStar?starID=&userID=&replySay=
-    let replyContent = e.detail.value.replyContent
-    // 获取回复内容字数
-    const replyLength = replyContent.length;
-
+    //console.log("你好")
     // 判断回复内容是否超过 128 字
-    if (replyLength > 128) {
+    if (this.data.length > 128) {
     wx.showToast({
     title: '回复内容不能超过128字',
     icon: 'none'
     });
     return;
-  }
-
-    if (!replyContent) {
+    }
+    if (!e.detail.value.replyContent) {
       wx.showToast({
         title: '请输入回复内容',
         icon: 'none'
       })
       return
     }
-    // 记录回复信息并提交到后端
-    let replyInfo = {
-      starId: this.data.starId,
-      replyContent: replyContent,
+    var that=this;
+    let userID = that.data.UserId;
+    let starID = that.data.starID;
+    let refreshID = that.data.refreshID;
+    console.log(userID);
+    console.log(starID);
+    console.log(e.detail.value.replyContent);
+    console.log(refreshID);
+    if (!starID) {
+      console.error('starID 未正确设置');
+      return;
     }
-    // 将replyInfo提交到后端
-    // 提交成功后跳转回星星界面
-    wx.navigateBack({
-      delta: 2
+   // 将replyInfo提交到后端
+    wx.request({
+      url: 'http://175.178.90.196:7777/ReplyStar?starID=' + starID + '&userID=' + userID + '&replySay=' + e.detail.value.replyContent + '&refreshID=' + refreshID,
+      method:'GET',
+      success: function (res) {
+        console.log(res.data)
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 2000
+        })
+        // 提交成功后，清空留言框内容
+        that.setData({
+          length: 0,
+          replyContent: ''
+        })
+        // 提交成功后跳转回六颗星星界面
+        wx.navigateBack({
+        delta: 2
+        })
+      },
+      fail: function (res) {
+        console.log(res.data)
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 

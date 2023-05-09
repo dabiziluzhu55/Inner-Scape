@@ -13,17 +13,17 @@
 
     "pages/3-0emotion/emotion",
     "pages/3-1emotion-reason/emotion-reason",
+    "pages/3-2emotion-write/emotion-write",    
     "pages/3-3emotion-report/emotion-report",
-    "pages/3-2emotion-write/emotion-write",
-    "pages/4-2write/write",
+    "pages/3-4moodexercise/moodexercise",
+    "pages/3-5mooddiary/mooddiary",
+    "pages/3-6webview/webview",
+
     "pages/4-0me/me",  
     "pages/4-1forothers/forothers",
+    "pages/4-2write/write",
 
     "pages/utils/utils"
-
-
-
-
   ],
   "usingComponents": {},
   "window": {
@@ -52,8 +52,8 @@
       {
         "pagePath": "pages/3-0emotion/emotion",
         "text": "心情",
-        "iconPath": "image/star.png",
-        "selectedIconPath": "image/stra2.png"
+        "iconPath": "image/mood1.png",
+        "selectedIconPath": "image/mood2.png"
       },
       {
         "pagePath": "pages/4-0me/me",

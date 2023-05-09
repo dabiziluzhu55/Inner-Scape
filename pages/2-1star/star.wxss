@@ -4,6 +4,16 @@
   position: fixed;  
   z-index: -1;  
 }
+.refresh-button{
+  position: absolute;
+  margin-top: 950rpx;
+  left: 265rpx;
+  height: 70rpx;
+  border-radius: 80rpx;
+  color: white;
+  background-color:#2D3071;
+  font-size: 12px;
+}
 .star-bt1{
   padding: 0;
   background-color: transparent;
@@ -88,7 +98,7 @@ button image{
 
 .fontStyle{
   font-size: 15px;
-  color:#131247;
+  color:#35347c;
   text-align: center;
 }
 .fontStyle2{

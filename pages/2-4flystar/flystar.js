@@ -1,32 +1,72 @@
-
 Page({
   data: {
     length:0,
+    starContent:'',
+    userID:'',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
+    // 获取用户id
+    var UserId = wx.getStorageSync('UserId');
+    this.setData({
+      userID: UserId
+    })
   },
-
   length(e){
     let length=e.detail.value.length;
     this.setData({
-      length:length
+      length:length,
+      starContent: e.detail.value
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  submitForm:function(e){
+    // 判断回复内容是否超过 128 字
+    if (this.data.length > 128) {
+      wx.showToast({
+      title: '回复内容不能超过128字',
+      icon: 'none'
+      });
+      return;
+      }
+      if (!e.detail.value.starContent) {
+        wx.showToast({
+          title: '请输入回复内容',
+          icon: 'none'
+        })
+        return
+      }
+    var that=this;
+    let starContent = e.detail.value.starContent;
+    let userID = that.data.userID;
+    wx.request({
+      url: 'http://175.178.90.196:7777/FlyStar?userID=' + userID + '&starContent=' + starContent,
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data)
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 2000
+        })
+        // 提交成功后，清空留言框内容
+        that.setData({
+          length: 0,
+          replyContent: ''
+        })
+      },
+      fail: function (res) {
+        console.log(res.data)
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
   onReady() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
 
   },

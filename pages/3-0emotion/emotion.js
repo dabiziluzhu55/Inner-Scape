@@ -58,7 +58,21 @@ Page({
     nowIcon:'',// 当前心情图标
     nowName:'',// 当前心情描述
   },
-  
+  onLoad(){
+    this.InitialData();
+  },
+  InitialData(){
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/allMood',
+      success:(res)=>{ 
+        console.log(res.data)
+        this.setData({
+          menu:res.data
+        })
+      }
+    })
+
+  },
   // 展示菜单
   showMenu() {
     let { show_menu } = this.data;
@@ -71,7 +85,7 @@ Page({
   clickActive(e) {
     let { index } = e.currentTarget.dataset;
     if (this.data.curIndex === index || index === undefined) return false;
-    let nowIcon = this.data.menu[index].icon;
+    let nowIcon = this.data.menu[index].url;
     let nowName = this.data.menu[index].name;
     this.setData({
       curIndex: index,
@@ -80,30 +94,12 @@ Page({
     });
   },
   // 跳转我的日记页面
-  NavigateToDairy : function(){
+  NavigateToDairy(){
     wx.navigateTo({
-      url: '/pages/dairy/dairy',
+      url: '/pages/3-5mooddiary/mooddiary',
     })
   },
   getDateString(){
-    // // 获取当前日期时间
-    // const now = new Date();
-    // // 获取日期信息
-    // const day = now.getDay(); // 0-6，分别表示周日至周六
-    // const date = now.getDate(); // 1-31，表示当前日期
-    // const month = now.getMonth() + 1; // 0-11，需要加1才是实际月份
-    // const year = now.getFullYear(); // 四位数的年份
-    // // 获取时间信息
-    // const hours = now.getHours(); // 0-23，表示当前小时数
-    // const minutes = now.getMinutes(); // 0-59，表示当前分钟数
-    // // 将日期时间转换为字符串格式
-    // const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-    // const weekDayString = weekDays[day]; // 根据星期数获取星期几的字符串
-    // const dateString = `${year}.${month.toString().padStart(2, '0')}.${date.toString().padStart(2, '0')}`;
-    // // 将年月日拼接成字符串格式，月份和日期不足两位数则在前面补0
-    // const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-    // // 将小时数和分钟数拼接成字符串格式，不足两位数则在前面补0
-    // const dateTimeString = `${weekDayString} / ${dateString} ${timeString}`;
     return util.formatTime(new Date())
   },
   change2reason(){
@@ -115,6 +111,11 @@ Page({
   change2report(){
     wx.navigateTo({
       url: '/pages/3-3emotion-report/emotion-report'
+    })
+  },
+  change2exercise(){
+    wx.navigateTo({
+      url: '/pages/3-4moodexercise/moodexercise'
     })
   }
 

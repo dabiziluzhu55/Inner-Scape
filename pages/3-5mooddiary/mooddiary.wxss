@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+
+.diary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.diary-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+  width:700rpx;
+  border-radius: 15rpx;
+  border: 2rpx solid #D6D6D4;
+}
+
+.diary-item-time {
+  margin-top: 30rpx;
+  margin-left: -450rpx;
+}
+
+.diary-item-image {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+}
+
+.diary-item-mood {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  flex: 1;
+  margin-top: 30rpx;
+}

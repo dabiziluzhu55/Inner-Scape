@@ -1,28 +1,33 @@
-
+// pages/starlog/starlog.js
 Page({
   data: {
     loading: true,
     showHug: false,
     starContent:'',
     starHost:'',
+    starID:'',
     star:'',
-    //starID:0,
-    //userID:0,
+    UserId: '', // 用来存储用户唯一的openID
+    refreshID:'',
   },
+
   showImage: function () {
     this.setData({
       showHug: true
     })
   },
 
+  //给到星星ID给到页面3 回复星星内容
   giveReply:function () {
+    var starID=this.data.starID;
     wx.navigateTo({
-      url:'/pages/2-3starreply/starreply'
+      url:'/pages/2-3starreply/starreply?starID='+ starID +'&refreshID=' + this.data.refreshID
     })
   },
 
   onLoad(options) {
     const star = options.star;
+    const refreshID = options.refreshID;
     if (!star) {
       console.error('star 参数未定义'); // 显示错误信息
       return; // 如果 star 未定义，直接返回
@@ -31,7 +36,9 @@ Page({
     this.setData({
       star: star1,
       starContent: star1.starContent,
-      starHost: star1.starHost
+      starHost: star1.starHost,
+      starID: star1.starID,
+      refreshID:refreshID,
     });
   },
   

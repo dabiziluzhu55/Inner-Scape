@@ -1,8 +1,4 @@
 
-
-
-
-
 <view class="report">
   <view class="report-title {{activeReportType === 'month' ? 'active' : ''}}"
         bindtap="onMonthReportTap">
@@ -25,17 +21,18 @@
       <!-- 一条分隔线 -->
       <view class="divider"></view>
       <view class="week_title"><text>心情数据总览</text></view>
-      <view class="week_content"><text>本周一共记录心情{{}}次，共产生{{}}种心情</text></view>
+      <view class="week_content"><text>本周一共记录心情{{wemotionTimes}}次，共产生{{wemotionSpecies}}种心情</text></view>
       <view class="link">
-        <view class="link_child" wx:for="{{moodList}}" wx:key="index">
-          <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon>
+        <view class="link_child" wx:for="{{wmoodList}}" wx:key="index">
+          <!-- <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon> -->
+          <image class="emotions-icon " src='{{item.url}}'></image>
           <text class="emotions-text">{{item.name}}x{{item.count}}</text>
         </view>
       </view>
       <view class="week_title"><text>心情原因记录</text></view>
-      <view class="week_content" style="padding-bottom: 10rpx;"><text>本周影响你心情的共有{{}}种原因</text></view>
+      <view class="week_content" style="padding-bottom: 10rpx;"><text>本周影响你心情的共有{{wreasonTimes}}种原因</text></view>
       <view class="reasons-link">
-        <view class="reasons-link_child" wx:for="{{reasonsList}}" wx:key="index">
+        <view class="reasons-link_child" wx:for="{{wreasonsList}}" wx:key="index">
             <text class="reasons-text">{{item.text}}x{{item.count}}</text>
         </view>
       </view>
@@ -55,7 +52,8 @@
     <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">心情分布</text>
     <view class="link">
       <view class="link_child" wx:for="{{moodList}}" wx:key="index">
-        <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon>
+        <image class="emotions-icon " src='{{item.url}}'></image>
+        <!-- <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon> -->
         <text class="emotions-text">{{item.name}}x{{item.count}}</text>
       </view>
     </view>
@@ -114,9 +112,10 @@
   <view class="most-mood-container">
     <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">产生最多的心情</text>
     <view class="icon-text-container">
-      <icon class="iconfont icon {{MostMoodIcon}}" style="font-size: 100rpx;margin-top: 4%;margin-left: 3%;"></icon>
+      <!-- <icon class="iconfont icon {{MostMoodIcon}}" style="font-size: 100rpx;margin-top: 4%;margin-left: 3%;"></icon> -->
+      <image style="width: 100rpx;height: 100rpx; margin-top: 15rpx;margin-left: 15rpx;" src="{{MostMoodIcon}}"></image>
       <view class="mood-moodtext-container">
-        <text style="color: rgb(231,127,127);font-size: 15px;">开心</text>
+        <text style="color: rgb(231,127,127);font-size: 15px;">{{MostMood}}</text>
         <text style="font-size: 12px; margin-top: 3%;">你常常会因为这些原因而感到{{MostMood}}</text>
       </view>
     </view>

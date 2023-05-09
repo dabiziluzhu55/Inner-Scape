@@ -1,0 +1,66 @@
+/* banner 图片样式 */
+.banner-image {
+  margin-top:-185rpx;
+  margin-left: -25rpx;
+  width:90%;
+  height: 200rpx;
+  position: absolute;
+  text-align: center;
+  border-radius: 3%;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+/* 列表项样式 */
+.item {
+  display: flex;
+  align-items: center;
+  height: 230rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+  background-color: #ffffff;
+}
+
+/* 列表项图片样式 */
+.item-image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 55rpx;
+  border-radius: 50%;
+}
+
+/* 列表项内容样式 */
+.item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 列表项标题样式 */
+.item-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 40rpx;
+  margin-left: 50rpx;
+}
+
+/* 列表项描述样式 */
+.item-description {
+  font-size: 23rpx;
+  color: #666666;
+  margin-bottom: 20rpx;
+  margin-left: 50rpx;
+}
+
+/* 页面容器样式 */
+.container {
+  display: flex;
+  flex-direction: column;
+}

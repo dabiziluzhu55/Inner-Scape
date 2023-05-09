@@ -1,5 +1,7 @@
 <view class="container">
-  <form bindsubmit="submitForm">
+<!-- 引入weui样式 -->
+<import src="../../weui-miniprogram/miniprogram_npm/weui-miniprogram/weui-wxss/index.wxml"/>
+  <form bindsubmit="submitForm" method="GET">
   <view class="message-box">
     <view class="message-hello">亲爱的陌生人</view>
     <view class="form-item">

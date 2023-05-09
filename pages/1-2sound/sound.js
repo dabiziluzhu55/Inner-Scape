@@ -9,7 +9,7 @@ Page({
     title:"",
     content:"清雷骤雨",
     setTime:"/image/setTime.png",
-    background:"/image/background.jpg",
+    background:'http://175.178.90.196:7778/sound/background.jpg',
     imageSrc:'',
     isPlay:true,
     videoSrc: '',
@@ -28,6 +28,17 @@ Page({
       }
       return options;
     },
+  },
+  onLoad(options) {
+    console.log(options)
+    this.setData({
+      videoSrc:options.music,
+      title:options.name,
+      imageSrc:options.image
+    })
+    this.audioCtx = app.globalData.musicPlayer;
+    console.log(this.audioCtx.currentTime)
+    this.initialAudio()
   },
   // 显示或隐藏调整时间条
   showPopup() {
@@ -82,18 +93,6 @@ Page({
     var minites = parseInt(timeArray[0], 10);
     var seconds = minites*60;
     return seconds;
-  },
-
-  onLoad(options) {
-    console.log(options)
-    this.setData({
-      videoSrc:options.music,
-      title:options.name,
-      imageSrc:options.image
-    })
-    this.audioCtx = app.globalData.musicPlayer;
-    console.log(this.audioCtx.currentTime)
-    this.initialAudio()
   },
   // 初始化音频
   initialAudio() {

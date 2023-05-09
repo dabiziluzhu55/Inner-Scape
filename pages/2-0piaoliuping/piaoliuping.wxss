@@ -5,6 +5,39 @@
   position: fixed;  
   z-index: -1;  
 }
+
+.font1{
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  margin-top: 550rpx;
+  margin-left: 145rpx;
+}
+
+.font2{
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  margin-top: 620rpx;
+  margin-left: 270rpx;
+}
+
+.font3{
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  margin-top: 690rpx;
+  margin-left: 270rpx;
+}
+
+.font4{
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  margin-top: 760rpx;
+  margin-left: 155rpx;
+}
+
 .star-bt1{
   padding: 0;
   background-color: transparent;
@@ -12,8 +45,8 @@
   width: 100px;
   height: 100px;
   position: absolute;
-  left:190rpx;
-  top:750rpx;
+  left:20rpx;
+  top:883rpx;
 }
 
 .star-bt2{
@@ -23,7 +56,7 @@
   width: 100px;
   height: 100px;
   position: absolute;
-  left:190rpx;
+  left:370rpx;
   top:880rpx;
 }
 

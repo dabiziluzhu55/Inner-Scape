@@ -1,0 +1,12 @@
+<view class="container">
+  <image class="banner-image" src="/image/banner.jpg"></image>
+  <scroll-view class="list" scroll-y="true">
+  <view wx:for="{{tests}}" wx:key="id" class="item" bindtap="navigateToTest" data-url="{{item.url}}">
+    <view class="item-content">
+        <view class="item-title">{{item.title}}</view>
+        <view class="item-description">{{item.description}}</view>
+      </view>
+    <image class="item-image" src="{{item.image}}"></image>
+  </view>
+</scroll-view>
+</view>

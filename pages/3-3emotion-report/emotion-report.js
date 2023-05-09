@@ -15,7 +15,7 @@ Page({
     MoodsRecord : 0,// 共记录心情
     MoodsGenerated : 0,// 共产生心情
     MostMood : '开心',// 产生最多心情
-    MostMoodIcon : 'icon_happy',// 产生最多心情对应的icon
+    MostMoodIcon : '',// 产生最多心情对应的icon
     Positive : '38.6',// 正面情绪占比
     Negative : '18.2', // 负面情绪占比
     Normal : '18.2', // 中性程序占比
@@ -24,99 +24,9 @@ Page({
       name: "开心",
       count : 1,
     },
-    {
-      icon: "icon_excited",
-      name: "兴奋",
-      count : 2,
-    },
-    {
-      icon: "icon_disappointed",
-      name: "失望",
-      count : 3,
-    },
-    {
-      icon: "icon_angry",
-      name: "生气",
-      count : 4,
-    },
-    {
-      icon: "icon_embarrassed",
-      name: "尴尬",
-      count : 5,
-    },
-    {
-      icon: "icon_sad",
-      name: "难过",
-      count : 6,
-    },
-    {
-      icon: "icon_grievance",
-      name: "委屈",
-      count : 7,
-    },
-    {
-      icon: "icon_lonely",
-      name: "孤独",
-      count : 8,
-    },
-    {
-      icon: "icon_dysphoria",
-      name: "烦躁",
-      count : 9,
-    },
-    {
-      icon: "icon_nervous",
-      name: "紧张",
-      count : 10,
-    },
-    {
-      icon: "icon_calm",
-      name: "平静",
-      count : 11,
-    },
-    {
-      icon: "icon_bored",
-      name: "无聊",
-      count : 12,
-    },
-    {
-      icon: "icon_helpless",
-      name: "无奈",
-      count : 13,
-    },
-    {
-      icon: "icon_mourning",
-      name: "丧",
-      count : 4,
-    },
-    {
-      icon: "icon_other",
-      name: "其他",
-      count : 15,
-    },
     ],
+    wmoodList:[],
     reasonsList : [
-      {text : '假期',
-        count : 4, // 次数
-      },
-      {text : '游戏',
-        count : 1, // 次数
-      },
-      {text : '玩玩玩',
-        count : 2, // 次数
-      },
-      {text : '想玩的嘞',
-        count : 2, // 次数
-      },
-      {text : '假期',
-        count : 4, // 次数
-      },
-      {text : '游戏',
-        count : 1, // 次数
-      },
-      {text : '玩玩玩',
-        count : 2, // 次数
-      },
       {text : '想玩的嘞',
         count : 2, // 次数
       },
@@ -124,10 +34,19 @@ Page({
         count : 2, // 次数
       },
     ],
+    wreasonsList:[],
     activeReportType: 'month',
+    echartData:[],
+    //记录心情次数
+    wemotionTimes:0,
+    //产生心情种数
+    wemotionSpecies:0,
+    //原因总数
+    wreasonTimes:0
   },
 
   onLoad: function () {
+    this.initialData();
     let nowDate = new Date().toLocaleDateString();
     this.setData({
       nowDate : nowDate,
@@ -135,17 +54,136 @@ Page({
     // 初始化echarts图表
     this.initChart();
   },
+  initialData(){
+    //月度心情分布
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/monthDistribution',
+      data: {
+        openId:'test',
+        month:5
+      },
+      success:(res)=>{ 
+        this.setData({
+          moodList:res.data
+        })
+      }
+    })
+    //周度心情分布
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/weekDistribution',
+      data: {
+        openId:'test',
+      },
+      success:(res)=>{ 
+        this.setData({
+          wmoodList:res.data
+        })
+        const totalCount2 = this.data.wmoodList.reduce((sum, item) => {
+          return sum + item.count;
+        }, 0);
+        this.setData({
+          wemotionTimes:totalCount2,
+          wemotionSpecies:this.data.wmoodList.length,
+        })
+      }
+    })
+    //月度心情原因分布
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/monthReason',
+      data: {
+        openId:'test',
+        month:5
+      },
+      success:(res)=>{ 
+        this.setData({
+          reasonsList:res.data
+        })
+      }
+    })
+    //周度心情原因分布
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/weekReason',
+      data: {
+        openId:'test',
+      },
+      success:(res)=>{ 
+        console.log(res.data)
+        this.setData({
+          wreasonsList:res.data
+        })
+        this.setData({
+          wreasonTimes:this.data.wreasonsList.length
+        })
+      }
+    })
+    //月度心情数据
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/monthStatistic',
+      data: {
+        openId:'test',
+        month:5
+      },
+      success:(res)=>{
+        console.log(res.data)
+        this.setData({
+          MoodsRecord:res.data.moodsRecord,
+          MoodsGenerated:res.data.moodsGenerated,
+          MostMood:res.data.moodMost,
+          MostMoodIcon:res.data.moodMostUrl
+        })
+      }
+    })
+    //月度心情百分比
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/monthPercent',
+      data: {
+        openId:'test',
+        month:5
+      },
+      success:(res)=>{ 
+        this.setData({
+          Positive:Math.round(res.data.positive*100),
+          Negative:Math.round(res.data.negative*100),
+          Normal:Math.round(res.data.normal*100)
+        })
+      }
+    })
+    //月度折线图数据
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/monthData',
+      data: {
+        openId:'test',
+        month:5
+      },
+      success:(res)=>{
+        console.log(res.data)
+        this.setData({
+          echartData:res.data
+        })
+      }
+    })
+    //心情记录日期
+    wx.request({
+      url: 'http://175.178.90.196:7779/moodRequest/allDate',
+      data: {
+        openId:'test',
+      },
+      success:(res)=>{ 
+        this.setData({
+          spot:res.data
+        })
+      }
+    })
+  },
   onMonthReportTap: function() {
     this.setData({
       activeReportType: 'month',
-      activeReportContent: '这里是月报的内容。'
     });
   },
 
   onWeekReportTap: function() {
     this.setData({
       activeReportType: 'week',
-      activeReportContent: '这里是周报的内容。'
     });
   },
 
@@ -160,13 +198,13 @@ Page({
       });
 
       // 设置数据
-      const data = [
-        { day: '1', value: 0 },
-        { day: '2', value: 1 },
-        { day: '3', value: 2 },
-        { day: '4', value: 1.4 },
-        // 更多数据...
-      ];
+      // const data = [
+      //   { day: '1', value: 0 },
+      //   { day: '2', value: 1 },
+      //   { day: '3', value: 2 },
+      //   { day: '4', value: 1.4 },
+      // ];
+      const data=this.data.echartData;
 
       // 配置图表选项
       const option = {
@@ -195,7 +233,7 @@ Page({
         },
         series: [{
           type: 'line',
-          data: data.map(item => item.value),
+          data: data.map(item => item.point),
           smooth: true
         }],
         lineStyle: {
@@ -221,7 +259,6 @@ Page({
       dateString: e.detail.dateString
     })
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
