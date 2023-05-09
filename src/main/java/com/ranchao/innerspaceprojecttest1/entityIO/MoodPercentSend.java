@@ -11,7 +11,7 @@ public class MoodPercentSend {
     public MoodPercentSend() {
     }
 
-    public MoodPercentSend(double positive, double negative, double normal) {
+    public MoodPercentSend(double negative, double normal, double positive) {
         this.positive = positive;
         this.negative = negative;
         this.normal = normal;

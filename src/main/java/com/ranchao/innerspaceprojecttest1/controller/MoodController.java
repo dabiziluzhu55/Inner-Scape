@@ -57,4 +57,19 @@ public class MoodController {
         return moodService.dailySend(openId, 1, month);
     }
 
+    @RequestMapping("/moodDiary")
+    public ArrayList<MoodDiarySend> getDiaryMood(String openId) {
+        return moodService.diarySends(openId);
+    }
+
+    @RequestMapping("/allMood")
+    public ArrayList<MoodAllSend> getAllMood() {
+        return moodService.allSends();
+    }
+
+    @RequestMapping("/allDate")
+    public ArrayList<String> getAllDate(String openId) {
+        return moodService.allDate(openId);
+    }
+
 }

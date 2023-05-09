@@ -65,59 +65,21 @@ public class MoodService {
         }
     }
 
-//    public void getLastSevenDaysInfo() {
-//        // 获取当前日期
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.parse("2023-04-26 11:50:53", formatter);
-//
-//        // 获取所有的记录
-//
-//        //
-//        ArrayList<ArrayList<DailyMood>> lastWeek = new ArrayList<>();
-//        for (int i = 0; i < 7; i++) {
-//            lastWeek.add(new ArrayList<DailyMood>());
-//        }
-//        for (DailyMood mood : dailyMoods) {
-//            if (isWithinLast7Days(now, mood.getRecordTime())) {
-//                for (int i = 0; i < 7; i++) {
-//                    if (isWithinTheseDays(now, mood.getRecordTime(), i + 1, i)) {
-//                        lastWeek.get(6 - i).add(mood);
-//                    }
-//                }
-//            }
-//        }
-//        MoodChartSend moodChartSend = new MoodChartSend();
-//        // 我想的是需要3个数据
-//        // 第一个是过去7天的 日期中的 “几号”
-//        for (int i = 0; i < 7; i++) {
-//            moodChartSend.getDates().add(now.minusDays(i + 1).getDayOfMonth());
-//        }
-//        // 过去7天，每天的心情记录次数  直方图
-//        for (int i = 0; i < 7; i++) {
-//            moodChartSend.getTimes().add(lastWeek.get(i).size());
-//        }
-//        // 过去7天，每天的分数和   曲线图
-//        for (int i = 0; i < 7; i++) {
-//            int curr = 0;
-//            ArrayList<DailyMood> temp = lastWeek.get(i);
-//            for (DailyMood dailyMood : temp) {
-//                curr += moodArrayList.get(dailyMood.getMoodNumber()).getPoint();
-//            }
-//            moodChartSend.getPoints().add(curr);
-//        }
-//    }
-
     public int setMoodService(MoodReceive moodReceive) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.parse(moodReceive.getRecordTime(), formatter);
         return moodMapper.insert(new DailyMood(moodReceive.getOpenId(), moodReceive.getMoodNumber(), moodReceive.getDiary(), moodReceive.getReason(), now));
     }
 
-    //
-    ArrayList<DailyMood> validWeekMood(String openId) {
+    List<DailyMood> getAllDailyMood(String openId) {
         Map<String, Object> map = new HashMap<>();
         map.put("open_id", openId);
-        List<DailyMood> totalMoods = moodMapper.selectByMap(map);
+        return moodMapper.selectByMap(map);
+    }
+
+    //
+    ArrayList<DailyMood> validWeekMood(String openId) {
+        List<DailyMood> totalMoods = getAllDailyMood(openId);
         LocalDateTime now = LocalDateTime.now();
         ArrayList<DailyMood> returnMood = new ArrayList<>();
         // 当前zhou
@@ -133,9 +95,7 @@ public class MoodService {
     }
 
     ArrayList<DailyMood> validMonthMood(String openId, int month) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("open_id", openId);
-        List<DailyMood> totalMoods = moodMapper.selectByMap(map);
+        List<DailyMood> totalMoods = getAllDailyMood(openId);
         LocalDateTime now = LocalDateTime.now();
         ArrayList<DailyMood> returnMood = new ArrayList<>();
         // 当前月份
@@ -202,7 +162,6 @@ public class MoodService {
             validMoods = validMonthMood(openId, month);
         if (type == 2)
             validMoods = validWeekMood(openId);
-
         ArrayList<MoodReasonSend> reasonList = new ArrayList<>();
         for (DailyMood dailyMood : validMoods) {
             reasonList = reasonHandle(reasonList, dailyMood.getReason());
@@ -227,11 +186,13 @@ public class MoodService {
                 }
             }
         }
-        return new MoodStatisticSend(totalMood, kindMood, moodArrayList.get(mostMood).getName());
+        MoodStatisticSend temp = new MoodStatisticSend(totalMood, kindMood, moodArrayList.get(mostMood).getName());
+        temp.setMoodMostUrl(moodArrayList.get(mostMood).getUrl());
+        return temp;
     }
 
-    public MoodPercentSend percentSend(String openId, int type,int month) {
-        ArrayList<Integer> countMood = countData(openId, type,month);
+    public MoodPercentSend percentSend(String openId, int type, int month) {
+        ArrayList<Integer> countMood = countData(openId, type, month);
         ArrayList<Double> template = new ArrayList<>(3);
         for (int i = 0; i < 3; i++) {
             template.add(0.0);
@@ -248,7 +209,7 @@ public class MoodService {
         return new MoodPercentSend(template.get(0) / total, template.get(1) / total, template.get(2) / total);
     }
 
-    public ArrayList<MoodDailySend> dailySend(String openId, int type,int month) {
+    public ArrayList<MoodDailySend> dailySend(String openId, int type, int month) {
         int today = 1;
         ArrayList<DailyMood> validMoods = new ArrayList<>();
         if (type == 1)
@@ -279,4 +240,39 @@ public class MoodService {
         }
         return moodDailySends;
     }
+
+    public ArrayList<MoodDiarySend> diarySends(String openId) {
+        ArrayList<MoodDiarySend> curr = new ArrayList<>();
+        List<DailyMood> totalMoods = getAllDailyMood(openId);
+        for (int i = 0; i < totalMoods.size(); i++) {
+            DailyMood dailyMood = totalMoods.get(i);
+            MoodDiarySend moodDiarySend = new MoodDiarySend(i, dailyMood.getDiary(), dailyMood.getReason());
+            moodDiarySend.setMoodImageUrl(moodArrayList.get(dailyMood.getMoodNumber()).getUrl());
+            moodDiarySend.setRecordTime(dailyMood.getRecordTime());
+            curr.add(moodDiarySend);
+        }
+        return curr;
+    }
+
+    public ArrayList<MoodAllSend> allSends() {
+        ArrayList<MoodAllSend> moodAllSends = new ArrayList<>();
+        for (Mood mood : moodArrayList) {
+            moodAllSends.add(new MoodAllSend(mood.getName(), mood.getUrl()));
+        }
+        return moodAllSends;
+    }
+
+
+    public ArrayList<String> allDate(String openId) {
+        ArrayList<String> curr = new ArrayList<>();
+        List<DailyMood> totalMoods = getAllDailyMood(openId);
+        for (DailyMood dailyMood : totalMoods) {
+            LocalDateTime time = dailyMood.getRecordTime();
+            String thisTime = time.getYear() + "/" + time.getMonthValue() + "/" + time.getDayOfMonth();
+            curr.add(thisTime);
+        }
+        Set<String> set = new HashSet<>(curr); // 将ArrayList转换为Set
+        return new ArrayList<>(set);
+    }
+
 }

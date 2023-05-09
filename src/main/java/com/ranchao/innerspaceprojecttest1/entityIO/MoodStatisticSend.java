@@ -8,6 +8,7 @@ public class MoodStatisticSend {
     private int moodsRecord;
     private int moodsGenerated;
     private String moodMost;
+    private String moodMostUrl;
 
     public MoodStatisticSend() {
     }
