@@ -52,10 +52,11 @@ Page({
     this.setData({
       nowDate : nowDate,
       userID:UserId
-    })
+    })    
+    this.initialData();
     // 初始化echarts图表
     this.initChart();
-    this.initialData();
+
   },
   initialData(){
     //月度心情分布
