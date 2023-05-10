@@ -49,6 +49,7 @@ Page({
   },
   submitForm(e){
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
+
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/setMood',
       method: 'Get',
@@ -67,9 +68,20 @@ Page({
       }
     })
 
-    wx.switchTab({
-      url: '/pages/3-0emotion/emotion',
-    })
+	wx.showToast({
+      title: '保存成功',
+      icon: 'none',
+      duration: 1500,
+      success: function () {
+       //弹窗后执行，可以省略
+	   setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/3-0emotion/emotion',
+          })
+	        },1500);
+        }
+      })
+
 
   },
   /**

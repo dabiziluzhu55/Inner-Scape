@@ -1,58 +1,9 @@
 const util = require('../../utils/util.js')
+
 Page({
   data: {
     menu_add: "icon_emotions_menus",
-    menu: [
-      {
-        icon: "/emotion_imgs/开心.png",
-        name: "开心",
-      },
-      {
-        icon: "/emotion_imgs/难过.png",
-        name: "难过",
-      },
-      {
-        icon: "/emotion_imgs/尴尬.png",
-        name: "尴尬",
-      },
-      {
-        icon:"/emotion_imgs/无聊.png",
-        name:"无聊",
-      },
-      {
-        icon:"/emotion_imgs/生气.png",
-        name:"生气",
-      },
-      {
-        icon: "/emotion_imgs/烦躁.png",
-        name: "烦躁",
-      },
-      {
-        icon:"/emotion_imgs/紧张.png",
-        name:"紧张",
-      },
-
-      {
-        icon: "/emotion_imgs/孤独.png",
-        name: "孤独",
-      },
-      {
-        icon:"/emotion_imgs/害怕.png",
-        name:"害怕",
-      },
-      {
-        icon: "/emotion_imgs/平静.png",
-        name: "平静",
-      },
-      {
-        icon: "/emotion_imgs/其他.png",
-        name: "其他",
-      },
-      {
-        icon: "/emotion_imgs/委屈.png",
-        name: "委屈",
-      },
-    ],
+    menu: [],
     show_menu: false,
     curIndex: "",
     nowIcon:'',// 当前心情图标
@@ -104,9 +55,18 @@ Page({
   },
   change2reason(){
     //传递日期字符串、心情Icon的路径和心情名称
-    wx.navigateTo({
-      url: '/pages/3-1emotion-reason/emotion-reason?Date='+this.getDateString()+'&emotionSrc='+this.data.nowIcon+'&emotion='+this.data.nowName+'&emotionId='+this.data.curIndex
-    })
+    if(this.data.nowName!=''){
+      wx.navigateTo({
+        url: '/pages/3-1emotion-reason/emotion-reason?Date='+this.getDateString()+'&emotionSrc='+this.data.nowIcon+'&emotion='+this.data.nowName+'&emotionId='+this.data.curIndex
+      })
+    }
+    else{
+      wx.showToast({
+        title: '请选择心情',
+        icon: 'none',
+        duration: 1500,}
+      )
+    }
   },
   change2report(){
     wx.navigateTo({

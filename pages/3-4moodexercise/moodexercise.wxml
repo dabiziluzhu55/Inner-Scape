@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="banner-image" src="/image/banner.jpg"></image>
+  <image class="banner-image" src="http://175.178.90.196:7778/related/banner.jpg"></image>
   <scroll-view class="list" scroll-y="true">
   <view wx:for="{{tests}}" wx:key="id" class="item" bindtap="navigateToTest" data-url="{{item.url}}">
     <view class="item-content">

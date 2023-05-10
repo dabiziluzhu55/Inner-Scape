@@ -9,7 +9,6 @@
     <view class="commentbtn" style="width: 90%;" wx:for="{{comments}}" wx:key="{{id}}" data-index="{{index}}" bindlongpress="LongPressed">
     <view class="avatername">
     <image class="avater" src="/images/head.png"></image>
-    <!-- <text class="name">{{item.nickname}}</text> -->
     </view>
     <view class="commentarea">
       <text class="name" style="text-align: left;">{{item.nickname}}</text> 

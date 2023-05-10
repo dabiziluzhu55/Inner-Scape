@@ -107,7 +107,6 @@ Page({
         openId:'test',
       },
       success:(res)=>{ 
-        console.log(res.data)
         this.setData({
           wreasonsList:res.data
         })
@@ -124,7 +123,6 @@ Page({
         month:5
       },
       success:(res)=>{
-        console.log(res.data)
         this.setData({
           MoodsRecord:res.data.moodsRecord,
           MoodsGenerated:res.data.moodsGenerated,
@@ -156,7 +154,6 @@ Page({
         month:5
       },
       success:(res)=>{
-        console.log(res.data)
         this.setData({
           echartData:res.data
         })

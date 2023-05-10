@@ -14,7 +14,7 @@ page{
 .background {
   object-fit: contain;
   width: 70%;
-  margin-top: -20rpx;
+  margin-top: -30rpx;
 
 }
 .report {
@@ -22,13 +22,13 @@ page{
 }
 .report-title {
   display: inline-block;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #333;
   margin-left: 40rpx;
 }
 .report-title.active {
-  font-size: 36px;
+  font-size:30px;
 }
 .block{
   position: relative;
@@ -38,7 +38,7 @@ page{
   height: auto
 }
 .title {
-  font-size: 55rpx;
+  font-size: 50rpx;
   font-weight: 550;
   padding-top: 20rpx;
 }
@@ -46,12 +46,12 @@ page{
   font-size: 35rpx;
   position: relative;
   right: -400rpx;
-  top:-60rpx;
+  top:-50rpx;
 }
 .week_title {
   margin-top: 20rpx;
   margin-left: 20rpx;
-  font-size: 40rpx;
+  font-size: 35rpx;
   color: #f4ae8a;
 }
 .week_content {
@@ -83,14 +83,6 @@ ec-canvas{
   position: relative;
   left:20rpx;
 }
-/* .bianhua {
-  position: relative;
-  top:20rpx;
-  left:50rpx;
-  background-color: #fff; 
-  width: 88%; 
-} */
-
 
 
 .date-string {

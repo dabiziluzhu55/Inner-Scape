@@ -169,7 +169,7 @@ page {
 
 /* 心情描述 */
 .emotion_desbtn{
-  margin-left: -10%;
+  margin-left: -14%;
   margin-top: 15%;
   align-items: center;
   background-color: #222;
@@ -193,13 +193,11 @@ page {
   height: 150rpx;
   margin-top: 5%;
   font-size: 10px;
-  font-family: '宋体';
   display: flex;
   flex-direction: column;
 }
 
 .data_text{
   font-size: 10px;
-  font-family: '宋体' ;
   margin-top: -30%;
 }

@@ -3,7 +3,7 @@
     <view class="message-hello">亲爱的陌生人</view>
     <view class="line"></view>
     <view class="message-text">{{starContent}}</view>
-    <image class="hug-image" wx:if="{{showHug}}" src="/image/bixin.png"></image>
+    <image class="hug-image" wx:if="{{showHug}}" src="http://175.178.90.196:7778/related/bixin.png"></image>
     <view class="message-thanks">感谢您的倾听</view>
     <view class="message-time">{{message.flyTime}}2023年4月14日</view>
     <view class="message-user">{{starHost}}</view>

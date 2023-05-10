@@ -236,7 +236,6 @@ Page{
 .closetext,.opentext {
   margin-top: -1px; /* 文字距离图标的间距 */
   font-size: 15px;
-  font-family: "宋体";
 }
 
 
@@ -264,7 +263,7 @@ Page{
   padding: 40rpx;
   /* 添加圆角效果 */
   border-radius: 10rpx;
-  border : 1.5px solid black;
+  /* border : 1.5px solid black; */
   /* 设置每个条目之间的间隔距离 */
   margin-bottom: 10rpx;
   margin-right: 10rpx;
@@ -307,7 +306,6 @@ Page{
   font-weight: 400;
   background-clip: text;
   color:  #ffffff;
-  font-family: "宋体";
 }
 
 /* 新消息数量 */

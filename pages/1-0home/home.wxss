@@ -183,24 +183,24 @@
 }
 
 .button {
-  aspect-ratio: 1; /* 设置宽高一致 */
+  /* 设置宽高一致 */
+  /* aspect-ratio: 1;  */
+  height:345rpx;
+  padding-bottom: 4%;
   margin: 3%;
-  border: 2px solid rgb(158, 152, 152);
-  background-color: rgba(223, 219, 219, 0.048);
+  background-color: #f6f6f6;
 }
 
 .titletext{
   border-radius: 1%;
   margin: 3%;
   font-size: 15px;
-  font-family: "宋体";
   white-space: pre-wrap;
 }
 
 .contenttext{
   margin: 5%;
   font-size: 15px;
-  font-family: "宋体";
 }
 
 .img{

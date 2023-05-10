@@ -9,17 +9,17 @@
 <text class='title'>心情打卡成功：{{emotion}}</text>
 
 <view class="container_1">
-  <view class="box">
+  <view class="box" bindtap="change2excercise">
     <icon class="iconfont icon icon_practice" style="margin-top: -25%;"></icon>
     <text class="content">心情练习</text>
   </view>
-  <view class="box">
+  <view class="box" bindtap="change2meditate">
     <icon class="iconfont icon icon_dairy" style="margin-top: -25%;"></icon>
-    <text class="content">冥想放松</text>
+    <text class="content">心情日记</text>
   </view>
-  <view class="box">
+  <view class="box" bindtap="change2report">
     <icon class="iconfont icon icon_report" style="margin-top: -25%;"></icon>
-    <text class="content">温暖解忧</text>
+    <text class="content">心情报告</text>
   </view>
 </view>
 

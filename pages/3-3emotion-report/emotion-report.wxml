@@ -12,7 +12,7 @@
 <block wx:if="{{activeReportType=='week'}}">
   <!-- 周报 -->
   <view class="container">
-    <image class='background' src='/image/beijing.png' mode="aspectFit"></image>
+    <image class='background' src='http://175.178.90.196:7778/related/beijing.png' mode="aspectFit"></image>
     <view class="block">
       <view style="padding-top: 20rpx; padding-left: 20rpx;">
         <text class="title">心情周报</text>
@@ -24,7 +24,6 @@
       <view class="week_content"><text>本周一共记录心情{{wemotionTimes}}次，共产生{{wemotionSpecies}}种心情</text></view>
       <view class="link">
         <view class="link_child" wx:for="{{wmoodList}}" wx:key="index">
-          <!-- <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon> -->
           <image class="emotions-icon " src='{{item.url}}'></image>
           <text class="emotions-text">{{item.name}}x{{item.count}}</text>
         </view>
@@ -109,6 +108,7 @@
   </view>
 
   <!-- 产生最多的心情 -->
+
   <view class="most-mood-container">
     <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">产生最多的心情</text>
     <view class="icon-text-container">
