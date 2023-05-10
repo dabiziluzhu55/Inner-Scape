@@ -8,5 +8,4 @@ public class MeditationSend {
     private String imageUrl;
     private String musicUrl;
     private String content;
-
 }

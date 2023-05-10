@@ -13,8 +13,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
 import java.util.*;
@@ -162,8 +163,29 @@ public class MoodService {
             validMoods = validMonthMood(openId, month);
         if (type == 2)
             validMoods = validWeekMood(openId);
-        ArrayList<MoodReasonSend> reasonList = new ArrayList<>();
+
+        ArrayList<Integer> countMood = countData(openId, type, month);
+        int mostMood = 0;
+        for (int i = 0; i < countMood.size(); i++) {
+            int curr = countMood.get(i);
+            if (curr != 0) {
+                if (mostMood == 0) {
+                    mostMood = curr;
+                } else {
+                    if (countMood.get(mostMood) < curr)
+                        mostMood = i;
+                }
+            }
+        }
+        ArrayList<DailyMood> needMoods = new ArrayList<>();
         for (DailyMood dailyMood : validMoods) {
+            if (dailyMood.getMoodNumber() == mostMood) {
+                needMoods.add(dailyMood);
+            }
+        }
+
+        ArrayList<MoodReasonSend> reasonList = new ArrayList<>();
+        for (DailyMood dailyMood : needMoods) {
             reasonList = reasonHandle(reasonList, dailyMood.getReason());
         }
         return reasonList;
@@ -217,9 +239,12 @@ public class MoodService {
         if (type == 2)
             validMoods = validWeekMood(openId);
 
+        int year = 2023;
+        YearMonth yearMonth = YearMonth.of(year, month);
+        LocalDate firstDayOfMonth = yearMonth.atDay(1);
+        LocalDateTime startOfMonth = firstDayOfMonth.atStartOfDay();
         ArrayList<MoodDailySend> moodDailySends = new ArrayList<>();
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime baseTime = now.withDayOfMonth(1).with(LocalTime.MIN);
+        LocalDateTime baseTime = startOfMonth;
         for (int i = 0; i < 31; i++) {
             ArrayList<DailyMood> todayMood = new ArrayList<>();
             for (DailyMood dailyMood : validMoods) {
