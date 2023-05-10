@@ -515,7 +515,7 @@ Page({
   getMingData : function(){
     var that = this;
     wx.request({
-      url: 'http://175.178.90.196:7779/medRequest/totalRecords?openId='+that.data.UserId,
+      url: 'http://175.178.90.196:7779/medRequest/totalRecords?openId=test',
 
       success : (res)=>{
         that.setData({

@@ -10,7 +10,6 @@
 <view class="icon-jiantou2 iconfont hideIcon" bindtap="return"></view>
 <!-- 声音标题及描述 -->
 <text class="title">{{title}}</text>
-<text class="content">{{content}}</text>
 <!-- 设置时间 -->
 <image class="setTime" src="{{setTime}}" bindtap="showPopup"></image>
 
