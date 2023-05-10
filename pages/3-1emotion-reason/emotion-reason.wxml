@@ -1,6 +1,6 @@
 <!--pages/motion-reason/motion-reason.wxml-->
 <view class="title">是因为什么让你感到{{emotion}}呢</view>
-<image class='mybox' src='/image/box.png' mode="aspectFit">
+<image class='mybox' src='http://175.178.90.196:7778/photo/box.png' mode="aspectFit">
   <image class="emotion" src="{{emotionSrc}}" 
        mode="aspectFill">
        </image>

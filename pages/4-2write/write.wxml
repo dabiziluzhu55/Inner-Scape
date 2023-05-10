@@ -1,17 +1,21 @@
 <!--pages/write/write.wxml-->
 <scroll-view class="container">
-  <view class="message-box">
-    <text style="font-size: 17px;font-family: '宋体';">小信一封--</text>
+  <view class="message-box" style="margin-top: 30%;">
+  <view class="gap"></view>
+    <text style="font-size: 17px;margin-top: -12%;margin-left: 4%;">小信一封--</text>
     <text class="message-text">{{starContent}}</text>
+    <view class="gap"></view>
   </view>
  
+ <view style="margin-left: 5%;margin-top: 4%;">评论：</view>
   <view class="btncontainer">
     <view class="commentbtn" style="width: 90%;" wx:for="{{comments}}" wx:key="{{id}}" data-index="{{index}}" bindlongpress="LongPressed">
     <view class="avatername">
-    <image class="avater" src="/images/head.png"></image>
+    <!-- <image class="avater" src="/image/head.png"></image> -->
+    <!-- <text class="name">{{item.nickname}}</text> -->
     </view>
     <view class="commentarea">
-      <text class="name" style="text-align: left;">{{item.nickname}}</text> 
+      <text class="name" style="text-align: left;">{{item.nickname}}:</text> 
       <text class="commenttext">{{item.description}}
       </text>
     </view>

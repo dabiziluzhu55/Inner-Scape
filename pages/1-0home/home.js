@@ -28,7 +28,7 @@ Page({
     this.observer = wx.createIntersectionObserver(this);
   },
   onPageScroll(e){
-    console.log(e)
+
     if(e.scrollTop>=0&&e.scrollTop<360){
       this.setData({
         secIndex2:0
@@ -45,7 +45,6 @@ Page({
     if(this.data.isShow==true){
       this.initialAudio()
     }
-    console.log(this.timeFormat(this.audioCtx.currentTime)+'/'+this.data.duration)
   },
     // 初始化音频
   initialAudio() {

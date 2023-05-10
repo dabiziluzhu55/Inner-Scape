@@ -1,11 +1,11 @@
 <!--index.wxml-->
 <view class="btn-container">
   <button class="voicebtn" bindtap="exitBtnEvent">
-    <image class="voiceicon" src="/image/exit.png" alt="图标" />
+    <image class="voiceicon" src="http://175.178.90.196:7778/photo/exit.png" alt="图标" />
   </button>
-  <view style="font-size: 15px; font-family:'宋体';margin-left: 10px;margin-top: 2%;">{{name}}</view>
+  <view style="font-size: 15px;margin-left: 10px;margin-top: 2%;">{{name}}</view>
   <button class="timebtn" id="openBtn" bindtap="teachBtnEvent">
-    <image class="timeicon" src="/image/teach.png" alt="图标" />
+    <image class="timeicon" src="http://175.178.90.196:7778/photo/teach.png" alt="图标" />
   </button>
 </view>
 <!-- 教程图 -->
@@ -14,7 +14,7 @@
     <view class="modal-header">
       <view class="modal-title">呼吸练习教程</view>
       <button id="cancelBtn" bindtap="cancelTeachBtnEvent">
-        <image class="cancelicon" src="/image/cancel.jpg" alt="图标" />
+        <image class="cancelicon" src="http://175.178.90.196:7778/photo/cancel.jpg" alt="图标" />
       </button>
     </view>
     <scroll-view class="" scroll-y="{{true}}" style="max-height: 400rpx;">
@@ -42,7 +42,7 @@
     <span class="voicetext">{{voiceText}}</span>
   </button>
   <button class="timebtn" id="openBtn" bindtap="timeBtnEvent">
-    <image class="timeicon" src="/image/time.png" alt="图标" />
+    <image class="timeicon" src="http://175.178.90.196:7778/photo/time.png" alt="图标" />
     <span class="timetext">调整时间</span>
   </button>
   <view class="modal" wx:if="{{modalHidden}}">
@@ -50,7 +50,7 @@
       <view class="modal-header">
         <view class="modal-title">定时训练时长</view>
         <button id="cancelBtn" bindtap="cancelBtnEvent">
-          <image class="cancelicon" src="/image/cancel.jpg" alt="图标" />
+          <image class="cancelicon" src="http://175.178.90.196:7778/photo/cancel.jpg" alt="图标" />
         </button>
       </view>
       <scroll-view class="options" scroll-y="{{true}}" style="max-height: 300rpx;">

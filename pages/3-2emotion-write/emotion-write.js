@@ -10,7 +10,7 @@ Page({
     emotionSrc:'',
     emotionId:'',
     reason:'',
-    background:'/image/write-bg.jpg',
+    background:'http://175.178.90.196:7778/photo/write-bg.jpg',
     scrollY: false,
     scrollViewHeight: 200,
     date:''
@@ -48,8 +48,6 @@ Page({
     })
   },
   submitForm(e){
-    console.log('form发生了submit事件，携带数据为：', e.detail.value);
-
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/setMood',
       method: 'Get',

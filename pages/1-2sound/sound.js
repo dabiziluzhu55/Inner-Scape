@@ -8,7 +8,7 @@ Page({
   data: {
     title:"",
     content:"清雷骤雨",
-    setTime:"/image/setTime.png",
+    setTime:"http://175.178.90.196:7778/photo/setTime.png",
     background:'http://175.178.90.196:7778/sound/background.jpg',
     imageSrc:'',
     isPlay:true,
@@ -30,14 +30,12 @@ Page({
     },
   },
   onLoad(options) {
-    console.log(options)
     this.setData({
       videoSrc:options.music,
       title:options.name,
       imageSrc:options.image
     })
     this.audioCtx = app.globalData.musicPlayer;
-    console.log(this.audioCtx.currentTime)
     this.initialAudio()
   },
   // 显示或隐藏调整时间条
@@ -83,7 +81,6 @@ Page({
   }, 
 
   hour2minite(hm){
-    console.log(hm)
     var [hour, minute] = hm.split(':');
     var minuteInSecond = parseInt(hour) * 60 + parseInt(minute);
     return `${minuteInSecond}:00`;

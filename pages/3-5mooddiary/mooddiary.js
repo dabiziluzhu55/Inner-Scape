@@ -8,28 +8,28 @@ Page({
         recordTime: '2023-05-07',
         diary: '开心',
         reason: '跟朋友一起看了一场电影',
-        moodImageUrl: '/images/开心.png'
+        moodImageUrl: 'http://175.178.90.196:7778/photo/开心.png'
       },
       {
         id: 2,
         recordTime: '2023-05-06',
         diary: '平静',
         reason: '五一结束了',
-        moodImageUrl: '/images/平静.png'
+        moodImageUrl: 'http://175.178.90.196:7778/photo/平静.png'
       },
       {
         id: 3,
         recordTime: '2023-05-05',
         diary: '难过',
         reason: '呜呜呜呜呜',
-        moodImageUrl: '/images/难过.png'
+        moodImageUrl: 'http://175.178.90.196:7778/photo/难过.png'
       },
       {
         id: 4,
         recordTime: '2023-05-01',
         diary: '心动',
         reason: '跟朋友一起看了一场电影',
-        moodImageUrl: '/images/心动.png'
+        moodImageUrl: 'http://175.178.90.196:7778/photo/心动.png'
       },
     ]
   },

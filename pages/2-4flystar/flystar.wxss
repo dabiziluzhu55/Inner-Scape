@@ -10,20 +10,30 @@ page{
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+  margin-top:100rpx;
 } 
 .message-box {
   background-color: #fff;
   border-radius: 20px;
+  position: relative;
   margin-top: -180rpx;
   margin-left: 45rpx;
-  height: 800rpx;
+  height: 900rpx;
   width: 88%;
+}
+
+.message-hello{
+  position: absolute;
+  font-size: 14px;
+  color: grey;
+  margin-left: 30rpx;
+  top: 30rpx;
 }
 
 textarea {
   height: 800rpx;
   padding: 40rpx;
-  top:20rpx;
+  top:50rpx;
   left:-20rpx;
   width:600rpx;
   font-size: 13px;
@@ -37,21 +47,22 @@ textarea {
   position: absolute;
   color:grey;
   font-size: 13px;
-  top:750rpx;
-  left:100rpx;
+  top:840rpx;
+  right:100rpx;
 }
 
-button {
+
+.btn{
   position: absolute;
-  top:850rpx;
+  top:1060rpx;
   left:195rpx;
   background-color: #93cbf7;
   border: none;
-  border-radius: 14px;
+  border-radius: 18px;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   padding: 10px 15px;
   height:100rpx; /* 修改按钮高度 */
-  line-height: 80rpx; /* 文本垂直居中 */
+  line-height: 60rpx; /* 文本垂直居中 */
   text-align: center;
 }

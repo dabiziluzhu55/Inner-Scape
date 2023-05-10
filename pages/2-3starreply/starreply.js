@@ -19,8 +19,6 @@ Page({
     UserId: UserId,
     refreshID: options.refreshID
     })
-    console.log(this.data.starID)
-    console.log(this.data.UserId)
   },
 
   length(e){
@@ -33,7 +31,6 @@ Page({
   },
 
   submitForm: function (e) {
-    //console.log("你好")
     // 判断回复内容是否超过 128 字
     if (this.data.length > 128) {
     wx.showToast({
@@ -53,10 +50,6 @@ Page({
     let userID = that.data.UserId;
     let starID = that.data.starID;
     let refreshID = that.data.refreshID;
-    console.log(userID);
-    console.log(starID);
-    console.log(e.detail.value.replyContent);
-    console.log(refreshID);
     if (!starID) {
       console.error('starID 未正确设置');
       return;
@@ -66,7 +59,6 @@ Page({
       url: 'http://175.178.90.196:7777/ReplyStar?starID=' + starID + '&userID=' + userID + '&replySay=' + e.detail.value.replyContent + '&refreshID=' + refreshID,
       method:'GET',
       success: function (res) {
-        console.log(res.data)
         wx.showToast({
           title: '提交成功',
           icon: 'success',
@@ -83,7 +75,6 @@ Page({
         })
       },
       fail: function (res) {
-        console.log(res.data)
         wx.showToast({
           title: '提交失败',
           icon: 'none',

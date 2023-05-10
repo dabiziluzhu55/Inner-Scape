@@ -22,7 +22,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       videoSrc:options.musicUrl,
       name:options.name,
@@ -85,26 +84,22 @@ Page({
     })
   },
   pre15(){
-    console.log(this.audioCtx.currentTime);
     if(this.audioCtx.currentTime>=15.00){
       this.audioCtx.seek(this.audioCtx.currentTime-15.00);
     }
   },
   next15(){
-    console.log(this.audioCtx.currentTime);
     if((this.audioCtx.currentTime+15.00)<=this.audioCtx.duration){
       this.audioCtx.seek(this.audioCtx.currentTime+15.00);
       // 但是currentTime没有变
     }
   },
   toTime(e) {
-    console.log(e.detail);
     let time = e.detail.value
     this.audioCtx.seek(time)
   },
   close(){
     var endTime=util.formatTime(new Date())
-    console.log(endTime)
     // 向后端传递数据
     wx.request({
       url: 'http://175.178.90.196:7779/medRequest/setRecords',

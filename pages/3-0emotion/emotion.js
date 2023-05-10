@@ -16,7 +16,6 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/allMood',
       success:(res)=>{ 
-        console.log(res.data)
         this.setData({
           menu:res.data
         })

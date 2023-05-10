@@ -41,7 +41,6 @@ Page({
       url: 'http://175.178.90.196:7777/FlyStar?userID=' + userID + '&starContent=' + starContent,
       method: 'GET',
       success: function (res) {
-        console.log(res.data)
         wx.showToast({
           title: '提交成功',
           icon: 'success',
@@ -54,7 +53,6 @@ Page({
         })
       },
       fail: function (res) {
-        console.log(res.data)
         wx.showToast({
           title: '提交失败',
           icon: 'none',

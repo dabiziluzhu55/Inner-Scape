@@ -40,26 +40,26 @@
       {
         "pagePath": "pages/1-0home/home",
         "text": "探索",
-        "iconPath": "image/search.png",
-        "selectedIconPath": "image/search2.png"
+        "iconPath": "/image/search.png",
+        "selectedIconPath": "/image/search2.png"
       },
       {
         "pagePath": "pages/2-0piaoliuping/piaoliuping",
         "text": "摘星",
-        "iconPath": "image/star.png",
-        "selectedIconPath": "image/stra2.png"
+        "iconPath": "/image/star.png",
+        "selectedIconPath": "/image/stra2.png"
       },
       {
         "pagePath": "pages/3-0emotion/emotion",
         "text": "心情",
-        "iconPath": "image/mood1.png",
-        "selectedIconPath": "image/mood2.png"
+        "iconPath": "/image/mood1.png",
+        "selectedIconPath": "/image/mood2.png"
       },
       {
         "pagePath": "pages/4-0me/me",
         "text": "我的",
-        "iconPath": "image/my.png",
-        "selectedIconPath": "image/my2.png"
+        "iconPath": "/image/my.png",
+        "selectedIconPath": "/image/my2.png"
       }
     ]
   }

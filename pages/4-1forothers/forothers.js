@@ -16,7 +16,7 @@ Page({
     let replySay = options.replySay;
     let starHostName = options.starHostName;
     let comments =[];
-    comments.push({description : replySay, nickname :'我的'});
+    comments.push({description : replySay, nickname :'匿名：'});
     this.setData({
       starContent : starContent,
       starID : starID,

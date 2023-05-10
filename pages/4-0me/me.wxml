@@ -12,7 +12,7 @@
   <view class="modal-header">
   <view class="modal-title">请选择您的头像</view>
   <button id="cancelBtn" bindtap="cancelBtnEvent" >
-    <image class="cancelicon" src="/images/cancel.jpg" alt="图标" />
+    <image class="cancelicon" src="http://175.178.90.196:7778/photo/cancel.jpg" alt="图标" />
     </button>
   </view>
   <scroll-view class="options" scroll-y="{{true}}" style="max-height: 500rpx;">
@@ -51,11 +51,11 @@
       <button class="closebtn" bindtap="handleBtn1Tap">
         <view class="red_circle" wx:if="{{newInfo > 0}}" style="background-color: red;" catchtouchmove="onRedCircleTouchMove">{{newInfo}}</view>
      <view class ='red_circle' wx:else></view>
-        <image class="closeicon" src="/image/closeen.png" alt="图标"/>
+        <image class="closeicon" src="http://175.178.90.196:7778/photo/closeen.png" alt="图标"/>
         <span class="closetext">写下的信</span>
       </button>
       <button class="openbtn" bindtap="handleBtn2Tap">
-        <image class="openicon" src="/image/openen.png" alt="图标" />
+        <image class="openicon" src="http://175.178.90.196:7778/photo/openen.png" alt="图标" />
         <span class="opentext">为Ta解忧</span>
       </button>
       </view>

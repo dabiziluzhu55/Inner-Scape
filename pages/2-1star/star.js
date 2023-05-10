@@ -11,7 +11,6 @@ Page({
     refreshID:0,
   },
   refreshStars: function () {
-    console.log(this.data.userID)
     wx.request({
       url: 'http://175.178.90.196:7777/Refresh0?userID=' + this.data.userID,
       success: (res) => {
@@ -67,12 +66,10 @@ Page({
         url: 'http://175.178.90.196:7777/Refresh1?userID=' + this.data.userID,
         success: (res) => {
           var temp = res.data.remainTime
-          //console.log('temp'+temp)
           if (res.statusCode === 200) {
             this.setData({
               remainTime: temp,
             },function(){
-              console.log("刷新时间还有",this.data.remainTime);
               this.startRefreshCountdown(this.data.remainTime);
             });
           }
@@ -101,8 +98,6 @@ Page({
   onStarTap: function (event) {
     const starID = event.currentTarget.dataset.starid;
     const star = this.data.stars.find(item => item.starID === starID);
-    console.log(star)
-    console.log(this.data.refreshID)
     wx.navigateTo({
       url:'/pages/2-2starlog/starlog?star='+JSON.stringify(star)+'&refreshID='+this.data.refreshID
     })

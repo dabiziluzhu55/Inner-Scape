@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "style": "v2"
+  "style": "v2",
+  "navigationBarTitleText": ""
 }

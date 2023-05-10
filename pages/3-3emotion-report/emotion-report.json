@@ -2,5 +2,6 @@
   "usingComponents": {
     "ec-canvas": "../../components/ec-canvas/ec-canvas",
     "calendar": "../../components/calendar/calendar"
-  }
+  },
+  "navigationBarTitleText": ""
 }

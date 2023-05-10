@@ -15,6 +15,8 @@ Page({
     let decodedReplysString = decodeURIComponent(encodedReplys);
     let replys = JSON.parse(decodedReplysString);
     var comments = [];
+    // console.log("starContent",starContent);
+    // console.log("comments",comments);
     for(let i = 0;i < replys.length;i++){
       let replyID = replys[i].replyID; // 回复编号
       let replySay = replys[i].replySay; // 回复内容

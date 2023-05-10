@@ -32,9 +32,10 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
+  /* box-shadow: blue; */
   position: relative;
   overflow: hidden;
   display: flex;
@@ -49,9 +50,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -79,9 +80,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -109,9 +110,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -139,9 +140,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -169,9 +170,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -199,9 +200,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -229,9 +230,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -259,9 +260,9 @@ page{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: radial-gradient(#64b5f6, #e57373);
+  background-image: radial-gradient(rgb(185,236,229), rgb(242,254,254));
   background-color: transparent;
-  border: 2px solid #58a47e;
+  border: 2px solid white;
   position: relative;
   overflow: hidden;
   display: flex;

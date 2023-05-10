@@ -9,10 +9,7 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log('加载成功');
     var url = decodeURIComponent(options.url);
-    //console.log(options)
-    console.log(url);
     this.setData({
       url: url
     })

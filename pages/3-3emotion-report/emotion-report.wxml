@@ -52,7 +52,6 @@
     <view class="link">
       <view class="link_child" wx:for="{{moodList}}" wx:key="index">
         <image class="emotions-icon " src='{{item.url}}'></image>
-        <!-- <icon class="iconfont icon {{item.icon}}" style="font-size: 50rpx;"></icon> -->
         <text class="emotions-text">{{item.name}}x{{item.count}}</text>
       </view>
     </view>

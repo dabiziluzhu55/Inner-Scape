@@ -4,35 +4,35 @@ Page({
     tests: [
       {
         id: 1,
-        image: '/image/test1.png',
+        image: 'http://175.178.90.196:7778/photo/test1.png',
         title: 'MBTI人格测试',
         url: 'https://www.apesk.com/mbti/dati28N.asp',
         description:'最适合你的工作是什么?'
       },
       {
         id: 2,
-        image: '/image/test2.png',
+        image: 'http://175.178.90.196:7778/photo/test2.png',
         title: '睡眠质量测评',
         url: 'https://www.apesk.com/xinliceshi/start_m/?1321.html',
         description:'天天数羊？'
       },
       {
         id: 3,
-        image: '/image/test3.png',
+        image: 'http://175.178.90.196:7778/photo/test3.png',
         title: '压力释放手册',
         url: 'https://www.apesk.com/xinliceshi/start_m/?1355.html',
         description:'你的压力从何而来？'
       },
       {
         id: 4,
-        image: '/image/test4.png',
+        image: 'http://175.178.90.196:7778/photo/test4.png',
         title: '情绪稳定性评估',
         url: 'https://www.apesk.com/xinliceshi/start_m/?1380.html',
         description:'你的情绪管理能力强吗？'
       },
       {
         id: 5,
-        image: '/image/test5.png',
+        image: 'http://175.178.90.196:7778/photo/test5.png',
         title: '亲密指数测试',
         url: 'https://www.apesk.com/xinliceshi/start_m/?1404.html',
         description:'依恋会影响你的爱情吗？'
@@ -41,7 +41,6 @@ Page({
   },
   navigateToTest: function(e) {
     var url = e.currentTarget.dataset.url;
-    console.log(url)
     wx.navigateTo({
       url: `/pages/3-6webview/webview?url=`+ encodeURIComponent(url)
     });

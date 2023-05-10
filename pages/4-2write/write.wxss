@@ -1,6 +1,6 @@
 /* pages/write/write.wxss */
 page{
-  background-color: #C8E7FF
+  background-color: rgb(250,249,247)
 }
 .container{
   width: 100%;
@@ -13,6 +13,7 @@ page{
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-top: 20rpx;
   margin-left: 20px;
@@ -25,7 +26,8 @@ page{
   margin-left: 30rpx;
   margin-right: 30rpx;
   margin-top: 10px;
-  line-height:1.6em;
+  margin-bottom: -12%;
+  line-height: 2; 
 }
 
 /* 评论区域 */
@@ -42,10 +44,12 @@ page{
   display: flex;
   flex-direction: row;
   height: auto;
-  border: 2rpx solid black;
+  /* border: 2rpx solid black; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: white;
   margin-top: 1%;
+  margin-bottom: 3%;
   width: 100%;
 }
 
@@ -67,7 +71,9 @@ page{
 /* 昵称 */
 .name{
   font-size: 13px;
-  font-family: "宋体";
+  /* font-family: "宋体"; */
+  margin-left: 4%;
+  margin-top: 3%;
 }
 
 /* 评论区域 */
@@ -83,11 +89,27 @@ page{
 
 /* 评论信息 */
 .commenttext{
-  margin-top: 5px;
+  margin-top: 3%;
+  margin-left: 4%;
+  margin-bottom: 3%;
   width: 100%;
-  font-size: 15px;
-  font-family: "宋体";
-  text-align: center;
-  text-align-last: left;
+  font-size: 14px;
+  line-height: 2; 
+  /* font-family: "宋体"; */
+  /* text-align: center;
+  text-align-last: left; */
+}
+
+.gap{
+  /* font-size: 14px;
+  color: grey; */
+  margin-left: 30rpx;
+  margin-top: 60rpx;
+  white-space: pre-wrap;
+}
+
+.gap::before {
+  content: 'hahaha';
+  visibility: hidden;
 }
 

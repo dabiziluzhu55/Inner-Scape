@@ -7,7 +7,7 @@ Page({
     UserId: '', // 用来存储用户唯一的openID
     NickName: '', // 昵称
     avatarUrl: '', // 图像的本地文件路径
-    DefaultavatarUrl: '/image/cat.jpg', // 默认头像
+    DefaultavatarUrl: 'http://175.178.90.196:7778/photo/cat.jpg', // 默认头像
     items: [], // 正在滑动栏中的条目数据
     needRefresh: false, // 刷新数据
     imageUrls: [{
@@ -47,8 +47,8 @@ Page({
     totalCount : 0,// 累计冥想次数
     todayTime : 0, // 今日冥想时间
     modalHidden: false,
-    closeenImg: '/image/closeen.png', // 未打开的 
-    openenImg: '/image/openen.png', // 打开了的
+    closeenImg: 'http://175.178.90.196:7778/photo/closeen.png', // 未打开的 
+    openenImg: 'http://175.178.90.196:7778/photo/openen.png', // 打开了的
     newInfo: 0, // 新消息数量
   },
 
@@ -291,7 +291,7 @@ Page({
   imageOnloadError(e) {
     console.log("加载默认图")
     console.log(e)
-    var img = '/image/head.jpg' //图片加载失败时展示的默认图
+    var img = 'http://175.178.90.196:7778/photo/head.jpg' //图片加载失败时展示的默认图
     this.setData({
       imgurl: img
     })

@@ -163,7 +163,7 @@ page {
 .textstyle{
   font-size: 22px;
   font-weight: 550;
-  margin-top: -150%;
+  margin-top: -160%;
   margin-left: -7%;
 }
 

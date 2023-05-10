@@ -5,7 +5,7 @@
 <view class="button-group">
   <view wx:for="{{stars}}" wx:key="starID">
     <button class="star-bt" data-starid="{{item.starID}}" bindtap="onStarTap">
-      <image src="/image/st2.png"></image>
+      <image src="http://175.178.90.196:7778/photo/st2.png"></image>
     </button>
   </view>
 </view>

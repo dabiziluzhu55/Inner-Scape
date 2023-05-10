@@ -1,6 +1,6 @@
 /* pages/write/write.wxss */
 page{
-  background-color: #C8E7FF
+  background-color: rgb(250,249,247)
 }
 .container{
   width: 100%;
@@ -19,19 +19,26 @@ page{
   width: 88%;
 }
 
-.message-hello{
-  font-size: 14px;
-  color: grey;
+.gap{
+  /* font-size: 14px;
+  color: grey; */
   margin-left: 30rpx;
   margin-top: 60rpx;
+  white-space: pre-wrap;
+}
+
+.gap::before {
+  content: 'hahaha';
+  visibility: hidden;
 }
 
 .message-text {
   font-size: 14px;
-  margin-left: 30rpx;
+  margin-left: 4%;
   margin-right: 30rpx;
-  margin-top: 35rpx;
-  line-height:1.6em;
+  /* top: 50rpx; */
+  /* margin-top: 35rpx; */
+  /* line-height:1.6em; */
 }
 
 
@@ -43,15 +50,16 @@ page{
 }
 
 .message-user{
-  margin-top: 1%;
-  margin-left: 60%;
+  margin-top: -20rpx;
+  margin-left: 4%;
   font-size: 12px;
+  margin-bottom: 2%;
   /* font-family: '宋体'; */
 }
 
 /* 评论区域 */
 .btncontainer{
-  margin-top: 3%;
+  margin-top: 2%;
   display: flex;
   flex-direction: column;
   margin-left: 6%;
@@ -63,11 +71,12 @@ page{
   display: flex;
   flex-direction: row;
   height: auto;
-  border: 2rpx solid black;
+  /* border: 2rpx solid black; */
   border-radius: 5px;
   background-color: white;
   margin-top: 1%;
   width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 头像昵称区域 */
@@ -89,10 +98,11 @@ page{
 
 /* 昵称 */
 .name{
-  margin-top: 5%;
-  margin-left: 5%;
+  margin-top: 3%;
+  margin-left: 4%;
   font-size: 13px;
   font-family: "宋体";
+  width: 20%;
 }
 
 /* 评论区域 */
@@ -111,7 +121,10 @@ page{
   width: 100%;
   font-size: 15px;
   font-family: "宋体";
-  text-align: center;
-  text-align-last: left;
+  margin-top: 10%;
+  margin-left: -20%;
+  margin-bottom: 3%;
+  /* text-align: center; */
+  /* text-align-last: left; */
 }
 

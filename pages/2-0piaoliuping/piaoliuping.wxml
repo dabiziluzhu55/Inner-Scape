@@ -5,7 +5,7 @@
 <view class="font2">那个难忘的日子</view>
 <view class="font3">那件特别的小事</view>
 <view class="font4">放在心里，不如把Ta私藏在你的星空</view>
-<button class="star-bt1" bindtap="goto"><image src="/image/bt1.png"></image></button>
-<button class="star-bt2" bindtap="gotofly"><image src="/image/bt2.png"></image></button>
+<button class="star-bt1" bindtap="goto"><image src="http://175.178.90.196:7778/photo/bt1.png"></image></button>
+<button class="star-bt2" bindtap="gotofly"><image src="http://175.178.90.196:7778/photo/bt2.png"></image></button>
 </view>
 

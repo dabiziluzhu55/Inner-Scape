@@ -17,7 +17,7 @@ Page({
     xiDisplay: "",
     startBtnText:"开始",
     voiceText:"关闭声音",
-    voiceIconSrc: "/image/close.png", // 
+    voiceIconSrc: "http://175.178.90.196:7778/photo/close.png", // 
     waveAnimation: {},
     waveAnimationPlayState: "paused",
     teachModalHidden : false,// 初始状态下 modal 是隐藏的
@@ -36,7 +36,7 @@ Page({
     selectedIndex: -1,
     state : true,// 动画状态
     playing : false,// 动画是否播放
-    audioSrc: '', // 音频资源的路径
+    audioSrc: 'http://175.178.90.196:7778/sound/xiaosha.mp3', // 音频资源的路径
     isPlaying: false, // 音频是否正在播放(不必要)
     isMuted: false, // 音频是否已静音(不必要)
   },
@@ -50,7 +50,6 @@ onLoad : function (options) {
       teachContents : teachContent,
       teachImg : options.teachImg,
       name : options.name,
-      audioSrc : options.audioSrc,
     });
 },
 
@@ -144,11 +143,11 @@ padZero : function(num) {
     var voiceIconSrc = this.data.voiceIconSrc;
     var voiceText = this.data.voiceText;
     // 切换声音图标和文字
-    if (voiceIconSrc.includes('/image/close.png')) {
-      voiceIconSrc = '/image/start.png';
+    if (voiceIconSrc.includes('http://175.178.90.196:7778/photo/close.png')) {
+      voiceIconSrc = 'http://175.178.90.196:7778/photo/start.png';
       voiceText = '打开声音';
     } else {
-      voiceIconSrc = '/image/close.png';
+      voiceIconSrc = 'http://175.178.90.196:7778/photo/close.png';
       voiceText = '关闭声音';
     }
     // 打开声音或关闭声音
