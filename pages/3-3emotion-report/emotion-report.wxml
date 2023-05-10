@@ -75,21 +75,21 @@
       <view class="circle-mood" style="background-color: rgb(243,166,138);"></view>
       <view class="text-proccess">
         <text style="margin-top: 3%;font-size: 12px;">正面情绪：{{Positive}}%</text>
-        <progress percent="{{Positive}}" color="rgb(243,166,138)" style="margin-top: 2%;width: 95%;"></progress>
+        <progress percent="{{Positive}}" color="rgb(243,166,138)" style="margin-top: 2%;width: 95%;" border-radius="5"></progress>
       </view>
     </view>
     <view class="moodpropor">
       <view class="circle-mood" style="background-color: rgb(244,209,167);"></view>
       <view class="text-proccess">
         <text style="margin-top: 3%;font-size: 12px;">中性情绪：{{Normal}}%</text>
-        <progress percent="{{Normal}}" color="rgb(244,209,167)" style="margin-top: 2%;width: 95%;"></progress>
+        <progress percent="{{Normal}}" color="rgb(244,209,167)" style="margin-top: 2%;width: 95%;" border-radius="5"></progress>
       </view>
     </view>
     <view class="moodpropor">
       <view class="circle-mood" style="background-color: rgb(156,208,229);"></view>
       <view class="text-proccess">
         <text style="margin-top: 3%;font-size: 12px;">负面情绪：{{Negative}}%</text>
-        <progress percent="{{Negative}}" color="rgb(156,208,229)" style="margin-top: 2%;width: 95%;margin-bottom: 50rpx;"></progress>
+        <progress percent="{{Negative}}" color="rgb(156,208,229)" style="margin-top: 2%;width: 95%;margin-bottom: 50rpx;" border-radius="5"></progress>
       </view>
     </view>
   </view>
