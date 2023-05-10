@@ -1,6 +1,6 @@
 <!--pages/forothers/forothers.wxml-->
 <scroll-view class="container">
-  <view class="message-box">
+  <view class="message-box" style="margin-top: 30%;>
     <view class="message-hello">亲爱的陌生人</view>
     <view class="line"></view>
     <text class="message-text">{{starContent}}</text>
