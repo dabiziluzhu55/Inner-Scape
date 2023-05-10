@@ -17,7 +17,7 @@
       <view style="padding-top: 20rpx; padding-left: 20rpx;">
         <text class="title">心情周报</text>
       </view>
-      <text class="date">04.29 \ 05.00</text>
+      <text class="date">05.08 \ 05.14</text>
       <!-- 一条分隔线 -->
       <view class="divider"></view>
       <view class="week_title"><text>心情数据总览</text></view>

@@ -3,5 +3,5 @@
     "ec-canvas": "../../components/ec-canvas/ec-canvas",
     "calendar": "../../components/calendar/calendar"
   },
-  "navigationBarTitleText": ""
+  "navigationBarTitleText":"心情报告"
 }
