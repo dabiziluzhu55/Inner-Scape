@@ -11,7 +11,8 @@ Page{
   height: 400rpx; /* 设置区域的高度为半圆的高度 */
   border-radius: 0 0 80% 80%; /* 设置只有下面两个角为半圆形 */
   /* 必须是base64编码或者网页链接 */
-  background-image: url(http://175.178.90.196:7778/teach/xingkong.jpg);
+  background-image: url(http://175.178.90.196:7778/sound/1.jpg
+  );
   background-size: cover;
   background-position: center center; 
 }
