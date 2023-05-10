@@ -54,9 +54,6 @@ Page({
       userID:UserId
     })    
     this.initialData();
-    // 初始化echarts图表
-    this.initChart();
-
   },
   initialData(){
     //月度心情分布
@@ -170,6 +167,7 @@ Page({
         this.setData({
           echartData:res.data
         })
+        this.initChart();
       }
     })
     //心情记录日期
