@@ -1,6 +1,6 @@
 <!--pages/write/write.wxml-->
 <scroll-view class="container">
-  <view class="message-box">
+  <view class="message-box" style="margin-top: 30%;">
     <text style="font-size: 17px;font-family: '宋体';">小信一封--</text>
     <text class="message-text">{{starContent}}</text>
   </view>
