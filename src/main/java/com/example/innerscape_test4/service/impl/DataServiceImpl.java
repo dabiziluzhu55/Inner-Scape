@@ -265,15 +265,19 @@ public class DataServiceImpl implements DataService {
             stars.add(select,"redeem"+redeemIDs.get(0));
             redeemIDs.remove(0);
         }
-
         Timestamp nowTime=new Timestamp(System.currentTimeMillis());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String nowTimeStr = dateFormat.format(nowTime);
         List<String> refreshIDs=dataRepository.FindRefreshHistoryToday0(userID,nowTimeStr);
-        if(refreshIDs.isEmpty())
-            return "";
-        String refreshID=refreshIDs.get(0);
-        dataRepository.ChangeHistory0(refreshID,stars.get(0),stars.get(1),stars.get(2),stars.get(3),stars.get(4),stars.get(5));
+        String refreshID;
+        if(refreshIDs.isEmpty()) {
+            refreshID = "RF_" + userID + "_" + nowTimeStr;
+            dataRepository.AddHistory0(refreshID,userID,nowTimeStr,stars.get(0),stars.get(1),stars.get(2),stars.get(3),stars.get(4),stars.get(5));
+        }
+        else {
+            refreshID = refreshIDs.get(0);
+            dataRepository.ChangeHistory0(refreshID, stars.get(0), stars.get(1), stars.get(2), stars.get(3), stars.get(4), stars.get(5));
+        }
         return refreshID;
     }
 
@@ -303,7 +307,7 @@ public class DataServiceImpl implements DataService {
         List<User> users=dataRepository.FindUser(userID);
         List<StarLittleReply> starLittleReplies=dataRepository.GetStarContent(starID);
         List<Refresh>refreshes=dataRepository.GetRefresh(refreshID);
-        if(!users.isEmpty()&&!starLittleReplies.isEmpty()&&starLittleReplies.get(0).getReplyNum()<6&&!refreshes.isEmpty()){
+        if(!users.isEmpty()&&!refreshes.isEmpty()){
             int open=0;
             if(Objects.equals(refreshes.get(0).getStar1ID(), starID)){
                 if(refreshes.get(0).getOpen1()==1)
@@ -343,13 +347,29 @@ public class DataServiceImpl implements DataService {
             }
             else
                 return 1;
-            String replyID="R"+userID+"To"+starID+starLittleReplies.get(0).getReplyNum();
+            String replyID;
+            if(starLittleReplies.isEmpty()){
+                if(redeemStars.containsKey(starID)){
+                    Timestamp nowTime=new Timestamp(System.currentTimeMillis());
+                    DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String nowTimeStr = datetimeFormat.format(nowTime);
+                    replyID="R"+userID+"To"+starID+"At"+nowTimeStr;
+                }
+                else
+                    return 1;
+            }
+            else
+                replyID="R"+userID+"To"+starID+starLittleReplies.get(0).getReplyNum();
             try{
-                if(!redeemStars.containsKey(starID)) {
+                if(starLittleReplies.isEmpty())
+                    dataRepository.AddGuestReply(replyID,starID,redeemStars.get(starID).getStarContent(),redeemStars.get(starID).getStarHostName(),replySay,userID);
+                else if(starLittleReplies.get(0).getReplyNum()<6) {
                     dataRepository.AddHostReply(starID, replyID, replySay, users.get(0).getName(), starLittleReplies.get(0).getReplyNum() + 1);
                     dataRepository.NewInfoAdd1(dataRepository.GetStarHost(starID).get(0));
+                    dataRepository.AddGuestReply(replyID, starID, starLittleReplies.get(0).getStarContent(), starLittleReplies.get(0).getStarHostName(), replySay, userID);
                 }
-                dataRepository.AddGuestReply(replyID,starID,starLittleReplies.get(0).getStarContent(),starLittleReplies.get(0).getStarHostName(),replySay,userID);
+                else
+                    dataRepository.AddGuestReply(replyID, starID, starLittleReplies.get(0).getStarContent(), starLittleReplies.get(0).getStarHostName(), replySay, userID);
                 dataRepository.Reply(refreshID,open);
                 return 0;
             }
