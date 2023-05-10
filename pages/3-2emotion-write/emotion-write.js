@@ -56,7 +56,8 @@ Page({
       url: 'http://175.178.90.196:7779/moodRequest/setMood',
       method: 'Get',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
         moodNumber:this.data.emotionId,
         diary:e.detail.value.replyContent,
         reason:this.data.reason,

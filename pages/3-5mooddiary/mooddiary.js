@@ -13,7 +13,8 @@ Page({
     var userId=wx.getStorageSync('UserId')
     console.log(userId)
     wx.request({
-      url: 'http://175.178.90.196:7779/moodRequest/moodDiary?openId='+ userId,
+      // url: 'http://175.178.90.196:7779/moodRequest/moodDiary?openId='+ userId,
+      url: 'http://175.178.90.196:7779/moodRequest/moodDiary?openId=test',
       method: 'GET',
       success: function(res) {
         that.setData({

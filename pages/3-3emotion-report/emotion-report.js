@@ -63,7 +63,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthDistribution',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
         month:5
       },
       success:(res)=>{ 
@@ -78,7 +79,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/weekDistribution',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
       },
       success:(res)=>{ 
         this.setData({
@@ -97,7 +99,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthReason',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
         month:5
       },
       success:(res)=>{ 
@@ -110,7 +113,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/weekReason',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
       },
       success:(res)=>{ 
         this.setData({
@@ -125,7 +129,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthStatistic',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
         month:5
       },
       success:(res)=>{
@@ -141,7 +146,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthPercent',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
         month:5
       },
       success:(res)=>{ 
@@ -156,7 +162,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthData',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
         month:5
       },
       success:(res)=>{
@@ -169,7 +176,8 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/allDate',
       data: {
-        openId:this.data.userID,
+        // openId:this.data.userID,
+        openId:'test',
       },
       success:(res)=>{ 
         this.setData({

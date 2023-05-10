@@ -97,13 +97,12 @@
   <!-- 心情占比 -->
   <view class="Mood-proportion">
     <text style="font-size: 15px;margin-left: 3%;margin-top: 3%;">心情变化</text>
-    <view class="color_dot" style="background-color: rgb(243, 167, 138); top:60rpx"></view>
+    <view class="color_dot" style="background-color: rgb(243, 167, 138); top:70rpx"></view>
     <view class="color_dot" style="background-color: rgb(244, 210, 166); top:119rpx"></view>
-    <view class="color_dot" style="background-color: rgb(156, 209, 228); top:176rpx"></view>
+    <view class="color_dot" style="background-color: rgb(156, 209, 228); top:170rpx"></view>
     <view class="echarts">
       <ec-canvas id="mychart" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
     </view>
-
   </view>
 
   <!-- 产生最多的心情 -->
