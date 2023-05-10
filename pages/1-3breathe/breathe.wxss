@@ -385,7 +385,6 @@ page{
 .voicetext,.timetext {
   margin-top: 5px; /* 文字距离图标的间距 */
   font-size: 15px;
-  font-family: '宋体';
 }
 
 
@@ -462,7 +461,6 @@ page{
 
 .textstylr{
   font-size: 10px;
-  font-family: "宋体";
 }
 
 #confirmBtn {

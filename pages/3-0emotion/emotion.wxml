@@ -33,7 +33,7 @@
       <text class="data_text">心情练习</text>
     </button>
     <button class="data_btn" bindtap="NavigateToDairy">
-      <icon class="iconfont icon_report" style="margin-top: -25%;font-size: 66rpx;"></icon>
+      <icon class="iconfont icon_dairy" style="margin-top: -25%;font-size: 66rpx;"></icon>
     <text class="data_text">我的日记</text>
     </button>
     <button class="data_btn" bindtap="change2report">

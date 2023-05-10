@@ -35,7 +35,7 @@
 <view id="timer" style="text-align: center; font-size: 24px; margin-top: 20px">
   {{timer}}
 </view>
-<button class="btn" id="startBtn" bindtap="startBtnEvent" style="font-family: '宋体';font-size: 15px;align-items: center;">{{startBtnText}}</button>
+<button class="btn" id="startBtn" bindtap="startBtnEvent" style="font-size: 15px;align-items: center;">{{startBtnText}}</button>
 <view class="btn-container">
   <button class="voicebtn" bindtap="voiceBtnEvent">
     <image class="voiceicon" src="{{voiceIconSrc}}" alt="图标" />

@@ -139,7 +139,7 @@
     <view class="icon-play3 iconfont isPlay" bindtap="isPlay" wx:if="{{!isPlay}}"></view>
     <view class="icon-pause3 iconfont isPlay" bindtap="isPlay" wx:if="{{isPlay}}"></view>
     <!-- 最左侧一个× -->
-    <image src="{{cur.imageUrl}}" class="bImg" mode="aspectFill" data-url="{{cur.musicUrl}}"  
+    <image src="{{cur.imageUrl}}" class="bImg" mode="aspectFill" data-url="{{cur.musicUrl}}"       data-image="{{cur.imageUrl}}"
                       data-name="{{cur.content}}"
                       bindtap="change2sound"></image>
     <text class="bcontent">{{cur.content}}</text>
