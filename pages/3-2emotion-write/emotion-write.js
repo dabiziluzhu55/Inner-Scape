@@ -10,7 +10,7 @@ Page({
     emotionSrc:'',
     emotionId:'',
     reason:'',
-    background:'http://175.178.90.196:7778/photo/write-bg.jpg',
+    background:'http://175.178.90.196:7778/related/write-bg.jpg',
     scrollY: false,
     scrollViewHeight: 200,
     date:'',
@@ -41,6 +41,7 @@ Page({
   },
   onLoad(options) {
     var UserId = wx.getStorageSync('UserId');
+    console.log(UserId)
     this.setData({
       date:options.date,
       emotion:options.emotion,

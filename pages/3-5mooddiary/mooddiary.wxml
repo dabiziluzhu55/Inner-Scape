@@ -1,13 +1,11 @@
 <view class="container">
   <view class="diary-list">
     <block wx:for="{{diaryList}}" wx:key="id" wx:for-item="diary" wx:for-index="diaryIndex">
-      <navigator url="/pages/diarydetail/diarydetail?id={{diary.id}}">
-        <view class="diary-item" style="background-color: {{diaryIndex % 3 === 0 ? '#E9F6CB' : diaryIndex % 3 === 1 ? '#CFEAFD' : '#F8E2E9'}};">
-          <view class="diary-item-time">{{diary.recordTime}}</view>
+      <view class="diary-item" style="background-color: {{diaryIndex % 3 === 0 ? '#E9F6CB' : diaryIndex % 3 === 1 ? '#CFEAFD' : '#F8E2E9'}};" data-id="{{diary.id}}" bindtap="navigateToDiary">
+        <view class="diary-item-time">{{diary.recordTime}}</view>
           <image class="diary-item-image" src="{{diary.moodImageUrl}}"></image>
           <view class="diary-item-mood">{{diary.diary}}</view>
         </view>
-      </navigator>
     </block>
   </view>
 </view>

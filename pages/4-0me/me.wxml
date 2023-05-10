@@ -26,8 +26,6 @@
       </view>
     </view>
   </view>
-    <!-- 我的冥想和关联点击 -->
-    <text class="mingtext" bindtap="handlemingBtnTap">我的冥想</text>
     
     <!-- 次数 -->
       <view class="row">

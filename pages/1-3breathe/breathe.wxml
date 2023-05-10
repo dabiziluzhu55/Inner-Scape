@@ -32,7 +32,7 @@
     <view class="xi" id="xi">{{xiDisplay}}</view>
   </view>
 </view>
-<view id="timer" style="text-align: center; font-size: 24px; margin-top: 20px">
+<view id="timer" style="text-align: center; font-size: 24px; margin-top: 30px">
   {{timer}}
 </view>
 <button class="btn" id="startBtn" bindtap="startBtnEvent" style="font-size: 15px;align-items: center;">{{startBtnText}}</button>

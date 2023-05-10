@@ -62,16 +62,17 @@ Page({
         wx.showToast({
           title: '提交成功',
           icon: 'success',
-          duration: 2000
+          duration: 2000,
+          success:function(){
+            setTimeout(function(){
+              wx.navigateBack({delta:2});
+            },1500)
+          }
         })
         // 提交成功后，清空留言框内容
         that.setData({
           length: 0,
           replyContent: ''
-        })
-        // 提交成功后跳转回六颗星星界面
-        wx.navigateBack({
-        delta: 2
         })
       },
       fail: function (res) {

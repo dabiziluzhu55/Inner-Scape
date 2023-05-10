@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="diary-item">
+    <view class="diary-item-time">{{diaryList.recordTime}}</view>
+          <image class="diary-item-image" src="{{diaryList.moodImageUrl}}"></image>
+          <view class="diary-item-mood">{{diaryList.diary}}</view>
+          <view class="diary-item-reason">{{diaryList.reason}}</view>
+    </view>
+</view>

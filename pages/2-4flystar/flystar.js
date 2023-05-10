@@ -40,11 +40,17 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7777/FlyStar?userID=' + userID + '&starContent=' + starContent,
       method: 'GET',
+
       success: function (res) {
         wx.showToast({
           title: '提交成功',
           icon: 'success',
-          duration: 2000
+          duration: 2000,
+          success:function(){
+            setTimeout(function(){
+              wx.navigateBack();
+            },1500)
+          }
         })
         // 提交成功后，清空留言框内容
         that.setData({

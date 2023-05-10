@@ -48,7 +48,6 @@ Page({
 
   onLoad: function () {
     var UserId = wx.getStorageSync('UserId');
-    this.initialData();
     let nowDate = new Date().toLocaleDateString();
     this.setData({
       nowDate : nowDate,
@@ -56,6 +55,7 @@ Page({
     })
     // 初始化echarts图表
     this.initChart();
+    this.initialData();
   },
   initialData(){
     //月度心情分布
@@ -66,6 +66,8 @@ Page({
         month:5
       },
       success:(res)=>{ 
+        console.log('月度心情分布')
+        console.log(res)
         this.setData({
           moodList:res.data
         })

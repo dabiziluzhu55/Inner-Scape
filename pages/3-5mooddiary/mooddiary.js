@@ -1,46 +1,19 @@
 // pages/mooddiary/mooddiary.js
 Page({
   data: {
-    //diaryList: []
-    diaryList: [
-      {
-        id: 1,
-        recordTime: '2023-05-07',
-        diary: '开心',
-        reason: '跟朋友一起看了一场电影',
-        moodImageUrl: 'http://175.178.90.196:7778/photo/开心.png'
-      },
-      {
-        id: 2,
-        recordTime: '2023-05-06',
-        diary: '平静',
-        reason: '五一结束了',
-        moodImageUrl: 'http://175.178.90.196:7778/photo/平静.png'
-      },
-      {
-        id: 3,
-        recordTime: '2023-05-05',
-        diary: '难过',
-        reason: '呜呜呜呜呜',
-        moodImageUrl: 'http://175.178.90.196:7778/photo/难过.png'
-      },
-      {
-        id: 4,
-        recordTime: '2023-05-01',
-        diary: '心动',
-        reason: '跟朋友一起看了一场电影',
-        moodImageUrl: 'http://175.178.90.196:7778/photo/心动.png'
-      },
-    ]
+    diaryList: []
   },
 
   onLoad(options) {
-    //this.fetchDiaryList();
+    this.fetchDiaryList();
   },
+
   fetchDiaryList: function() {
     const that = this;
+    var userId=wx.getStorageSync('UserId')
+    console.log(userId)
     wx.request({
-      url: 'http://175.178.90.196:7779/moodRequest/setMood',
+      url: 'http://175.178.90.196:7779/moodRequest/moodDiary?openId='+ userId,
       method: 'GET',
       success: function(res) {
         that.setData({
@@ -50,6 +23,15 @@ Page({
       fail: function(res) {
         console.log(res);
       }
+    })
+  },
+
+  navigateToDiary: function(event){
+    const id = event.currentTarget.dataset.id;
+    const diaryList = this.data.diaryList.find(item => item.id === id);
+    console.log(diaryList)
+    wx.navigateTo({
+      url:'/pages/3-7mooddetail/3-7mooddetail?diaryList='+JSON.stringify(diaryList)
     })
   },
 
