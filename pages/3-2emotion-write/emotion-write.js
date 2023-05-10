@@ -13,7 +13,8 @@ Page({
     background:'http://175.178.90.196:7778/photo/write-bg.jpg',
     scrollY: false,
     scrollViewHeight: 200,
-    date:''
+    date:'',
+    userID:''
   },
   length(e){
     let length=e.detail.value.length;
@@ -39,12 +40,14 @@ Page({
     });
   },
   onLoad(options) {
+    var UserId = wx.getStorageSync('UserId');
     this.setData({
       date:options.date,
       emotion:options.emotion,
       emotionSrc:options.emotionSrc,
       reason:options.reason,
-      emotionId:options.emotionId
+      emotionId:options.emotionId,
+      userID: UserId
     })
   },
   submitForm(e){
@@ -52,7 +55,7 @@ Page({
       url: 'http://175.178.90.196:7779/moodRequest/setMood',
       method: 'Get',
       data: {
-        openId:'test',
+        openId:this.data.userID,
         moodNumber:this.data.emotionId,
         diary:e.detail.value.replyContent,
         reason:this.data.reason,

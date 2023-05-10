@@ -32,6 +32,14 @@ page{
   visibility: hidden;
 }
 
+.message-text-container{
+  margin-top: 2%;
+  margin-bottom: -8%;
+  width: 90%;
+  margin-left: 4%;
+  margin-right: 2%;
+}
+
 .message-text {
   font-size: 14px;
   margin-left: 4%;
@@ -98,19 +106,17 @@ page{
 
 /* 昵称 */
 .name{
-  margin-top: 3%;
-  margin-left: 4%;
   font-size: 13px;
-  font-family: "宋体";
-  width: 20%;
+  margin-left: 4%;
+  margin-top: 3%;
 }
 
 /* 评论区域 */
 .commentarea{ 
-  width: 80%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  display: flex;
   margin-left:2%;
   word-wrap: break-word;
   white-space: normal;
@@ -118,13 +124,11 @@ page{
 
 /* 评论信息 */
 .commenttext{
-  width: 100%;
-  font-size: 15px;
-  font-family: "宋体";
-  margin-top: 10%;
-  margin-left: -20%;
+  margin-top: 3%;
+  margin-left: 4%;
   margin-bottom: 3%;
-  /* text-align: center; */
-  /* text-align-last: left; */
+  width: 100%;
+  font-size: 14px;
+  line-height: 2; 
 }
 

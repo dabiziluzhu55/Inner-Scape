@@ -5,8 +5,10 @@
     <view class="message-user">{{starHostName}}</view>
     <!-- <view class="message-hello">亲爱的陌生人</view> -->
     <!-- <view class="line"></view> -->
+    <view class="message-text-container">
     <text class="message-text">{{starContent}}</text>
-    <view class="message-thanks" style="margin-top: 5%;margin-bottom: -12%;">感谢您的倾听</view>
+  </view>
+    <view class="message-thanks" style="margin-top: 11%;margin-bottom: -12%;">感谢您的倾听</view>
     <view class="gap"></view>
     <!-- <view class="message-user">{{starHostName}}</view> -->
   </view>
@@ -22,9 +24,11 @@
       <text class="commenttext">{{item.description}}
       </text>
     </view> -->
-    <text class="name">{{item.nickname }}</text>
-    <text class="commenttext">{{item.description}}
-      </text>
+    <view class="commentarea">
+        <text class="name" style="text-align: left;">{{item.nickname}}</text>
+        <text class="commenttext">{{item.description}}
+        </text>
+      </view>
     </view>
   </view>
 </scroll-view>

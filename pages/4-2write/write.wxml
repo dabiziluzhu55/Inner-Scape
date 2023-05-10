@@ -1,22 +1,23 @@
 <scroll-view class="container">
   <view class="message-box" style="margin-top: 30%;">
-  <view class="gap"></view>
+    <view class="gap"></view>
     <text style="font-size: 17px;margin-top: -12%;margin-left: 4%;">小信一封--</text>
-    <text class="message-text">{{starContent}}</text>
+    <view class="message-text-container">
+      <text class="message-text">{{starContent}}</text>
+    </view>
     <view class="gap"></view>
   </view>
- 
- <view style="margin-left: 5%;margin-top: 4%;">评论：</view>
+
+  <view style="margin-left: 5%;margin-top: 4%;">评论：</view>
   <view class="btncontainer">
     <view class="commentbtn" style="width: 90%;" wx:for="{{comments}}" wx:key="{{id}}" data-index="{{index}}" bindlongpress="LongPressed">
-    <view class="avatername">
-    </view>
-    <view class="commentarea">
-      <text class="name" style="text-align: left;">{{item.nickname}}:</text> 
-      <text class="commenttext">{{item.description}}
-      </text>
-    </view>
+      <view class="avatername">
+      </view>
+      <view class="commentarea">
+        <text class="name" style="text-align: left;">{{item.nickname}}:</text>
+        <text class="commenttext">{{item.description}}
+        </text>
+      </view>
     </view>
   </view>
 </scroll-view>
-

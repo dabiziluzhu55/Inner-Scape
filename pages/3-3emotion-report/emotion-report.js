@@ -42,14 +42,17 @@ Page({
     //产生心情种数
     wemotionSpecies:0,
     //原因总数
-    wreasonTimes:0
+    wreasonTimes:0,
+    userID:''
   },
 
   onLoad: function () {
+    var UserId = wx.getStorageSync('UserId');
     this.initialData();
     let nowDate = new Date().toLocaleDateString();
     this.setData({
       nowDate : nowDate,
+      userID:UserId
     })
     // 初始化echarts图表
     this.initChart();
@@ -59,7 +62,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthDistribution',
       data: {
-        openId:'test',
+        openId:this.data.userID,
         month:5
       },
       success:(res)=>{ 
@@ -72,7 +75,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/weekDistribution',
       data: {
-        openId:'test',
+        openId:this.data.userID,
       },
       success:(res)=>{ 
         this.setData({
@@ -91,7 +94,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthReason',
       data: {
-        openId:'test',
+        openId:this.data.userID,
         month:5
       },
       success:(res)=>{ 
@@ -104,7 +107,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/weekReason',
       data: {
-        openId:'test',
+        openId:this.data.userID,
       },
       success:(res)=>{ 
         this.setData({
@@ -119,7 +122,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthStatistic',
       data: {
-        openId:'test',
+        openId:this.data.userID,
         month:5
       },
       success:(res)=>{
@@ -135,7 +138,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthPercent',
       data: {
-        openId:'test',
+        openId:this.data.userID,
         month:5
       },
       success:(res)=>{ 
@@ -150,7 +153,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/monthData',
       data: {
-        openId:'test',
+        openId:this.data.userID,
         month:5
       },
       success:(res)=>{
@@ -163,7 +166,7 @@ Page({
     wx.request({
       url: 'http://175.178.90.196:7779/moodRequest/allDate',
       data: {
-        openId:'test',
+        openId:this.data.userID,
       },
       success:(res)=>{ 
         this.setData({

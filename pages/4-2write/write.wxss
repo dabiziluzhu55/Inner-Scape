@@ -21,10 +21,18 @@ page{
   width: 88%;
 }
 
+.message-text-container{
+  margin-top: 2%;
+  margin-bottom: -8%;
+  width: 90%;
+  margin-left: 4%;
+  margin-right: 2%;
+}
+
 .message-text {
   font-size: 14px;
-  margin-left: 30rpx;
-  margin-right: 30rpx;
+  /* margin-left: 30rpx;
+  margin-right: 30rpx; */
   margin-top: 10px;
   margin-bottom: -12%;
   line-height: 2; 
@@ -80,7 +88,7 @@ page{
 .commentarea{ 
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   display: flex;
   margin-left:2%;
   word-wrap: break-word;
