@@ -161,6 +161,6 @@
   height: 25px;
   border-radius: 5px;
   background-color: orange;
-  margin-top: -55%;
-  margin-left: 20%;
+  margin-top: -53%;
+  margin-left: 25%;
 }
