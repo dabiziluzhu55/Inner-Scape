@@ -165,12 +165,12 @@ public class MoodService {
             validMoods = validWeekMood(openId);
 
         ArrayList<Integer> countMood = countData(openId, type, month);
-        int mostMood = 0;
+        int mostMood = -1;
         for (int i = 0; i < countMood.size(); i++) {
             int curr = countMood.get(i);
             if (curr != 0) {
-                if (mostMood == 0) {
-                    mostMood = curr;
+                if (mostMood == -1) {
+                    mostMood = i;
                 } else {
                     if (countMood.get(mostMood) < curr)
                         mostMood = i;
@@ -194,14 +194,14 @@ public class MoodService {
     // 记录心情的次数，产生心情种数，产生最多的心情：
     public MoodStatisticSend statisticSend(String openId, int type, int month) {
         ArrayList<Integer> countMood = countData(openId, type, month);
-        int mostMood = 0, totalMood = 0, kindMood = 0;
+        int mostMood = -1, totalMood = 0, kindMood = 0;
         for (int i = 0; i < countMood.size(); i++) {
             int curr = countMood.get(i);
             if (curr != 0) {
                 kindMood += 1;
                 totalMood += curr;
-                if (mostMood == 0) {
-                    mostMood = curr;
+                if (mostMood == -1) {
+                    mostMood = i;
                 } else {
                     if (countMood.get(mostMood) < curr)
                         mostMood = i;

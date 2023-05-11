@@ -71,5 +71,4 @@ public class MoodController {
     public ArrayList<String> getAllDate(String openId) {
         return moodService.allDate(openId);
     }
-
 }
